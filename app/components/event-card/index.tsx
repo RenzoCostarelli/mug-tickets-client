@@ -6,11 +6,10 @@ export default function EventCard({showInfo}:any) {
     console.log('card props',showInfo)
     return (
         <div className={s.card}>
-            <div className={s.cardHeader}>
+            <div className={s.card_image}>
                 <Image
-                    src="/images/237-536x354.jpg"
-                    width={300}
-                    height={200}
+                    src="/images/flyer__test.jpg"
+                    fill={true}
                     alt="Entrada"
                 />
             </div>

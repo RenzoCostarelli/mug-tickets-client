@@ -1,0 +1,14 @@
+.nav_bar {
+    position: fixed;
+    display: flex;
+    z-index: 9;
+    width: 100%;
+    background-color: black;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    justify-content: space-between;
+    .links {
+        display: flex;
+        align-items: center;
+    }
+}

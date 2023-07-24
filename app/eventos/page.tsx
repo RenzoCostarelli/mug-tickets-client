@@ -23,7 +23,6 @@ export default async function Eventos() {
   const { events } = await getData();
   return (
   <>
-    <h1>Holisss from eventos</h1>
     <EventsList props={events}/>
   </>
   );

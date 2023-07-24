@@ -1,0 +1,16 @@
+.hero_banner {
+    width: min(1400px, 95vw);
+    margin-inline: auto;
+    height: 500px;
+    .banner_content {
+        width: 100%;
+        height: 100%;
+        .image {
+            height: 100%;
+            position: relative;
+            img {
+                object-fit: cover;
+            }
+        }
+    }    
+}

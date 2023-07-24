@@ -1,0 +1,14 @@
+.main {
+  width: max(1400px, 95vw);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+section.next_events {
+  padding-block: 2rem;
+  h1 {
+    font-size: 7vw;
+    font-weight: 900;
+    text-align: left;
+  }
+}
