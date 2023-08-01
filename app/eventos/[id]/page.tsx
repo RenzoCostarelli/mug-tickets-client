@@ -24,9 +24,21 @@ export default async function Event({params}: {params: {id: string}}) {
                 <div className={s.date_area}>
                     <div className={s.date}>{dateStr}</div>
                     <div className={s.time}>{timeStr}</div>
+                    <h1>{event.title}</h1>                
                 </div>
-                <h1>{event.title}</h1>
-                
+                <div className={s.image_area}></div>
+            </div>
+            <div className={s.buy_area}>
+                <h1>Comprar entrada</h1>
+                <div className={s.price_grid}>
+                    <div className={s.grid_header}>
+                        <div className={s.price}>Precio</div>
+                        <div className={s.quantity}>Cantidad</div>
+                        <div className={s.buy}>
+                            <button>Comprar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
