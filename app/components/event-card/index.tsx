@@ -23,7 +23,7 @@ export default function EventCard({showInfo}:any) {
                 </div>
 
                 <p className={s.description}>Lorem ipsum dolor sit.</p>
-                <Link href={`/evento`}>comprar</Link>
+                <Link href={`/eventos/${showInfo.eventId}`}>comprar</Link>
             </div>
         </div>
     )
