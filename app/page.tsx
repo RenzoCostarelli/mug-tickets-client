@@ -3,16 +3,9 @@ import s from './page.module.scss'
 import HeroBanner from './components/hero-banner'
 import EventsList from './components/events-list'
 
-async function getData() {
-  const res = await fetch('http://localhost:8080/api/events/');
-  if (!res.ok) {
-    throw new Error('Failed to fetch dataa');
-  } 
-  return res.json();
-}
 
-export default async function Home() {
-  const { events } = await getData();
+export default function Home() {
+  
   return (<>
     <header>
       <HeroBanner />
@@ -21,7 +14,7 @@ export default async function Home() {
       <section className={s.next_events}>
         <h1>PROXIMOS SHOWS</h1>
         <div className={s.event_cards_container}>
-          <EventsList props={events}/>
+          {/* <EventsList /> */}
         </div>
       </section>
     </main>
