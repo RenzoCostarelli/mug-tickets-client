@@ -13,10 +13,9 @@ async function getEventById(id: string) {
 export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
  
-    
-    const [dateStr, timeStr] = new Date(event.date).toISOString().split('T');
-
-   
+    const date = new Date(event.date)
+    let dateStr = date.toLocaleDateString(); 
+    let timeStr = date.toLocaleTimeString(); 
     
     return (
         <div className={s.event_wrapper}>
