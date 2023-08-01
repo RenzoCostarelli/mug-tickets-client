@@ -7,21 +7,21 @@ export default function Navbar() {
             <div className={s.logo}>LOGO</div>
             <nav className={s.main_navigation}>
                 <ul className={s.links}>
-                    <li className={s.link}><Link href={`/evento`}>Tickets</Link></li>
-                    <li className={s.link}><Link href={`/evento`}>Sobre el MUG</Link></li>
-                    <li className={s.link}><Link href={`/evento`}>Preguntas frecuentes</Link></li>
+                    <li className={s.link}><Link href={`/`}>Tickets</Link></li>
+                    <li className={s.link}><Link href={`/`}>Sobre el MUG</Link></li>
+                    <li className={s.link}><Link href={`/`}>Preguntas frecuentes</Link></li>
                 </ul>
             </nav>
             <div className={s.user_area}>
                 <ul className={`${s.links} ${s.user_links}`}>
                     <li className={s.link}>
-                        <Link href={`/evento`}>Login/Logout</Link>
+                        <Link href={`/`}>Login/Logout</Link>
                     </li>
                     <li className={s.link}>
-                        <Link href={`/evento`}>Perfil</Link>
+                        <Link href={`/`}>Perfil</Link>
                     </li>
                     <li className={s.link}>
-                        <Link href={`/evento`}>Mis compras</Link>
+                        <Link href={`/`}>Mis compras</Link>
                     </li>
                 </ul>
             </div>
