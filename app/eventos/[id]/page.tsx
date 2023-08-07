@@ -1,4 +1,11 @@
+import Link from 'next/link';
 import s from './evento.module.scss'
+
+interface BuyFormProps {
+    price: number;
+    quantity: number;
+    type: string;
+}
 
 async function getEventById(id: string) {
     const res = await fetch(`${process.env.apiUrl}/events/${id}`);
@@ -8,9 +15,43 @@ async function getEventById(id: string) {
     return res.json();
 }
 
+export function BuyForm({price, quantity, type}: BuyFormProps) {
+    return (
+        <form action="" className={s.buy_form}>
+        <div className={`${s.columns}`}>
+            <div className={s.form_area}>
+                <label htmlFor="name">Nombre</label>
+                <input type="text" name="name" id="name" placeholder='Nombre'/>
+            </div>
+            <div className={s.form_area}>
+                <label htmlFor="last-name">Apellido</label>
+                <input type="text" name="last-name" id="last-name" placeholder='Apellido'/>
+            </div>
+            <div className={s.form_area}>
+                <label htmlFor="dni">DNI</label>
+                <input type="text" name="dni" id="dni" placeholder='DNI'/>
+            </div>
+            <div className={s.form_area}>
+                <label htmlFor="phone">Telefono</label>
+                <input type="phone" name="phone" id="phone" placeholder='Telefono'/>
+            </div>
+
+        </div>
+        <div className={s.form_area}>
+            <label htmlFor="email">E-MAIL</label>
+            <input type="email" name="email" id="email" placeholder='email'/>
+        </div>
+        <div className={s.form_area_inline}>
+            <input type="checkbox" name="phone" id="phone" placeholder='Telefono'/> 
+            <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
+        </div>
+        <Link href={`/success`}>Finalizar compra</Link>
+    </form>
+    )
+}
+
 export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
-    console.log(event)
     const date = new Date(event.date)
     let dateStr = date.toLocaleDateString(); 
     let timeStr = date.toLocaleTimeString(); 
@@ -49,7 +90,9 @@ export default async function Event({params}: {params: {id: string}}) {
                 </div>
             </div>
             <div className={s.buy_area}>
-                <h1>Comprar entrada</h1>
+                <h1>Compra tu entrada</h1>
+                {/* ACA VA EL FORM */}
+                <BuyForm price={5000} quantity={1} type={"General"} />
                 <div className={s.price_grid}>
                     <div className={s.grid_header}>
                         <div className={s.type}>Tipo</div>

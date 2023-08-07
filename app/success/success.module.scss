@@ -1,0 +1,17 @@
+.success_wrapper {
+    width: min(900px, 95vw);
+    margin-inline: auto;
+    background-color: white;
+    color: black;
+    .ticket {
+        width: min(300px, 95vw);
+        margin-inline: auto;
+        .qr_code {
+            max-width: 100%;
+            svg {
+                width: 100%;
+            }
+        }
+
+    }
+}

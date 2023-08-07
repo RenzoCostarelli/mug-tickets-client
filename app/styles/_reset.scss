@@ -9,7 +9,7 @@
  */
 *:where(:not(html, iframe, canvas, img, svg, video, audio, select):not(svg *, symbol
       *)) {
-  all: unset;
+  // all: unset;
   display: revert;
 }
 

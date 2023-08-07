@@ -5,7 +5,6 @@ import s from './event-card.module.scss';
 // title, timestamp, description, id, price
 
 export default function EventCard({showInfo}:any) {
-    console.log('card props', showInfo)
     return (
         <div className={s.card}>
             <div className={s.card_image}>
