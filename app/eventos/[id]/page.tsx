@@ -10,7 +10,7 @@ interface BuyFormProps {
 async function getEventById(id: string) {
     const res = await fetch(`${process.env.apiUrl}/events/${id}`);
     if (!res.ok) {
-      throw new Error('Failed to fetch dataa');
+      throw new Error('Failed to fetch data');
     } 
     return res.json();
 }

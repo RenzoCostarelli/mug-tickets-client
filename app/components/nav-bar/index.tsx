@@ -8,7 +8,6 @@ export default function Navbar() {
             <nav className={s.main_navigation}>
                 <ul className={s.links}>
                     <li className={s.link}><Link href={`/`}>Tickets</Link></li>
-                    <li className={s.link}><Link href={`/`}>Sobre el MUG</Link></li>
                     <li className={s.link}><Link href={`/`}>Preguntas frecuentes</Link></li>
                 </ul>
             </nav>
@@ -18,10 +17,7 @@ export default function Navbar() {
                         <Link href={`/`}>Login/Logout</Link>
                     </li>
                     <li className={s.link}>
-                        <Link href={`/`}>Perfil</Link>
-                    </li>
-                    <li className={s.link}>
-                        <Link href={`/`}>Mis compras</Link>
+                        <Link href={`/`}>Mi cuenta</Link>
                     </li>
                 </ul>
             </div>
