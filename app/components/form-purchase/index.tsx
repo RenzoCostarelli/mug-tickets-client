@@ -31,7 +31,6 @@ const FormPurchase: React.FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      // Form is valid, proceed with submission
       console.log(formData);
     }
   };
