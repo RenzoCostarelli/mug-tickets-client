@@ -10,14 +10,13 @@ interface BuyFormProps {
   type: string;
 }
 
-export function CreateTicket() {
-    const tiki = 'http://localhost:3000/api/tickets'
-    console.log('tiki', tiki)
-}
-
-
 export function BuyForm({price, quantity, type, total}: BuyFormProps) {
-  return (
+    const callApi = async () => {
+        await fetch('/api/tickets', {
+         method: 'POST'
+        })
+     }
+   return (
       <>
       <div>{total}</div>
         <form action="" className={s.buy_form}>
@@ -50,7 +49,7 @@ export function BuyForm({price, quantity, type, total}: BuyFormProps) {
             </div>
             <Link href={`/success`}>Finalizar compra</Link>
         </form>      
-            <button onClick={CreateTicket}>FINALIZAR</button>
+            <button onClick={callApi}>FINALIZAR</button>
       </>
   )
 }
