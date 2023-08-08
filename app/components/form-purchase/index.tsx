@@ -1,134 +1,104 @@
-// form con datos de compra.
-// datos de usuario autocompletados con los datos de la cuenta
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+'use client'
+import { ChangeEvent, useState } from 'react';
+import Link from 'next/link';
+import s from './form-purchase.module.scss';
 
-interface FormData {
-  nombreApellido: string;
-  dni: string;
-  direccion: string;
-  fechaNacimiento: string;
+interface BuyFormProps {
+  price: number;
+  quantity: number;
+  total: number;
+  type: string;
 }
 
-const FormPurchase: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    nombreApellido: '',
-    dni: '',
-    direccion: '',
-    fechaNacimiento: ''
-  });
-  const [errors, setErrors] = useState<FormData>({
-    nombreApellido: '',
-    dni: '',
-    direccion: '',
-    fechaNacimiento: ''
-  });
+export function BuyForm({price, quantity, type, total}: BuyFormProps) {
+  return (
+      <>
+      <div>{total}</div>
+        <form action="" className={s.buy_form}>
+            <div className={`${s.columns}`}>
+                <div className={s.form_area}>
+                    <label htmlFor="name">Nombre</label>
+                    <input type="text" name="name" id="name" placeholder='Nombre'/>
+                </div>
+                <div className={s.form_area}>
+                    <label htmlFor="last-name">Apellido</label>
+                    <input type="text" name="last-name" id="last-name" placeholder='Apellido'/>
+                </div>
+                <div className={s.form_area}>
+                    <label htmlFor="dni">DNI</label>
+                    <input type="text" name="dni" id="dni" placeholder='DNI'/>
+                </div>
+                <div className={s.form_area}>
+                    <label htmlFor="phone">Telefono</label>
+                    <input type="phone" name="phone" id="phone" placeholder='Telefono'/>
+                </div>
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: '' });
-  };
+            </div>
+            <div className={s.form_area}>
+                <label htmlFor="email">E-MAIL</label>
+                <input type="email" name="email" id="email" placeholder='email'/>
+            </div>
+            <div className={s.form_area_inline}>
+                <input type="checkbox" name="phone" id="phone" placeholder='Telefono'/> 
+                <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
+            </div>
+            <Link href={`/success`}>Finalizar compra</Link>
+        </form>      
+      </>
+  )
+}
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (validateForm()) {
-      console.log(formData);
-    }
-  };
+export default function FormPurchase ({event}: any) {
+  const date = new Date(event.date)
+  let dateStr = date.toLocaleDateString(); 
+  let timeStr = date.toLocaleTimeString();
 
-  const validateForm = () => {
-    let valid = true;
-    const newErrors: FormData = {
-      nombreApellido: '',
-      dni: '',
-      direccion: '',
-      fechaNacimiento: ''
-    };
+  console.log('event', event.price)
 
-    if (!formData.nombreApellido) {
-      newErrors.nombreApellido = 'El nombre y apellido son obligatorios';
-      valid = false;
-    }
+  const [quantity, setQuantity] = useState<number>(1)
+  const [total, setTotal] = useState<number>(event.price)
+  const [showCheckout, setShowCheckout] = useState(false)
 
-    if (!formData.dni) {
-      newErrors.dni = 'El DNI es obligatorio';
-      valid = false;
-    }
+  const handleCheckoutClick = () => {
+    setShowCheckout(true)
+  }
 
-    if (!formData.direccion) {
-      newErrors.direccion = 'La dirección es obligatoria';
-      valid = false;
-    }
-
-    if (!formData.fechaNacimiento) {
-      newErrors.fechaNacimiento = 'La fecha de nacimiento es obligatoria';
-      valid = false;
-    } else {
-      const today = new Date();
-      const birthDate = new Date(formData.fechaNacimiento);
-
-      if (birthDate >= today) {
-        newErrors.fechaNacimiento = 'La fecha de nacimiento debe ser anterior a la fecha actual';
-        valid = false;
-      }
-    }
-
-    setErrors(newErrors);
-    return valid;
-  };
+  const calculateTotal = (e: ChangeEvent<HTMLSelectElement>) => {
+    const qty = parseInt(e.target.value);
+    setQuantity(qty)
+    setTotal(qty * event.price)
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="nombreApellido">Nombre y Apellido</label>
-        <input
-          type="text"
-          id="nombreApellido"
-          name="nombreApellido"
-          value={formData.nombreApellido}
-          onChange={handleChange}
-          required
-        />
-        {errors.nombreApellido && <span className="error">{errors.nombreApellido}</span>}
-      </div>
-      <div>
-        <label htmlFor="dni">DNI</label>
-        <input
-          type="text"
-          id="dni"
-          name="dni"
-          value={formData.dni}
-          onChange={handleChange}
-          required
-        />
-        {errors.dni && <span className="error">{errors.dni}</span>}
-      </div>
-      <div>
-        <label htmlFor="direccion">Dirección</label>
-        <input
-          type="text"
-          id="direccion"
-          name="direccion"
-          value={formData.direccion}
-          onChange={handleChange}
-          required
-        />
-        {errors.direccion && <span className="error">{errors.direccion}</span>}
-      </div>
-      <div>
-        <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
-        <input
-          type="date"
-          id="fechaNacimiento"
-          name="fechaNacimiento"
-          value={formData.fechaNacimiento}
-          onChange={handleChange}
-          required
-        />
-        {errors.fechaNacimiento && <span className="error">{errors.fechaNacimiento}</span>}
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
+      <div className={s.price_grid}>
+          <div className={s.grid_header}>
+              <div className={s.type}>Tipo</div>
+              <div className={s.price}>Precio</div>
+              <div className={s.quantity}>Cantidad</div>
+              <div className={s.total}>Total</div>
+          </div>
+          <div className={`${s.grid_content}`}>
+              <div className={s.type}>General</div>
+              <div className={s.price}>$ {event.price}</div>
+              <div className={s.quantity}>
+                  <select name="quantity" 
+                          id="quantity" 
+                          value={quantity}
+                          onChange={calculateTotal}>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                  </select>
+              </div>
+              <div className={s.total}>$ {total}</div>
+          </div>
+          { !showCheckout && <div className={s.buy}>
+            <button onClick={handleCheckoutClick}>Comprar</button>
+          </div> }
 
-export default FormPurchase;
+          { showCheckout && <BuyForm price={event.price} total={total} quantity={quantity} type={"General"} />}
+      </div>
+  )
+}
