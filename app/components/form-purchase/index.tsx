@@ -10,6 +10,12 @@ interface BuyFormProps {
   type: string;
 }
 
+export function CreateTicket() {
+    const tiki = 'http://localhost:3000/api/tickets'
+    console.log('tiki', tiki)
+}
+
+
 export function BuyForm({price, quantity, type, total}: BuyFormProps) {
   return (
       <>
@@ -44,6 +50,7 @@ export function BuyForm({price, quantity, type, total}: BuyFormProps) {
             </div>
             <Link href={`/success`}>Finalizar compra</Link>
         </form>      
+            <button onClick={CreateTicket}>FINALIZAR</button>
       </>
   )
 }

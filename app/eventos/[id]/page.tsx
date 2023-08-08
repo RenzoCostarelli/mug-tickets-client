@@ -2,7 +2,7 @@ import s from './evento.module.scss'
 import FormPurchase from '@/app/components/form-purchase';
 
 async function getEventById(id: string) {
-    const res = await fetch(`${process.env.apiUrl}/events/${id}`);
+    const res = await fetch(`${process.env.apiUrl}/events/${id}`, {cache: 'no-store'});
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     } 
