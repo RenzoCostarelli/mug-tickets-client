@@ -1,8 +1,9 @@
 import s from './evento.module.scss'
 import FormPurchase from '@/app/components/form-purchase';
+import Image from 'next/image'
 
 async function getEventById(id: string) {
-    const res = await fetch(`${process.env.apiUrl}/events/${id}`);
+    const res = await fetch(`${process.env.apiUrl}/events/${id}`, {cache: 'no-store'});
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     } 
@@ -44,7 +45,15 @@ export default async function Event({params}: {params: {id: string}}) {
                     <p className={s.description}>{event.description}</p>                
                 </div>
                 <div className={s.image_area}>
-                    <div className={s.box}></div>
+                    <div className={s.box}>
+                        <div className={s.card_image}>
+                            <Image
+                                src={event.image}
+                                fill={true}
+                                alt={event.title}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className={s.buy_area}>

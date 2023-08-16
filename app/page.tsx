@@ -4,7 +4,7 @@ import HeroBanner from './components/hero-banner'
 import EventsList from './components/events-list'
 
 async function getData() {
-  const res = await fetch(`${process.env.apiUrl}/events`);
+  const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});
   if (!res.ok) {
     throw new Error('Failed to fetch dataa');
   } 

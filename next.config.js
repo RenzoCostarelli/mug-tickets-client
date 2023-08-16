@@ -5,7 +5,8 @@ const nextConfig = {
     },
     images: {
         domains: [
-            'placehold.jp'
+            'placehold.jp',
+            'res.cloudinary.com'
         ]
     }
 }
