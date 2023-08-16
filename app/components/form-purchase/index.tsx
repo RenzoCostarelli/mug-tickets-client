@@ -4,54 +4,91 @@ import Link from 'next/link';
 import s from './form-purchase.module.scss';
 
 interface BuyFormProps {
-  price: number;
-  quantity: number;
-  total: number;
-  type: string;
+    eventId: string,
+    price: number;
+    quantity: number;
+    total: number;
+    type: string;
 }
 
-export function BuyForm({price, quantity, type, total}: BuyFormProps) {
+export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps) {
     const callApi = async () => {
         await fetch('/api/tickets', {
-         method: 'POST'
-        })
-     }
-   return (
-      <>
-      <div>{total}</div>
-        <form action="" className={s.buy_form}>
-            <div className={`${s.columns}`}>
-                <div className={s.form_area}>
-                    <label htmlFor="name">Nombre</label>
-                    <input type="text" name="name" id="name" placeholder='Nombre'/>
-                </div>
-                <div className={s.form_area}>
-                    <label htmlFor="last-name">Apellido</label>
-                    <input type="text" name="last-name" id="last-name" placeholder='Apellido'/>
-                </div>
-                <div className={s.form_area}>
-                    <label htmlFor="dni">DNI</label>
-                    <input type="text" name="dni" id="dni" placeholder='DNI'/>
-                </div>
-                <div className={s.form_area}>
-                    <label htmlFor="phone">Telefono</label>
-                    <input type="phone" name="phone" id="phone" placeholder='Telefono'/>
-                </div>
+            method: 'POST',
+            body: JSON.stringify({ price, quantity, type, total }),
+        });
+    }
 
-            </div>
-            <div className={s.form_area}>
-                <label htmlFor="email">E-MAIL</label>
-                <input type="email" name="email" id="email" placeholder='email'/>
-            </div>
-            <div className={s.form_area_inline}>
-                <input type="checkbox" name="phone" id="phone" placeholder='Telefono'/> 
-                <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
-            </div>
-            {/* <Link href={`/success`}>Finalizar compra</Link> */}
-        </form>      
-            <button onClick={callApi}>FINALIZAR</button>
-      </>
-  )
+    return (
+        <>
+        <div>{total}</div>
+            <form action="/api/tickets" method="POST" className={s.buy_form}>
+                <input 
+                    type="hidden"
+                    name="id"
+                    value={eventId}/>
+                <div className={`${s.columns}`}>
+                    <div className={s.form_area}>
+                        <label htmlFor="name">Nombre</label>
+                        <input 
+                            type="text"
+                            name="name"
+                            id="name"
+                            required
+                            placeholder='Nombre'/>
+                    </div>
+                    <div className={s.form_area}>
+                        <label htmlFor="dni">DNI</label>
+                        <input 
+                            type="text"
+                            name="dni"
+                            id="dni"
+                            required
+                            placeholder='DNI'/>
+                    </div>
+                    <div className={s.form_area}>
+                        <label htmlFor="last-name">Apellido</label>
+                        <input 
+                            type="text" 
+                            name="last-name" 
+                            id="last-name"
+                            required
+                            placeholder='Apellido'/>
+                    </div>                    
+                    <div className={s.form_area}>
+                        <label htmlFor="phone">Telefono</label>
+                        <input 
+                            type="phone"
+                            name="phone"
+                            id="phone"
+                            required
+                            placeholder='Telefono'/>
+                    </div>
+
+                </div>
+                <div className={s.form_area}>
+                    <label htmlFor="email">E-MAIL</label>
+                    <input 
+                        type="email"
+                        name="email"
+                        id="email"
+                        required
+                        placeholder='email'/>
+                </div>
+                <div className={s.form_area_inline}>
+                    <input
+                        type="checkbox"
+                        name="phone"
+                        id="phone"
+                        required
+                        placeholder='Telefono'/> 
+                    <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
+                </div>
+                {/* <Link href={`/success`}>Finalizar compra</Link> */}
+                <button type="submit">FINALIZAR</button>
+            </form>      
+        </>
+    )
 }
 
 export default function FormPurchase ({event}: any) {
@@ -104,7 +141,14 @@ export default function FormPurchase ({event}: any) {
             <button onClick={handleCheckoutClick}>Comprar</button>
           </div> }
 
-          { showCheckout && <BuyForm price={event.price} total={total} quantity={quantity} type={"General"} />}
+            { showCheckout && 
+                <BuyForm 
+                    eventId={event.eventId}
+                    price={event.price} 
+                    total={total} 
+                    quantity={quantity} 
+                    type={"General"} />
+            }
       </div>
   )
 }

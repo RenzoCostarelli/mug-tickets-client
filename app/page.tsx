@@ -13,9 +13,10 @@ async function getData() {
 
 export default async function Home() {
 
-  const { events } = await getData();
-  
-  return (<>
+  const { events } = await getData() || {};
+  console.log('Home')
+  return (
+  <>
     <header>
       <HeroBanner />
     </header>  

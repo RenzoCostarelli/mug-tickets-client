@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import s from './evento.module.scss'
 import FormPurchase from '@/app/components/form-purchase';
-import Image from 'next/image'
 
 async function getEventById(id: string) {
     const res = await fetch(`${process.env.apiUrl}/events/${id}`, {cache: 'no-store'});
@@ -15,9 +15,23 @@ export default async function Event({params}: {params: {id: string}}) {
     const date = new Date(event.date)
     let dateStr = date.toLocaleDateString(); 
     let timeStr = date.toLocaleTimeString(); 
+
+    console.log('params', params)
     return (<>
         <div className={s.header}>
-            {/* agregrar imagen */}
+            {
+            <Image 
+                src={event.image ?? "/images/flyer__test.jpg"} 
+                alt={event.title}
+                width={1200}
+                height={900}
+                style={{
+                    width: '100%',
+                    //height: 'auto',
+                    objectFit: 'cover',
+                }}/>
+            }
+            
         </div>
         <div className={s.event_wrapper}>
             <div className={`${s.inner}`}>

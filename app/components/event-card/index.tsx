@@ -9,7 +9,7 @@ export default function EventCard({showInfo}:any) {
         <div className={s.card}>
             <div className={s.card_image}>
                 <Image
-                    src={showInfo.image}
+                    src={showInfo.image ?? "/images/flyer__test.jpg"}
                     fill={true}
                     alt="Entrada"
                 />
