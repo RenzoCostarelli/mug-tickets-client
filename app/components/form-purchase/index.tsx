@@ -11,7 +11,12 @@ interface BuyFormProps {
 }
 
 export function BuyForm({price, quantity, type, total}: BuyFormProps) {
-  return (
+    const callApi = async () => {
+        await fetch('/api/tickets', {
+         method: 'POST'
+        })
+     }
+   return (
       <>
       <div>{total}</div>
         <form action="" className={s.buy_form}>
@@ -42,8 +47,9 @@ export function BuyForm({price, quantity, type, total}: BuyFormProps) {
                 <input type="checkbox" name="phone" id="phone" placeholder='Telefono'/> 
                 <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
             </div>
-            <Link href={`/success`}>Finalizar compra</Link>
+            {/* <Link href={`/success`}>Finalizar compra</Link> */}
         </form>      
+            <button onClick={callApi}>FINALIZAR</button>
       </>
   )
 }

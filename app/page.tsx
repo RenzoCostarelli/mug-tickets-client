@@ -4,21 +4,11 @@ import HeroBanner from './components/hero-banner'
 import EventsList from './components/events-list'
 
 async function getData() {
-  try {
-    const res = await fetch(`${process.env.apiUrl}/events`, {
-      method: 'GET',
-      headers: {
-        'API-Key': '33F85ADC279C7872D63B1B42A1B31'
-      },
-    });
-    if (res.ok) {
-      //throw new Error('Failed to fetch dataa');
-      return res.json();
-    }
-    console.log(res)
-  } catch (error) {
-    console.log(error)
-  }
+  const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});
+  if (!res.ok) {
+    throw new Error('Failed to fetch dataa');
+  } 
+  return res.json();
 }
 
 export default async function Home() {

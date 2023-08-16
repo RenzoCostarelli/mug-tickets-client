@@ -7,20 +7,9 @@ export const metadata: Metadata = {
 };
 
 async function getData() {
-  console.log('asdadasda')
-  const res = await fetch(`${process.env.apiUrl}/events/`, {
-    method: 'GET',
-    headers: {
-      'API-Key': '33F85ADC279C7872D63B1B42A1B31'
-    },
-  });
-  // You can return Date, Map, Set, etc.
- 
-  // Recommendation: handle errors
+  const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch datas');
-    return new Promise((res, rej) => res({}));
+    throw new Error('Failed to fetch dataa');
   }
  
   return res.json();
