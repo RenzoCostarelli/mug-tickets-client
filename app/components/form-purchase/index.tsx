@@ -47,7 +47,7 @@ export function BuyForm({price, quantity, type, total}: BuyFormProps) {
                 <input type="checkbox" name="phone" id="phone" placeholder='Telefono'/> 
                 <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
             </div>
-            <Link href={`/success`}>Finalizar compra</Link>
+            {/* <Link href={`/success`}>Finalizar compra</Link> */}
         </form>      
             <button onClick={callApi}>FINALIZAR</button>
       </>
