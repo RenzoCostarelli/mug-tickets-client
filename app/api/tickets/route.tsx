@@ -1,30 +1,34 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
  
-export async function POST() {
-    const bodyData = {
-        event: "64a7339c77f999f2be97a6bb",
-        purchaser: { 
-              purchaserFirstName: "Caca Tua", 
-              purchaserLastName: "Leonard", 
-              purchaserDni: 23232323,
-              purchaserId: "644fc08045d8dc30c57867bd"
-            },
-        attendee: { 
-            attendeeFirstName: "Renzo", 
-            attendeeLastName: "Caca", 
-            attendeeDni: 32405970
-        }
+export async function POST(request: NextRequest) {
+  const formData = await request.formData();
+  console.log("🚀 ~ file: route.tsx:5 ~ POST ~ await request:", await request)
+  const bodyData = {
+    event: formData.get('id'),
+    purchaser: { 
+      purchaserFirstName: formData.get('name'), 
+      purchaserLastName: formData.get('last-name'), 
+      purchaserDni: formData.get('dni'),
+      purchaserEmail: formData.get('email')
+    },
+    attendee: { 
+      attendeeFirstName: formData.get('name'), 
+      attendeeLastName: formData.get('last-name'), 
+      attendeeDni: formData.get('dni')
     }
+  }
+  
+  console.log("🚀 ~ POST:", formData)
+  //return
   const res = await fetch('https://mug-tickets-server.vercel.app/api/tickets/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify( bodyData ),
+    body: JSON.stringify( { "tickets":[ bodyData ] } ),
   })
- 
-  const data = await res.json()
-  console.log(data)
- 
+
+  const data = await res.json();
+
   return NextResponse.json(data)
 }

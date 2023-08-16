@@ -16,7 +16,7 @@ export default async function Event({params}: {params: {id: string}}) {
     let dateStr = date.toLocaleDateString(); 
     let timeStr = date.toLocaleTimeString(); 
 
-    console.log(params)
+    console.log('params', params)
     return (<>
         <div className={s.header}>
             {
