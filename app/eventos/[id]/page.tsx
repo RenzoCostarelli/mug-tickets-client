@@ -1,8 +1,14 @@
+import Image from 'next/image'
 import s from './evento.module.scss'
 import FormPurchase from '@/app/components/form-purchase';
 
 async function getEventById(id: string) {
-    const res = await fetch(`${process.env.apiUrl}/events/${id}`);
+    const res = await fetch(`${process.env.apiUrl}/events/${id}`, {
+        method: 'GET',
+        headers: {
+          'API-Key': '33F85ADC279C7872D63B1B42A1B31'
+        },
+      });
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     } 
@@ -14,9 +20,23 @@ export default async function Event({params}: {params: {id: string}}) {
     const date = new Date(event.date)
     let dateStr = date.toLocaleDateString(); 
     let timeStr = date.toLocaleTimeString(); 
+
+    console.log(params)
     return (<>
         <div className={s.header}>
-            {/* agregrar imagen */}
+            {
+            <Image 
+                src={event.image ?? "/images/flyer__test.jpg"} 
+                alt={event.title}
+                width={1200}
+                height={900}
+                style={{
+                    width: '100%',
+                    //height: 'auto',
+                    objectFit: 'cover',
+                }}/>
+            }
+            
         </div>
         <div className={s.event_wrapper}>
             <div className={`${s.inner}`}>
@@ -44,7 +64,17 @@ export default async function Event({params}: {params: {id: string}}) {
                     <p className={s.description}>{event.description}</p>                
                 </div>
                 <div className={s.image_area}>
-                    <div className={s.box}></div>
+                    <div className={s.box}>
+                        <Image 
+                            src={event.image ?? "/images/flyer__test.jpg"} 
+                            alt={event.title}
+                            width={1200}
+                            height={900}
+                            style={{
+                                maxWidth: '100%',
+                                height: 'auto'
+                            }}/>
+                    </div>
                 </div>
             </div>
             <div className={s.buy_area}>

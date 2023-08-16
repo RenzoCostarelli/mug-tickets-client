@@ -8,7 +8,7 @@ export default function HeroBanner () {
             <div className={s.banner_content}>
                 <div className={s.image}>
                 <Image
-                        src="https://placehold.jp/1500x500.png"
+                        src="https://res.cloudinary.com/dxvxzikri/image/upload/v1692124952/xmghxgj6ujbb2myq3vgx.jpg"
                         fill={true}
                         alt="Banner"
                     />
