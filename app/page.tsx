@@ -6,15 +6,14 @@ import EventsList from './components/events-list'
 async function getData() {
   const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});
   if (!res.ok) {
-    throw new Error('Failed to fetch dataa');
+    throw new Error('Failed to fetch home data');
   } 
   return res.json();
 }
 
 export default async function Home() {
-
   const { events } = await getData() || {};
-  console.log('Home')
+  
   return (
   <>
     <header>

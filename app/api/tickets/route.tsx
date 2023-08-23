@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
  
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
-  console.log("🚀 ~ file: route.tsx:5 ~ POST ~ await request:", await request)
+  
   const bodyData = {
     event: formData.get('id'),
     purchaser: { 
@@ -18,8 +18,6 @@ export async function POST(request: NextRequest) {
     }
   }
   
-  console.log("🚀 ~ POST:", formData)
-  //return
   const res = await fetch('https://mug-tickets-server.vercel.app/api/tickets/', {
     method: 'POST',
     headers: {

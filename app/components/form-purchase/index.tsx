@@ -96,11 +96,9 @@ export default function FormPurchase ({event}: any) {
   let dateStr = date.toLocaleDateString(); 
   let timeStr = date.toLocaleTimeString();
 
-  console.log('event', event.price)
-
   const [quantity, setQuantity] = useState<number>(1)
   const [total, setTotal] = useState<number>(event.price)
-  const [showCheckout, setShowCheckout] = useState(false)
+  const [showCheckout, setShowCheckout] = useState<boolean>(false)
 
   const handleCheckoutClick = () => {
     setShowCheckout(true)

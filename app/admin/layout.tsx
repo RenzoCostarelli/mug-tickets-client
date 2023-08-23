@@ -1,6 +1,5 @@
-import { Inter } from 'next/font/google'
- 
-const inter = Inter({ subsets: ['latin'] })
+import Navbar from '../components/nav-bar';
+import '../styles/global.scss';
 
 export const metadata = {
   title: 'Admin Mug Tickets'
@@ -12,10 +11,8 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
-      </body>
-    </html>
+    <section>
+      {children}
+    </section>  
   )
 }

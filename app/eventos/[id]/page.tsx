@@ -14,15 +14,14 @@ export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
     const date = new Date(event.date)
     let dateStr = date.toLocaleDateString(); 
-    let timeStr = date.toLocaleTimeString(); 
-
-    console.log('params', params)
+    let timeStr = date.toLocaleTimeString();
+    
     return (<>
         <div className={s.header}>
             {
             <Image 
-                src={event.image ?? "/images/flyer__test.jpg"} 
-                alt={event.title}
+                src={event.image ?? '/images/flyer__test.jpg'} 
+                alt={event.title ?? 'Mug'}
                 width={1200}
                 height={900}
                 style={{
