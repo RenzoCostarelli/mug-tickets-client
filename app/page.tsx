@@ -1,7 +1,9 @@
 import Image from 'next/image'
+import Navbar from '@/app/components/nav-bar';
 import s from './page.module.scss'
 import HeroBanner from './components/hero-banner'
 import EventsList from './components/events-list'
+
 
 async function getData() {
   const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});
@@ -16,6 +18,8 @@ export default async function Home() {
   
   return (
   <>
+    
+    <Navbar />
     <header>
       <HeroBanner />
     </header>  

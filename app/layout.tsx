@@ -1,4 +1,4 @@
-import Navbar from './components/nav-bar';
+
 import Provider from './components/provider/provider';
 import './styles/global.scss'
 import { Inter } from 'next/font/google'
@@ -18,8 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider>
-          <Navbar />
+        <Provider>      
           {children}
         </Provider>
       </body>
