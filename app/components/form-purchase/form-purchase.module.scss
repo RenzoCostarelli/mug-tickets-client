@@ -42,6 +42,12 @@
             column-count: 1;
         }
     }
+    button {
+        background-color: orange;
+        color: white;
+        border-radius: 10rem;
+        padding: 0.5rem 1rem;
+    }
 }
 .form_area {
     display: flex;

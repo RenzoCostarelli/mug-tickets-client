@@ -2,6 +2,7 @@
 import { ChangeEvent, useState } from 'react';
 import Link from 'next/link';
 import s from './form-purchase.module.scss';
+import { useSession } from 'next-auth/react';
 
 interface BuyFormProps {
     eventId: string,
@@ -12,6 +13,9 @@ interface BuyFormProps {
 }
 
 export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps) {
+    const { data: session } = useSession();
+
+    console.log('session', session)
     const callApi = async () => {
         await fetch('/api/tickets', {
             method: 'POST',
@@ -19,75 +23,76 @@ export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps)
         });
     }
 
-    return (
-        <>
-        <div>{total}</div>
-            <form action="/api/tickets" method="POST" className={s.buy_form}>
-                <input 
-                    type="hidden"
-                    name="id"
-                    value={eventId}/>
-                <div className={`${s.columns}`}>
-                    <div className={s.form_area}>
-                        <label htmlFor="name">Nombre</label>
-                        <input 
-                            type="text"
-                            name="name"
-                            id="name"
-                            required
-                            placeholder='Nombre'/>
-                    </div>
-                    <div className={s.form_area}>
-                        <label htmlFor="dni">DNI</label>
-                        <input 
-                            type="text"
-                            name="dni"
-                            id="dni"
-                            required
-                            placeholder='DNI'/>
-                    </div>
-                    <div className={s.form_area}>
-                        <label htmlFor="last-name">Apellido</label>
-                        <input 
-                            type="text" 
-                            name="last-name" 
-                            id="last-name"
-                            required
-                            placeholder='Apellido'/>
-                    </div>                    
-                    <div className={s.form_area}>
-                        <label htmlFor="phone">Telefono</label>
-                        <input 
-                            type="phone"
-                            name="phone"
-                            id="phone"
-                            required
-                            placeholder='Telefono'/>
-                    </div>
-
+    return (        
+        <form action="/api/tickets" method="POST" className={s.buy_form}>
+            <input 
+                type="hidden"
+                name="id"
+                value={eventId}/>
+            <div className={s.columns}>
+                <div className={s.form_area}>
+                    <label htmlFor="name">Nombre</label>
+                    <input 
+                        type="text"
+                        name="name"
+                        id="name"
+                        required
+                        value={session?.user?.name.split(' ')[0] ?? ''}
+                        placeholder='Nombre'/>
                 </div>
                 <div className={s.form_area}>
-                    <label htmlFor="email">E-MAIL</label>
+                    <label htmlFor="dni">DNI</label>
                     <input 
-                        type="email"
-                        name="email"
-                        id="email"
+                        type="text"
+                        name="dni"
+                        id="dni"
                         required
-                        placeholder='email'/>
+                        placeholder='DNI'/>
                 </div>
-                <div className={s.form_area_inline}>
-                    <input
-                        type="checkbox"
+                <div className={s.form_area}>
+                    <label htmlFor="last-name">Apellido</label>
+                    <input 
+                        type="text" 
+                        name="last-name" 
+                        id="last-name"
+                        required
+                        value={session?.user?.name.split(' ')[1] ?? ''}
+                        placeholder='Apellido'/>
+                </div>                    
+                <div className={s.form_area}>
+                    <label htmlFor="phone">Telefono</label>
+                    <input 
+                        type="phone"
                         name="phone"
                         id="phone"
                         required
-                        placeholder='Telefono'/> 
-                    <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
+                        placeholder='Telefono'/>
                 </div>
-                {/* <Link href={`/success`}>Finalizar compra</Link> */}
-                <button type="submit">FINALIZAR</button>
-            </form>      
-        </>
+
+            </div>
+            <div className={s.form_area}>
+                <label htmlFor="email">E-MAIL</label>
+                <input 
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    value={session?.user?.email ?? ''}
+                    placeholder='email'/>
+            </div>
+            <div className={s.form_area_inline}>
+                <input
+                    type="checkbox"
+                    name="phone"
+                    id="phone"
+                    required
+                    placeholder='Telefono'/> 
+                <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
+            </div>
+            {/* <Link href={`/success`}>Finalizar compra</Link> */}
+            <button
+                type="submit">FINALIZAR</button>
+        </form>        
     )
 }
 
@@ -140,12 +145,12 @@ export default function FormPurchase ({event}: any) {
           </div> }
 
             { showCheckout && 
-                <BuyForm 
+                <BuyForm
                     eventId={event.eventId}
-                    price={event.price} 
-                    total={total} 
-                    quantity={quantity} 
-                    type={"General"} />
+                    price={event.price}
+                    total={total}
+                    quantity={quantity}
+                    type={"General"}/>
             }
       </div>
   )
