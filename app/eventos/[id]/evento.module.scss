@@ -28,10 +28,10 @@
         display: flex;
         justify-content: space-between;
         margin-inline: auto;
-        background-color: white;
-        color: black;
-        padding: 1rem;
-        border-radius: 0.2rem;
+        background-color: #131313;
+        color: white;
+        padding: 1.5rem;
+        border-radius: 0.25rem;
         box-shadow: 0 10px 20px 0 rgba(52, 52, 52, 0.317);
         .event_info {
             padding-inline: 1rem;
@@ -46,6 +46,7 @@
                     width: 30px;
                     vertical-align: middle;
                     margin-right: 0.5rem;
+                    fill: white;
                 }
             }
             h1 {
@@ -132,14 +133,18 @@
     }
 
     .box {
-        height: 300px;
-        width: 200px;
-        background-color: rgb(210, 244, 249);
+        height: 100%;
+        width: 250px;
+        // background-color: rgb(210, 244, 249);
         border-radius: 1rem;
         .card_image {
             position: relative;
             height: 100%;
             width: 100%;
+            overflow: hidden;
+            img {
+                border-radius: 0.5rem;
+            }
         }
     }
 }

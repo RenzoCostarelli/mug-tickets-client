@@ -128,32 +128,37 @@ export default function FormPurchase ({event}: any) {
     setTotal(qty * event.price)
   }
 
-
   return (
       <div className={s.price_grid}>
           <div className={s.grid_header}>
               <div className={s.type}>Tipo</div>
               <div className={s.price}>Precio</div>
               <div className={s.quantity}>Cantidad</div>
-              <div className={s.total}>Total</div>
+              {/* <div className={s.total}>Total</div> */}
           </div>
-          <div className={`${s.grid_content}`}>
-              <div className={s.type}>General</div>
-              <div className={s.price}>$ {event.price}</div>
-              <div className={s.quantity}>
-                  <select name="quantity" 
-                          id="quantity" 
-                          value={quantity}
-                          onChange={calculateTotal}>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                  </select>
-              </div>
-              <div className={s.total}>$ {total}</div>
-          </div>
+
+          {/* cambiar a un componente */}
+          {event.ticketsTypeList.map((ticket: any) => (// usar type de ticket
+            <div className={`${s.grid_content}`} key={ticket.type}>
+                <div className={s.type}>{ticket.type}</div>
+                <div className={s.price}>$ {ticket.price}</div>
+                <div className={s.quantity}>
+                    <select name="quantity" 
+                            id="quantity"
+                            disabled={ticket.Purchased < ticket.ticketsAvailableOnline}>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div className={s.total}>$ {total}</div>
+            </div>
+
+          ))
+
+          }
           {!showCheckout && 
             <div className={s.buy}>
               {/* <MpButton product={product}/> */}

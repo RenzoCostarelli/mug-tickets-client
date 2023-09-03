@@ -12,6 +12,7 @@ async function getEventById(id: string) {
 
 export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
+    console.log('event', event)
     const date = new Date(event.date)
     let dateStr = date.toLocaleDateString(); 
     let timeStr = date.toLocaleTimeString();
@@ -65,7 +66,7 @@ export default async function Event({params}: {params: {id: string}}) {
                                     priority
                                     fill
                                     style={{
-                                        objectFit: 'cover',
+                                        objectFit: 'contain',
                                     }}
                                 />
                             </div>
@@ -74,8 +75,6 @@ export default async function Event({params}: {params: {id: string}}) {
                 </div>
                 <div className={s.buy_area}>
                     <h1>Compra tu entrada</h1>
-                    {/* ACA VA EL FORM */}
-                    {/* <BuyForm price={5000} quantity={1} type={"General"} /> */}
                     <FormPurchase event={event}/>
                 </div>
             </div>
