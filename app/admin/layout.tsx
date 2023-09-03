@@ -1,4 +1,4 @@
-import Navbar from '../components/nav-bar';
+import AdminNavbar from '@/app/components/admin-navbar';
 import '../styles/global.scss';
 
 export const metadata = {
@@ -10,9 +10,11 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
-    <section>
-      {children}
-    </section>  
+    <>
+      <AdminNavbar />      
+      <div>{children}</div>
+    </>
   )
 }

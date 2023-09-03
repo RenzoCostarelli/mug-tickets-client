@@ -11,6 +11,8 @@ declare module "next-auth" {
       name: string,
       email: string,
       image: string,
+      dni: string,
+      telephone: string,
       token: any
     } & DefaultSession
   }
@@ -30,7 +32,7 @@ declare module "next-auth/jwt" {
     id: string, 
     name: string, 
     image: string, 
-    accessToken: string,
+    token: string,
     role: string
  }
 }

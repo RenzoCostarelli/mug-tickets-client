@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import s from '../page.module.scss';
+import s from '@/app/page.module.scss';
 //import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 //import { handler } from '../../api/auth/[...nextauth]/route';

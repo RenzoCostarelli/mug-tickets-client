@@ -2,3 +2,10 @@
 // PEDIR PASSWORD
 // ABRIR CAMARA
 // Y VALIDAR
+
+export default async function AdminValidate() {
+    
+    return(   
+        <main>QR Scan</main>
+    )
+}

@@ -14,9 +14,7 @@ export default function UserLayout({
   return (
     <>
         <Navbar />
-        <section>
-            {children}
-        </section>  
+        {children}         
     </>
   )
 }

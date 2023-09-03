@@ -1,13 +1,15 @@
 'use client'
+import { Button } from '@mui/material';
 import s from './sign-out-button.module.scss';
 import { signOut } from 'next-auth/react';
 
 export default function SignOutButton() { 
     return (
-        <button 
-            className={s.button} 
+        <Button
+            variant="outlined"
+            fullWidth
             onClick={() => signOut()}>
-            Sing out
-        </button>
+            Sign out
+        </Button>
     )
 }
