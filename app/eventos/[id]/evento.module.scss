@@ -10,9 +10,10 @@
     position: relative;
     width: min(800px, 95vw);
     margin: 0 auto;
-    top: -5rem;
+    top: -10rem;
     .inner {
         display: flex;
+        justify-content: space-between;
         margin-inline: auto;
         background-color: white;
         color: black;

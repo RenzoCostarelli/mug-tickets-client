@@ -1,8 +1,10 @@
 'use client'
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import s from './form-purchase.module.scss';
 import { useSession } from 'next-auth/react';
+import { Product } from '@/app/types/product';
+import { MpButton } from '../mp-button';
 
 interface BuyFormProps {
     eventId: string,
@@ -89,7 +91,6 @@ export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps)
                     placeholder='Telefono'/> 
                 <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
             </div>
-            {/* <Link href={`/success`}>Finalizar compra</Link> */}
             <button
                 type="submit">FINALIZAR</button>
         </form>        
@@ -104,16 +105,33 @@ export default function FormPurchase ({event}: any) {
   const [quantity, setQuantity] = useState<number>(1)
   const [total, setTotal] = useState<number>(event.price)
   const [showCheckout, setShowCheckout] = useState<boolean>(false)
+  const [product, setProduct] = useState<Product>({
+    id: 123,
+    title: "Nombre del evento",
+    img: "img",
+    quantity: 1,
+    price: event.price,
+    description: 'Descripción del evento'
+  });
 
+  useEffect(() => {
+    setProduct({
+      ...product,
+      quantity: quantity,
+      price: event.price,
+    });
+  }, []); 
+  
   const handleCheckoutClick = () => {
     setShowCheckout(true)
-  }
+  } 
 
   const calculateTotal = (e: ChangeEvent<HTMLSelectElement>) => {
-    const qty = parseInt(e.target.value);
+    const qty = parseInt(e.target.value)
     setQuantity(qty)
     setTotal(qty * event.price)
   }
+
 
   return (
       <div className={s.price_grid}>
@@ -140,18 +158,20 @@ export default function FormPurchase ({event}: any) {
               </div>
               <div className={s.total}>$ {total}</div>
           </div>
-          { !showCheckout && <div className={s.buy}>
-            <button onClick={handleCheckoutClick}>Comprar</button>
-          </div> }
-
-            { showCheckout && 
-                <BuyForm
-                    eventId={event.eventId}
-                    price={event.price}
-                    total={total}
-                    quantity={quantity}
-                    type={"General"}/>
-            }
+          {!showCheckout && 
+            <div className={s.buy}>
+              {/* <MpButton product={product}/> */}
+              <button type="submit" onClick={handleCheckoutClick}>Comprar</button>
+            </div>
+          }
+          {showCheckout && 
+            <BuyForm
+                eventId={event.eventId}
+                price={event.price}
+                total={total}
+                quantity={quantity}
+                type={"General"}/>
+          }
       </div>
   )
 }
