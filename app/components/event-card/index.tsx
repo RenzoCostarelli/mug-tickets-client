@@ -12,7 +12,8 @@ export default function EventCard({showInfo}:any) {
                     <Image
                         src={showInfo.image ?? "/images/flyer__test.jpg"}
                         fill={true}
-                        alt="Entrada"
+                        alt={showInfo.title}
+                        loading='lazy'
                     />
                 </div>
                 <div className={s.cardBody}>

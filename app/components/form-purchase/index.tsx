@@ -17,7 +17,6 @@ interface BuyFormProps {
 export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps) {
     const { data: session } = useSession();
 
-    console.log('session', session)
     const callApi = async () => {
         await fetch('/api/tickets', {
             method: 'POST',
@@ -26,7 +25,7 @@ export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps)
     }
 
     return (        
-        <form action="/api/tickets" method="POST" className={s.buy_form}>
+        <form action="/api/tickets" method="POST" className={s.buy_form}>            
             <input 
                 type="hidden"
                 name="id"
@@ -39,7 +38,6 @@ export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps)
                         name="name"
                         id="name"
                         required
-                        value={session?.user?.name.split(' ')[0] ?? ''}
                         placeholder='Nombre'/>
                 </div>
                 <div className={s.form_area}>
@@ -58,7 +56,6 @@ export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps)
                         name="last-name" 
                         id="last-name"
                         required
-                        value={session?.user?.name.split(' ')[1] ?? ''}
                         placeholder='Apellido'/>
                 </div>                    
                 <div className={s.form_area}>
@@ -79,7 +76,6 @@ export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps)
                     name="email"
                     id="email"
                     required
-                    value={session?.user?.email ?? ''}
                     placeholder='email'/>
             </div>
             <div className={s.form_area_inline}>

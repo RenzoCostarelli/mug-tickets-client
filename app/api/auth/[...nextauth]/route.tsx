@@ -65,10 +65,7 @@ export const handler: NextAuthOptions = NextAuth({
       if(!user) {
         return { ...token }
       }
-      return {
-        ...token,
-        ...user
-      }
+      return { ...token, ...user }
     },
     async session({ session, token }) {
       session.user = token as any;
@@ -76,10 +73,15 @@ export const handler: NextAuthOptions = NextAuth({
     }
   },
   pages: {
-    signIn: '/admin/login',
+    signIn: '/users/login',
   },
   session:{
-    strategy: 'jwt'
+    strategy: 'jwt',
+    maxAge: 24 * 60 * 60,
+    updateAge: 24 * 60 * 60,
+  },
+  jwt: {
+    maxAge: 24 * 60 * 60
   },
   secret: process.env.NEXTAUTH_SECRET
 });

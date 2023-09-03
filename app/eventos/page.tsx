@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 async function getData() {
-  const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});
+  const res = await fetch(`${process.env.apiUrl}/events`, { next: { revalidate: 3600 } });
   if (!res.ok) {
     throw new Error('Failed to fetch dataa');
   }
@@ -18,8 +18,6 @@ async function getData() {
 export default async function Eventos() {
   const { events } = await getData();
   return (
-  <>
-    <EventsList props={events}/>
-  </>
+    <EventsList props={events}/>  
   );
 }

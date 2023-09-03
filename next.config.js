@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    experimental: {
+        appDir: true,
+    },
     env: {
         apiUrl: 'https://mug-tickets-server.vercel.app/api',
         apiKey: '33F85ADC279C7872D63B1B42A1B31',        
