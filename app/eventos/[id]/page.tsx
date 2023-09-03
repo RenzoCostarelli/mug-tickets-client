@@ -23,14 +23,10 @@ export default async function Event({params}: {params: {id: string}}) {
                     <Image 
                         src={event.image ?? '/images/flyer__test.jpg'} 
                         alt={event.title ?? 'Mug'}
-                        width={1200}
-                        height={900}
+                        fill
                         style={{
-                            width: '100%',
-                            //height: 'auto',
                             objectFit: 'cover',
                         }}
-                        loading='lazy'
                     />
                 }
                 
@@ -65,9 +61,12 @@ export default async function Event({params}: {params: {id: string}}) {
                             <div className={s.card_image}>
                                 <Image
                                     src={event.image}
-                                    fill={true}
                                     alt={event.title}
-                                    loading='lazy'
+                                    priority
+                                    fill
+                                    style={{
+                                        objectFit: 'cover',
+                                    }}
                                 />
                             </div>
                         </div>
