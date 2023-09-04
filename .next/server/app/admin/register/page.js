@@ -60,7 +60,7 @@ module.exports = require("next/dist/compiled/react/jsx-runtime");
 
 /***/ }),
 
-/***/ 95232:
+/***/ 61090:
 /***/ ((module) => {
 
 "use strict";
@@ -739,7 +739,7 @@ module.exports = __webpack_require__(40408)
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [859,395,85,904,718,408,999,994,173], () => (__webpack_exec__(54578)));
+var __webpack_exports__ = __webpack_require__.X(0, [859,395,85,904,718,408,253,994,775], () => (__webpack_exec__(54578)));
 module.exports = __webpack_exports__;
 
 })();

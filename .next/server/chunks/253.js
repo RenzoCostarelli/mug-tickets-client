@@ -1,19 +1,8 @@
-exports.id = 999;
-exports.ids = [999];
+exports.id = 253;
+exports.ids = [253];
 exports.modules = {
 
-/***/ 44029:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 89222, 23));
-Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 78301, 23));
-Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 83751, 23));
-Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 54765, 23));
-Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 5192, 23))
-
-/***/ }),
-
-/***/ 27081:
+/***/ 74505:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 71473))
@@ -95,7 +84,7 @@ var global = __webpack_require__(72522);
 
 
 const metadata = {
-    title: "MUG tickets",
+    title: "-MUG- tickets",
     description: "Tickets MUG"
 };
 function RootLayout({ children  }) {

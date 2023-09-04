@@ -52,7 +52,7 @@ module.exports = require("next/dist/compiled/react/jsx-runtime");
 
 /***/ }),
 
-/***/ 95232:
+/***/ 61090:
 /***/ ((module) => {
 
 "use strict";
@@ -519,13 +519,6 @@ __webpack_require__.r(__webpack_exports__);
 
     const originalPathname = "/eventos/[id]/page"
   
-
-/***/ }),
-
-/***/ 70535:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 32985))
 
 /***/ }),
 
@@ -1047,40 +1040,6 @@ async function Event({ params  }) {
 
 /***/ }),
 
-/***/ 37811:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EventLayout),
-/* harmony export */   "metadata": () => (/* binding */ metadata)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(56786);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _app_components_nav_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73416);
-/* harmony import */ var _styles_global_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(72522);
-/* harmony import */ var _styles_global_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_global_scss__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-const metadata = {
-    title: "Evento Mug Tickets"
-};
-function EventLayout({ children  }) {
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_app_components_nav_bar__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .ZP, {}),
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
-                children: children
-            })
-        ]
-    });
-}
-
-
-/***/ }),
-
 /***/ 63881:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -1110,7 +1069,7 @@ module.exports = __webpack_require__(63881);
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [859,395,85,53,408,999,509], () => (__webpack_exec__(12258)));
+var __webpack_exports__ = __webpack_require__.X(0, [859,395,85,53,408,253,509,586], () => (__webpack_exec__(12258)));
 module.exports = __webpack_exports__;
 
 })();
