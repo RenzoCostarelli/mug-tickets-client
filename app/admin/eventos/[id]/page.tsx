@@ -1,10 +1,4 @@
-import Image from 'next/image';
-import s from './evento.module.scss'
-import FormPurchase from '@/app/components/form-purchase';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
+import s from './evento.module.scss';
 import EventForm from '@/app/components/dashboard-event-form';
 import TicketForm from '@/app/components/dashboard-ticket-form';
 
@@ -35,35 +29,31 @@ export default async function PageEvents({params}: {params: {id: string}}) {
                     Crear Evento
                 </h2>
             </div>
-            <div>
-                <div>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            //backgroundColor: 'white',
-                            padding: '15px',
-                            borderRadius: '10px'
-                        }}>
-                            <EventForm event={ event }/>
-                    </div>
-                </div>
-                <div>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            //backgroundColor: 'white',
-                            padding: 1,
-                            borderRadius: '10px'
-                        }}>
-                            <TicketForm />
-                    </div>
-                </div>
+            <div>                
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        //backgroundColor: 'white',
+                        padding: '15px',
+                        borderRadius: '10px'
+                    }}>
+                        <EventForm event={ event }/>
+                </div>            
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        //backgroundColor: 'white',
+                        padding: 1,
+                        borderRadius: '10px'
+                    }}>
+                        <TicketForm />
+                </div>            
             </div>            
         </main>
     ) 

@@ -1,8 +1,6 @@
 import s from './nav-bar.module.scss';
 
-import SignOutButton from '../sign-out-button';
-
-import { Avatar } from '@mui/material';
+import Image from 'next/image';
 import CardInfo from '../card-info';
 import { handler } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
@@ -16,9 +14,12 @@ export default function AdminNavbar() {
             
     return (        
         <div className={s.nav_bar}>
-            <Avatar 
+            <Image 
                 src="https://res.cloudinary.com/dxvxzikri/image/upload/v1692558761/dzmlypgcmhpkb5x6seh4.jpg"
-                alt='MUG'/>            
+                alt='MUG'
+                width={50}
+                height={50}    
+            />            
             <nav className={s.main_navigation}>                
                 {   
                     dataSession().then((session)=>{

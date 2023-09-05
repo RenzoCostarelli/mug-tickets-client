@@ -1,6 +1,5 @@
-import EventCard from "../event-card"
-
-import s from './events-lists.module.scss'
+import s from './events-lists.module.scss';
+import EventCard from "../event-card";
 
 // all events
 

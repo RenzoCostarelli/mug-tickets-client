@@ -1,7 +1,6 @@
 
 import FormLogin from '@/app/components/form-login';
 import a from './login.module.scss';
-import { Box, Container, Typography } from '@mui/material';
 
 export default function LoginAdmin() {
   

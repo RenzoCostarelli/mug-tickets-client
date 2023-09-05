@@ -1,7 +1,7 @@
 'use client'
-import { Avatar, Stack, Typography } from '@mui/material';
+
 import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
+import Image from 'next/image';
 
 export default async function AdminInfo() {
     const { data: session } = useSession();
@@ -9,12 +9,18 @@ export default async function AdminInfo() {
     const avatarUrl = session?.user.image as string;
     
     return ( 
-        <Stack direction="row" spacing={2}>           
-            <Typography paragraph={true}>{ session?.user?.email }</Typography>
-                <Avatar 
-                    sx={{ width: 24, height: 24 }}
+        <div style={{
+                display: 'flex',
+            }}>           
+            <p style={{
+                    color: 'black'
+                }}>{ session?.user?.email }</p>
+                <Image 
                     src={avatarUrl}
-                    alt={session?.user?.name}/>
-        </Stack>
+                    alt={session?.user?.name ?? ''}
+                    width={24}
+                    height={24}
+                    />
+        </div>
     )
 }
