@@ -19,51 +19,52 @@ async function getEventById(id: string) {
 export default async function PageEvents({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
     return(
-        <Container component="main" maxWidth="md">
-            <Box
-                sx={{
+        <main>
+            <div
+                style={{
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
                     
                 }}>
-                <Typography sx={{ my:2 }} variant="h4" component="h2" gutterBottom>
+                <h2 style={{ 
+                    marginBottom:2, 
+                    marginTop: 2 
+                    }}>
                     Crear Evento
-                </Typography>
-            </Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} md={6}>
-                    <Box
-                        sx={{
+                </h2>
+            </div>
+            <div>
+                <div>
+                    <div
+                        style={{
                             display: 'flex',
-                            flexDirection: 'grid',
+                            flexDirection: 'row',
                             justifyContent: 'center',
                             alignItems: 'center',
                             //backgroundColor: 'white',
-                            p: '15px',
+                            padding: '15px',
                             borderRadius: '10px'
                         }}>
                             <EventForm event={ event }/>
-                    </Box>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <Box
-                        sx={{
+                    </div>
+                </div>
+                <div>
+                    <div
+                        style={{
                             display: 'flex',
-                            flexDirection: 'grid',
+                            flexDirection: 'row',
                             justifyContent: 'center',
                             alignItems: 'center',
                             //backgroundColor: 'white',
-                            p: '15px',
+                            padding: 1,
                             borderRadius: '10px'
                         }}>
                             <TicketForm />
-                    </Box>
-                </Grid>
-            </Grid>
-            
-            
-        </Container>
+                    </div>
+                </div>
+            </div>            
+        </main>
     ) 
 }

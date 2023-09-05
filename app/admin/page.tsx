@@ -7,6 +7,7 @@ import { Session, getServerSession } from "next-auth";
 import { handler } from "@/app/api/auth/[...nextauth]/route";
 import AdminEventsList from '@/app/components/admin-event-list';
 import { getToken } from "next-auth/jwt";
+import Link from 'next/link';
 
 async function getData() {
   const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});  
@@ -19,58 +20,60 @@ async function getData() {
 export default async function AdminDashboard() {
    
     const data = await getData();    
+
     return(
-        <Container component="main" maxWidth="sm">
-            <Box
-                sx={{
+        <main style={{
+                textAlign: 'center',
+                padding: '2rem',
+            }}>
+            <div
+                style={{
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    alignItems: 'center',
+                    alignItems: 'center'
                 }}>
-                <Typography sx={{ my:2 }}variant="h4" component="h2" gutterBottom>
+                <h2 style={{ 
+                    marginBottom: 2, 
+                    marginTop: 2 
+                    }}>
                     Admin Dashboard
-                </Typography>
-            </Box>
-            <Box component="nav"
-                sx={{
+                </h2>
+            </div>
+            <div style={{
                     display: 'flex',
-                    flexDirection: 'grid',
+                    flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    p: '15px',
+                    padding: '15px',
                     borderRadius: '10px',
                 }}>
-                    <Box  sx={{
-                        p: '20px'
+                    <div style={{
+                        padding: '20px'
                     }}>
-                        <Button 
-                            variant="text"
-                            href={`/admin`}>Eventos</Button>
-                    </Box>
-                    <Box sx={{
-                        p: '20px'
-                    }}>                            
-                        <Button
-                            variant="text"
-                            href={`/admin/eventos/`}>Crear Evento</Button>
-                    </Box>
-                    <Box sx={{
-                        p: '20px'
+                        <Link 
+                            href={`/admin`}>Eventos</Link>
+                    </div>
+                    <div style={{
+                        padding: '20px'
+                    }}>                           
+                        <Link
+                            href={`/admin/eventos/`}>Crear Evento</Link>
+                    </div>
+                    <div style={{
+                        padding: '20px'
                     }}>
-                        <Button
-                            variant="text"
-                            href={`/admin/validar/`}>Qr Scan</Button>                    
-                    </Box>
-            </Box>
-            <Box sx={{
-                border: '1px solid black',
+                        <Link                        
+                            href={`/admin/validar/`}>Qr Scan</Link>                    
+                    </div>
+            </div>
+            <div style={{
+                border: '0.5px solid black',
                 borderRadius: 3,
-                py: 4,
-                px: 2
+                padding: '2rem 1 rem',
             }}>
                 <AdminEventsList da={ data }/>
-            </Box>
-        </Container>           
+            </div>
+        </main>           
     )
 }
