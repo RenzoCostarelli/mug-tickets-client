@@ -8,11 +8,11 @@ mercadopago.configure({
     access_token: process.env.NEXT_ACCESS_TOKEN!,
 })
 
-export async function POST(req: NextRequest, res: NextApiResponse) {
+export async function POST(req: NextRequest, res: NextResponse) {
     const body = await req.json()
-    console.log('request', body)
     if (req.method === 'POST') {
         const product: Product = body.product
+        console.log('product', product)
         const URL =  'http://localhost:3000'
         try {
             const preference: CreatePreferencePayload = {
@@ -32,13 +32,13 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
             }
 
             const response = await mercadopago.preferences.create(preference)
-            res.status(200).send({url: response.body.init_point})
-            
+
+            return NextResponse.json({url: response.body.init_point})
         } catch (error) {
             console.error('errorrrr', error)
         }
 
     } else {
-        res.status(400).json({message: "Method not allowed"})
+        return NextResponse.json({message: "Method not allowed"})
     }
 }
