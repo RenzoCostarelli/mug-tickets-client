@@ -12,6 +12,7 @@ async function getEventById(id: string) {
 
 export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
+    console.log('event', event)
     const date = new Date(event.date)
     let dateStr = date.toLocaleDateString(); 
     let timeStr = date.toLocaleTimeString();
@@ -23,14 +24,10 @@ export default async function Event({params}: {params: {id: string}}) {
                     <Image 
                         src={event.image ?? '/images/flyer__test.jpg'} 
                         alt={event.title ?? 'Mug'}
-                        width={1200}
-                        height={900}
+                        fill
                         style={{
-                            width: '100%',
-                            //height: 'auto',
                             objectFit: 'cover',
                         }}
-                        loading='lazy'
                     />
                 }
                 
@@ -65,9 +62,12 @@ export default async function Event({params}: {params: {id: string}}) {
                             <div className={s.card_image}>
                                 <Image
                                     src={event.image}
-                                    fill={true}
                                     alt={event.title}
-                                    loading='lazy'
+                                    priority
+                                    fill
+                                    style={{
+                                        objectFit: 'contain',
+                                    }}
                                 />
                             </div>
                         </div>
@@ -75,8 +75,6 @@ export default async function Event({params}: {params: {id: string}}) {
                 </div>
                 <div className={s.buy_area}>
                     <h1>Compra tu entrada</h1>
-                    {/* ACA VA EL FORM */}
-                    {/* <BuyForm price={5000} quantity={1} type={"General"} /> */}
                     <FormPurchase event={event}/>
                 </div>
             </div>

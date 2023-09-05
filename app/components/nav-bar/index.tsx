@@ -29,7 +29,7 @@ export default function Navbar() {
                     </li>
                     <li className={s.link}>
                         <Link href={`/`}>FAQ</Link>
-                    </li>                    
+                    </li>               
                 </ul>
             </nav>
             <div className={s.user_area}>
