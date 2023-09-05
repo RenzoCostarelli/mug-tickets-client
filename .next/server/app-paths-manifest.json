@@ -1,22 +1,6 @@
 {
   "/page": "app/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/checkout/page": "app/checkout/page.js",
-  "/denied/page": "app/denied/page.js",
-  "/success/page": "app/success/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/api/tickets/route": "app/api/tickets/route.js",
-  "/eventos/page": "app/eventos/page.js",
-  "/api/admin/entradas/route": "app/api/admin/entradas/route.js",
-  "/admin/eventos/page": "app/admin/eventos/page.js",
-  "/api/admin/eventos/route": "app/api/admin/eventos/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/admin/login/page": "app/admin/login/page.js",
-  "/admin/register/page": "app/admin/register/page.js",
-  "/admin/validar/page": "app/admin/validar/page.js",
-  "/eventos/[id]/page": "app/eventos/[id]/page.js",
-  "/users/login/page": "app/users/login/page.js",
-  "/users/dashboard/page": "app/users/dashboard/page.js",
-  "/users/register/page": "app/users/register/page.js",
-  "/admin/eventos/[id]/page": "app/admin/eventos/[id]/page.js"
+  "/eventos/[id]/page": "app/eventos/[id]/page.js"
 }
