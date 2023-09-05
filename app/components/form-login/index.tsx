@@ -1,13 +1,6 @@
 'use client'
-import { Box, Button, Container, CssBaseline, TextField, ThemeProvider, Typography, createTheme } from '@mui/material';
-import { signIn } from 'next-auth/react';
 import { useState } from 'react';
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
+import { signIn } from 'next-auth/react';
   
 export default function FormLogin() {
 
@@ -26,41 +19,43 @@ export default function FormLogin() {
     };
 
     return (             
-      <Box sx={{
+      <div style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
       }}>
-          <Box component="form" onSubmit={ submitHandler }>            
-            <TextField
+          <form onSubmit={ submitHandler }>            
+            <input style={{
+                width: '100%',
+                marginTop: '1rem',
+                marginBottom: '1rem' 
+              }}
                 type="email"
-                fullWidth
-                margin="normal"
                 id="email_field"
                 className="form-control"
                 //value={email}
-                label="Email"
                 required
                 onChange={(e) => setEmail(e.target.value)}/>
-            <TextField
-              margin="normal"
-              fullWidth
+            <input  style={{
+                width: '100%',
+                marginTop: '1rem',
+                marginBottom: '1rem' 
+              }}
               type="password"
               id="password_field"
               className="form-control"
-              autoComplete='current-password'
               required
-              label="Password"
               onChange={(e) => setPassword(e.target.value)}/>
 
-            <Button
-                fullWidth
-                variant="contained"
-                type="submit"
-                sx={{ mt: 3, mb: 2 }}>
+            <button style={{
+                width: '100%',
+                marginTop: 3, 
+                marginBottom: 2
+              }}
+                type="submit">
                 Sign in
-            </Button>                  
-          </Box>
-      </Box>            
+            </button>                  
+          </form>
+      </div>            
     )
 }
