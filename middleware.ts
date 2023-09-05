@@ -59,15 +59,14 @@ export default withAuth(
             '/users': 'user',
             '/users/dashboard': 'user',
             '/users/login': 'user',
+            '/admin/eventos/:path*': 'admin',
         };
 
         // Check if the path exists in the mapping and if the user's role matches
         if (pathToRoleMapping[path] && role !== pathToRoleMapping[path]) {
             return NextResponse.rewrite(new URL('/denied', request.url));
         }
-
         return NextResponse.next();
-
     },  
     {
         callbacks:{            
@@ -77,5 +76,12 @@ export default withAuth(
 );
 
 export const config = { 
-    matcher: ['/admin', '/admin/eventos', '/admin/validar', '/users', '/users/dashboard']
+    matcher: [
+        '/admin', 
+        '/admin/eventos', 
+        '/admin/eventos/:path*',
+        '/admin/validar', 
+        '/users', 
+        '/users/dashboard',
+    ]
 };
