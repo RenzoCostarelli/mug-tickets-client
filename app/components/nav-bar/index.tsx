@@ -21,24 +21,15 @@ export default function Navbar() {
                 alt='MUG'/>                
             <nav className={s.main_navigation}>
                 <ul className={s.links}>
-                {
-                    pathname.startsWith('/admin') || userType === 'admin'? (
-                        <li className={s.link}></li>                        
-                    ) : 
-                    (
-                        <>
-                            <li className={s.link}>
-                                <Link href={`/`}>Home</Link>
-                            </li>
-                            <li className={s.link}>
-                                <Link href={`/eventos`}>Eventos</Link>
-                            </li>
-                            <li className={s.link}>
-                                <Link href={`/`}>FAQ</Link>
-                            </li>
-                        </>
-                    )
-                }                    
+                    <li className={s.link}>
+                        <Link href={`/`}>Home</Link>
+                    </li>
+                    <li className={s.link}>
+                        <Link href={`/eventos`}>Eventos</Link>
+                    </li>
+                    <li className={s.link}>
+                        <Link href={`/`}>FAQ</Link>
+                    </li>                    
                 </ul>
             </nav>
             <div className={s.user_area}>
