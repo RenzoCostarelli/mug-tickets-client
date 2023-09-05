@@ -9,13 +9,6 @@ import { ReactNode } from 'react';
 
 export default function TicketForm() {
 
-    /*const { data: session } = useSession({
-        required: true,
-        onUnauthenticated() {
-            redirect('/api/auth/signin')
-        },
-    });*/
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         throw new Error('Function not implemented.');

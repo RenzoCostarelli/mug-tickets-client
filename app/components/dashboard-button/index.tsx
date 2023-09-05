@@ -7,6 +7,6 @@ export default function DashboardButton() {
     const { data: session } = useSession();
 
     return (
-        <Link href={session?.user?.role === 'admin'? '/admin' : '/users/dashboard'}>Dashboard</Link>
+        <Link href={session?.user?.role === 'admin'? '/admin' : '/users/dashboard'}>Perfil</Link>
     )
 }

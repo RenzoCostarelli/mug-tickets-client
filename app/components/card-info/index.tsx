@@ -15,6 +15,7 @@ import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { useState } from 'react';
 import SignOutButton from '../sign-out-button';
+import Image from 'next/image';
 
 const darkTheme = createTheme({
   palette: {
@@ -39,7 +40,7 @@ export default function CardInfo() {
     return (      
          
           <div>
-            <Button
+            <button
               id="basic-button"
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
@@ -47,7 +48,7 @@ export default function CardInfo() {
               onClick={handleClick}
             >
               Perfil
-            </Button>
+            </button>
             <Menu
               id="basic-menu"
               anchorEl={anchorEl}
@@ -58,16 +59,20 @@ export default function CardInfo() {
               }}
             >
               <MenuItem disabled>
-                <Stack direction="row" spacing={2}>           
-                    <Typography style={{
-
-                      }} 
-                      component="span">{ session?.user?.email }</Typography>
-                        <Avatar 
-                            sx={{ width: 24, height: 24 }}
-                            src={avatarUrl}
-                            alt={session?.user?.name}/>
-                </Stack>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>           
+                  <span>{ session?.user?.email }</span>
+                  <Image 
+                    style={{
+                      borderRadius: '50%'
+                    }}
+                    width={30}
+                    height={30}
+                    src={avatarUrl || ''}
+                    alt={session?.user?.name || ''}/>
+                </div>
               </MenuItem>
               <MenuItem 
                 component={ Link }

@@ -162,7 +162,7 @@ export default function FormPurchase ({event}: any) {
           }
           {!showCheckout && 
             <div className={s.buy}>
-              {/* <MpButton product={product}/> */}
+              <MpButton product={product}/> 
               <button type="submit" onClick={handleCheckoutClick}>Comprar</button>
             </div>
           }

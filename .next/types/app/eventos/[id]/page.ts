@@ -1,4 +1,4 @@
-// File: C:\Dev\mug\client\mug-tickets-client\app\eventos\[id]\page.tsx
+// File: C:\Users\canni\Documents\Work-renzo\mug\mug-tickets-client\app\eventos\[id]\page.tsx
 import * as entry from '../../../../../app/eventos/[id]/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

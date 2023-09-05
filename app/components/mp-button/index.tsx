@@ -22,8 +22,9 @@ export function MpButton ({product}: MpButtonProps) {
           })
           return preference
         }
-        console.log('preference', callApi())
-        // setUrl(preference.url)
+        const algo = await callApi();
+        console.log('preference', algo.url)
+        setUrl(algo.url)
         setLoading(false)
       } catch (error) {
         console.error(error)
@@ -38,7 +39,7 @@ export function MpButton ({product}: MpButtonProps) {
     <div>
         {
             loading ? (
-            <button disabled className={s.mp_button}>Pagar</button>
+            <button disabled className={s.mp_button}>Pagarrrr</button>
             ) : (
                 <a href={url!} className={s.mp_button}>Pagar ahora si {url}</a>
             )
