@@ -1,0 +1,22 @@
+{
+  "pages": {
+    "/eventos/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/eventos/[id]/page.css",
+      "static/chunks/app/eventos/[id]/page.js"
+    ],
+    "/eventos/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/eventos/layout.css",
+      "static/chunks/app/eventos/layout.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ]
+  }
+}
