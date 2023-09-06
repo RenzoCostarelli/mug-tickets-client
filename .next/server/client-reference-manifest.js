@@ -742,36 +742,230 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/components/form-purchase/index.tsx": {
+    "(app-client)/./app/components/provider/provider.tsx": {
       "*": {
-        "id": "(sc_client)/./app/components/form-purchase/index.tsx",
+        "id": "(sc_client)/./app/components/provider/provider.tsx",
         "name": "*",
         "chunks": [
-          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       },
       "": {
-        "id": "(sc_client)/./app/components/form-purchase/index.tsx",
+        "id": "(sc_client)/./app/components/provider/provider.tsx",
         "name": "",
         "chunks": [
-          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
-        ],
-        "async": false
-      },
-      "BuyForm": {
-        "id": "(sc_client)/./app/components/form-purchase/index.tsx",
-        "name": "BuyForm",
-        "chunks": [
-          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./app/components/form-purchase/index.tsx",
+        "id": "(sc_client)/./app/components/provider/provider.tsx",
         "name": "default",
         "chunks": [
-          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/script.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "*",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "default",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "handleClientScriptLoad": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "handleClientScriptLoad",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "initScriptLoader": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "initScriptLoader",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "mount": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "mount",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "nonce": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "nonce",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "dangerouslySetInnerHTML": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "dangerouslySetInnerHTML",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "__html": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "__html",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "as": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "as",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "integrity": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "integrity",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "value": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "value",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/components/dashboard-button/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/components/dashboard-button/index.tsx",
+        "name": "*",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./app/components/dashboard-button/index.tsx",
+        "name": "",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/components/dashboard-button/index.tsx",
+        "name": "default",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/components/google-button/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/components/google-button/index.tsx",
+        "name": "*",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./app/components/google-button/index.tsx",
+        "name": "",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/components/google-button/index.tsx",
+        "name": "default",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/components/nav-bar/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/components/nav-bar/index.tsx",
+        "name": "*",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./app/components/nav-bar/index.tsx",
+        "name": "",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/components/nav-bar/index.tsx",
+        "name": "default",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/components/sign-out-button/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/components/sign-out-button/index.tsx",
+        "name": "*",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./app/components/sign-out-button/index.tsx",
+        "name": "",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/components/sign-out-button/index.tsx",
+        "name": "default",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
         ],
         "async": false
       }
@@ -798,6 +992,32 @@ self.__RSC_MANIFEST={
         "name": "default",
         "chunks": [
           "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/link.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "*",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "default",
+        "chunks": [
+          "app/eventos/layout:static/chunks/app/eventos/layout.js"
         ],
         "async": false
       }
@@ -948,256 +1168,62 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/components/dashboard-button/index.tsx": {
+    "(app-client)/./app/components/form-purchase/index.tsx": {
       "*": {
-        "id": "(sc_client)/./app/components/dashboard-button/index.tsx",
+        "id": "(sc_client)/./app/components/form-purchase/index.tsx",
         "name": "*",
         "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
         ],
         "async": false
       },
       "": {
-        "id": "(sc_client)/./app/components/dashboard-button/index.tsx",
+        "id": "(sc_client)/./app/components/form-purchase/index.tsx",
         "name": "",
         "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+        ],
+        "async": false
+      },
+      "BuyForm": {
+        "id": "(sc_client)/./app/components/form-purchase/index.tsx",
+        "name": "BuyForm",
+        "chunks": [
+          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./app/components/dashboard-button/index.tsx",
+        "id": "(sc_client)/./app/components/form-purchase/index.tsx",
         "name": "default",
         "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
         ],
         "async": false
       }
     },
-    "(app-client)/./app/components/google-button/index.tsx": {
+    "(app-client)/./app/components/mp-button/index.tsx": {
       "*": {
-        "id": "(sc_client)/./app/components/google-button/index.tsx",
+        "id": "(sc_client)/./app/components/mp-button/index.tsx",
         "name": "*",
         "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
         ],
         "async": false
       },
       "": {
-        "id": "(sc_client)/./app/components/google-button/index.tsx",
+        "id": "(sc_client)/./app/components/mp-button/index.tsx",
         "name": "",
         "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
+          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
         ],
         "async": false
       },
-      "default": {
-        "id": "(sc_client)/./app/components/google-button/index.tsx",
-        "name": "default",
+      "MpButton": {
+        "id": "(sc_client)/./app/components/mp-button/index.tsx",
+        "name": "MpButton",
         "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./app/components/nav-bar/index.tsx": {
-      "*": {
-        "id": "(sc_client)/./app/components/nav-bar/index.tsx",
-        "name": "*",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./app/components/nav-bar/index.tsx",
-        "name": "",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/components/nav-bar/index.tsx",
-        "name": "default",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./app/components/sign-out-button/index.tsx": {
-      "*": {
-        "id": "(sc_client)/./app/components/sign-out-button/index.tsx",
-        "name": "*",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./app/components/sign-out-button/index.tsx",
-        "name": "",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/components/sign-out-button/index.tsx",
-        "name": "default",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./node_modules/next/dist/client/link.js": {
-      "*": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "*",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "default",
-        "chunks": [
-          "app/eventos/layout:static/chunks/app/eventos/layout.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./app/components/provider/provider.tsx": {
-      "*": {
-        "id": "(sc_client)/./app/components/provider/provider.tsx",
-        "name": "*",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./app/components/provider/provider.tsx",
-        "name": "",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/components/provider/provider.tsx",
-        "name": "default",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./node_modules/next/dist/client/script.js": {
-      "*": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "*",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "default",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "handleClientScriptLoad": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "handleClientScriptLoad",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "initScriptLoader": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "initScriptLoader",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "mount": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "mount",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "nonce": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "nonce",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "dangerouslySetInnerHTML": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "dangerouslySetInnerHTML",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "__html": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "__html",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "as": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "as",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "integrity": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "integrity",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "value": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "value",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
+          "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
         ],
         "async": false
       }
@@ -1205,14 +1231,17 @@ self.__RSC_MANIFEST={
   },
   "edgeSSRModuleMapping": {},
   "cssFiles": {
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\layout": [
+      "static/css/app/layout.css"
+    ],
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\page": [
+      "static/css/app/page.css"
+    ],
     "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\eventos\\[id]\\page": [
       "static/css/app/eventos/[id]/page.css"
     ],
     "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\eventos\\layout": [
       "static/css/app/eventos/layout.css"
-    ],
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\layout": [
-      "static/css/app/layout.css"
     ]
   },
   "clientModules": {
@@ -2912,56 +2941,366 @@ self.__RSC_MANIFEST={
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\form-purchase.module.scss#": {
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\styles\\global.scss#": {
       "id": "null",
       "name": "default",
       "chunks": [
-        "static/css/app/eventos/[id]/page.css"
+        "static/css/app/layout.css",
+        "static/css/app/eventos/layout.css"
       ]
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\mp-button\\mp-button.module.scss#": {
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\font\\google\\target.css?{\"path\":\"app\\\\layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}#": {
       "id": "null",
       "name": "default",
       "chunks": [
-        "static/css/app/eventos/[id]/page.css"
+        "static/css/app/layout.css"
       ]
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\eventos\\[id]\\evento.module.scss#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/eventos/[id]/page.css"
-      ]
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\index.tsx": {
-      "id": "(app-client)/./app/components/form-purchase/index.tsx",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\provider\\provider.tsx": {
+      "id": "(app-client)/./app/components/provider/provider.tsx",
       "name": "*",
       "chunks": [
-        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+        "app/layout:static/chunks/app/layout.js"
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\index.tsx#": {
-      "id": "(app-client)/./app/components/form-purchase/index.tsx",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\provider\\provider.tsx#": {
+      "id": "(app-client)/./app/components/provider/provider.tsx",
       "name": "",
       "chunks": [
-        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+        "app/layout:static/chunks/app/layout.js"
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\index.tsx#BuyForm": {
-      "id": "(app-client)/./app/components/form-purchase/index.tsx",
-      "name": "BuyForm",
-      "chunks": [
-        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\index.tsx#default": {
-      "id": "(app-client)/./app/components/form-purchase/index.tsx",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\provider\\provider.tsx#default": {
+      "id": "(app-client)/./app/components/provider/provider.tsx",
       "name": "default",
       "chunks": [
-        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#default": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "default",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#default": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "default",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#handleClientScriptLoad": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "handleClientScriptLoad",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#handleClientScriptLoad": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "handleClientScriptLoad",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#initScriptLoader": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "initScriptLoader",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#initScriptLoader": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "initScriptLoader",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#mount": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "mount",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#mount": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "mount",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#nonce": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "nonce",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#nonce": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "nonce",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#dangerouslySetInnerHTML": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "dangerouslySetInnerHTML",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#dangerouslySetInnerHTML": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "dangerouslySetInnerHTML",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#__html": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "__html",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#__html": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "__html",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#as": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "as",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#as": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "as",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#integrity": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "integrity",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#integrity": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "integrity",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#value": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "value",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#value": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "value",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\event-card\\event-card.module.scss#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\events-list\\events-lists.module.scss#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\hero-banner\\hero-banner.module.scss#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\nav-bar\\nav-bar.module.scss#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css",
+        "static/css/app/eventos/layout.css"
+      ]
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\page.module.scss#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\dashboard-button\\index.tsx": {
+      "id": "(app-client)/./app/components/dashboard-button/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\dashboard-button\\index.tsx#": {
+      "id": "(app-client)/./app/components/dashboard-button/index.tsx",
+      "name": "",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\dashboard-button\\index.tsx#default": {
+      "id": "(app-client)/./app/components/dashboard-button/index.tsx",
+      "name": "default",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\google-button\\index.tsx": {
+      "id": "(app-client)/./app/components/google-button/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\google-button\\index.tsx#": {
+      "id": "(app-client)/./app/components/google-button/index.tsx",
+      "name": "",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\google-button\\index.tsx#default": {
+      "id": "(app-client)/./app/components/google-button/index.tsx",
+      "name": "default",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\nav-bar\\index.tsx": {
+      "id": "(app-client)/./app/components/nav-bar/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\nav-bar\\index.tsx#": {
+      "id": "(app-client)/./app/components/nav-bar/index.tsx",
+      "name": "",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\nav-bar\\index.tsx#default": {
+      "id": "(app-client)/./app/components/nav-bar/index.tsx",
+      "name": "default",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\sign-out-button\\index.tsx": {
+      "id": "(app-client)/./app/components/sign-out-button/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\sign-out-button\\index.tsx#": {
+      "id": "(app-client)/./app/components/sign-out-button/index.tsx",
+      "name": "",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\sign-out-button\\index.tsx#default": {
+      "id": "(app-client)/./app/components/sign-out-button/index.tsx",
+      "name": "default",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
       ],
       "async": false
     },
@@ -3010,6 +3349,54 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\link.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\link.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\link.js#": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\link.js#": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\link.js#default": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "default",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\link.js#default": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "default",
+      "chunks": [
+        "app/eventos/layout:static/chunks/app/eventos/layout.js"
       ],
       "async": false
     },
@@ -3301,385 +3688,80 @@ self.__RSC_MANIFEST={
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\nav-bar\\nav-bar.module.scss#": {
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\form-purchase.module.scss#": {
       "id": "null",
       "name": "default",
       "chunks": [
-        "static/css/app/eventos/layout.css"
+        "static/css/app/eventos/[id]/page.css"
       ]
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\styles\\global.scss#": {
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\mp-button\\mp-button.module.scss#": {
       "id": "null",
       "name": "default",
       "chunks": [
-        "static/css/app/eventos/layout.css",
-        "static/css/app/layout.css"
+        "static/css/app/eventos/[id]/page.css"
       ]
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\dashboard-button\\index.tsx": {
-      "id": "(app-client)/./app/components/dashboard-button/index.tsx",
-      "name": "*",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\dashboard-button\\index.tsx#": {
-      "id": "(app-client)/./app/components/dashboard-button/index.tsx",
-      "name": "",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\dashboard-button\\index.tsx#default": {
-      "id": "(app-client)/./app/components/dashboard-button/index.tsx",
-      "name": "default",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\google-button\\index.tsx": {
-      "id": "(app-client)/./app/components/google-button/index.tsx",
-      "name": "*",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\google-button\\index.tsx#": {
-      "id": "(app-client)/./app/components/google-button/index.tsx",
-      "name": "",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\google-button\\index.tsx#default": {
-      "id": "(app-client)/./app/components/google-button/index.tsx",
-      "name": "default",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\nav-bar\\index.tsx": {
-      "id": "(app-client)/./app/components/nav-bar/index.tsx",
-      "name": "*",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\nav-bar\\index.tsx#": {
-      "id": "(app-client)/./app/components/nav-bar/index.tsx",
-      "name": "",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\nav-bar\\index.tsx#default": {
-      "id": "(app-client)/./app/components/nav-bar/index.tsx",
-      "name": "default",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\sign-out-button\\index.tsx": {
-      "id": "(app-client)/./app/components/sign-out-button/index.tsx",
-      "name": "*",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\sign-out-button\\index.tsx#": {
-      "id": "(app-client)/./app/components/sign-out-button/index.tsx",
-      "name": "",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\sign-out-button\\index.tsx#default": {
-      "id": "(app-client)/./app/components/sign-out-button/index.tsx",
-      "name": "default",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\link.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "*",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\link.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "*",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\link.js#": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\link.js#": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\link.js#default": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "default",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\link.js#default": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "default",
-      "chunks": [
-        "app/eventos/layout:static/chunks/app/eventos/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\font\\google\\target.css?{\"path\":\"app\\\\layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}#": {
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\eventos\\[id]\\evento.module.scss#": {
       "id": "null",
       "name": "default",
       "chunks": [
-        "static/css/app/layout.css"
+        "static/css/app/eventos/[id]/page.css"
       ]
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\provider\\provider.tsx": {
-      "id": "(app-client)/./app/components/provider/provider.tsx",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\index.tsx": {
+      "id": "(app-client)/./app/components/form-purchase/index.tsx",
       "name": "*",
       "chunks": [
-        "app/layout:static/chunks/app/layout.js"
+        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\provider\\provider.tsx#": {
-      "id": "(app-client)/./app/components/provider/provider.tsx",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\index.tsx#": {
+      "id": "(app-client)/./app/components/form-purchase/index.tsx",
       "name": "",
       "chunks": [
-        "app/layout:static/chunks/app/layout.js"
+        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\provider\\provider.tsx#default": {
-      "id": "(app-client)/./app/components/provider/provider.tsx",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\index.tsx#BuyForm": {
+      "id": "(app-client)/./app/components/form-purchase/index.tsx",
+      "name": "BuyForm",
+      "chunks": [
+        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\form-purchase\\index.tsx#default": {
+      "id": "(app-client)/./app/components/form-purchase/index.tsx",
       "name": "default",
       "chunks": [
-        "app/layout:static/chunks/app/layout.js"
+        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\mp-button\\index.tsx": {
+      "id": "(app-client)/./app/components/mp-button/index.tsx",
       "name": "*",
       "chunks": [
-        "app/layout:static/chunks/app/layout.js"
+        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "*",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\mp-button\\index.tsx#": {
+      "id": "(app-client)/./app/components/mp-button/index.tsx",
       "name": "",
       "chunks": [
-        "app/layout:static/chunks/app/layout.js"
+        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "",
+    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\app\\components\\mp-button\\index.tsx#MpButton": {
+      "id": "(app-client)/./app/components/mp-button/index.tsx",
+      "name": "MpButton",
       "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#default": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "default",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#default": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "default",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#handleClientScriptLoad": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "handleClientScriptLoad",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#handleClientScriptLoad": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "handleClientScriptLoad",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#initScriptLoader": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "initScriptLoader",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#initScriptLoader": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "initScriptLoader",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#mount": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "mount",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#mount": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "mount",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#nonce": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "nonce",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#nonce": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "nonce",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#dangerouslySetInnerHTML": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "dangerouslySetInnerHTML",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#dangerouslySetInnerHTML": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "dangerouslySetInnerHTML",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#__html": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "__html",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#__html": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "__html",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#as": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "as",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#as": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "as",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#integrity": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "integrity",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#integrity": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "integrity",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\client\\script.js#value": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "value",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\canni\\Documents\\Work-renzo\\mug\\mug-tickets-client\\node_modules\\next\\dist\\esm\\client\\script.js#value": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "value",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
+        "app/eventos/[id]/page:static/chunks/app/eventos/[id]/page.js"
       ],
       "async": false
     }

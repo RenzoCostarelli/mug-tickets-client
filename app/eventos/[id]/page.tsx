@@ -12,7 +12,7 @@ async function getEventById(id: string) {
 
 export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
-    console.log('event', event)
+    
     const date = new Date(event.date)
     let dateStr = date.toLocaleDateString(); 
     let timeStr = date.toLocaleTimeString();

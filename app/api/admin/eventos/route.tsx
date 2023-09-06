@@ -41,7 +41,6 @@ export async function GET(request: NextRequest, response: NextResponse) {
   const headersList = headers();
   const token = headersList.get("Authorization");
 
-  console.log(token);
   const res = await fetch('https://mug-tickets-server.vercel.app/api/admins/', {
     method: 'GET',
     headers: {

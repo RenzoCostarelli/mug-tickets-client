@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useState } from 'react'
 import { Product } from '@/app/types/product'
 import s from './mp-button.module.scss'
@@ -12,7 +13,6 @@ export function MpButton ({product}: MpButtonProps) {
 
   useEffect(() => {
     const generateLink = async () => {
-      console.log('producto', product)
       setLoading(true)
       try {
         const callApi = async () => {
@@ -22,9 +22,10 @@ export function MpButton ({product}: MpButtonProps) {
           })
           return preference
         }
-        const algo = await callApi();
-        console.log('preference', algo.url)
-        setUrl(algo.url)
+        const response = await callApi();
+        const data = await response.json()
+        
+        setUrl(data.response.sandbox_init_point)
         setLoading(false)
       } catch (error) {
         console.error(error)
