@@ -12,6 +12,7 @@ async function getEventById(id: string) {
 
 export default async function PageEvents({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
+    
     return(
         <main>
             <div

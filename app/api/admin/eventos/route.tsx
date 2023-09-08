@@ -7,20 +7,20 @@ export async function POST(request: NextRequest) {
   const token = formData.get('token');
 
   const bodyData = {
-    "creatorId": "64cd42cb68560e328c553fbf",
-    "email": formData.get('email'),
-    "eventType": formData.get('eventType'),
-    "title": formData.get('title'), 
-    "description": formData.get('description'), 
-    "address": formData.get('location'),
-    "dates": [
+    creatorId: "64cd42cb68560e328c553fbf",
+    email: formData.get('email'),
+    eventType: formData.get('eventType'),
+    title: formData.get('title'), 
+    description: formData.get('description'), 
+    address: formData.get('address'),
+    dates: [
       {
-        "date": `${formData.get('date')}T20:00:00.000Z`
+        date: `${formData.get('date')}T${formData.get('hour')}`
       }
     ],
-    "ticketsAvailableOnline": formData.get('availables'),
-    "hasLimitedPlaces": formData.get('limitedPlaces') || false,
-    "ticketPurchaseDeadline": `${formData.get('date')}T20:00:00.000Z`
+    ticketsAvailableOnline: formData.get('ticketsAvailableOnline'),
+    hasLimitedPlaces: formData.get('limitedPlaces') || false,
+    ticketPurchaseDeadline: `${formData.get('date')}T${formData.get('hour')}`
   }
   
   const res = await fetch('https://mug-tickets-server.vercel.app/api/events/', {

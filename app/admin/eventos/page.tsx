@@ -1,8 +1,32 @@
 import EventForm from "@/app/components/dashboard-event-form";
 import TicketForm from "@/app/components/dashboard-ticket-form";
 
-export default async function AdminEvents() {
+type EventData = {
+    eventId: string;
+    title: string;
+    description: string;
+    address: string;
+    eventType: string;
+    ticketsAvailableOnline: number;
+    hasLimitedPlaces: boolean;
+    date: string;
+    hour: string;
+}
 
+const EVENT_INITIAL_DATA = {
+    eventId: "",
+    title: "",
+    description: "",
+    address: "",
+    eventType: "",
+    ticketsAvailableOnline: 0,
+    hasLimitedPlaces: false,
+    date: "",
+    hour: ""
+}
+
+export default async function AdminEvents() {
+    const event: EventData = EVENT_INITIAL_DATA;
     return(
         <main>
             <div style={{
@@ -18,36 +42,31 @@ export default async function AdminEvents() {
                     Crear Evento
                 </h2>
             </div>
-            <div style={{ }}>
-                <div>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            //backgroundColor: 'white',
-                            padding: '15px',
-                            borderRadius: '10px'
-                        }}>
-                            <EventForm />
-                    </div>
+            
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',                
+                flexDirection: 'row',
+            }}>
+                <div
+                    style={{
+                        padding: '15px',
+                        borderRadius: '10px',
+                        width: '50%'
+                    }}>
+                        <EventForm event={ event }/>
                 </div>
-                <div>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            //backgroundColor: 'white',
-                            padding: '15px',
-                            borderRadius: '10px'
-                        }}>
-                            <TicketForm />
-                    </div>
+                <div
+                    style={{
+                        padding: '15px',
+                        borderRadius: '10px',
+                        width: '50%'
+                    }}>
+                        {/** <TicketForm /> */}
                 </div>
-            </div>            
+            </div>
+                        
         </main>
     )
 }

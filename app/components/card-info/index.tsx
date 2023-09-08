@@ -1,27 +1,10 @@
 'use client'
-import { 
-  Avatar, 
-  Box, 
-  Button, 
-  Link, 
-  Menu, 
-  MenuItem, 
-  Stack, 
-  ThemeProvider, 
-  Typography, 
-  CssBaseline, 
-  createTheme } from '@mui/material';
+
 import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
 import { useState } from 'react';
 import SignOutButton from '../sign-out-button';
 import Image from 'next/image';
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
+import Link from 'next/link';
 
 export default function CardInfo() {
     const { data: session } = useSession();
@@ -40,7 +23,12 @@ export default function CardInfo() {
     return (      
          
           <div>
-            <button
+            <button style={{
+                backgroundColor: 'transparent',
+                padding: '0.7rem 1.5rem',
+                border: '0.5px solid lightgrey',
+                borderRadius: '5px'
+              }}
               id="basic-button"
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
@@ -49,16 +37,16 @@ export default function CardInfo() {
             >
               Perfil
             </button>
-            <Menu
+            <ul
               id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
+              //anchorEl={anchorEl}
+              //open={open}
+              //onClose={handleClose}
+              //MenuListProps={{
+              //  'aria-labelledby': 'basic-button',
+              //}}
             >
-              <MenuItem disabled>
+              <li>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center'
@@ -73,20 +61,21 @@ export default function CardInfo() {
                     src={avatarUrl || ''}
                     alt={session?.user?.name || ''}/>
                 </div>
-              </MenuItem>
-              <MenuItem 
-                component={ Link }
-                href={`/admin/`}>Dashboard</MenuItem>
-              <MenuItem 
-                component={ Link }
-                href={`/admin/eventos`}>Eventos</MenuItem>
-              <MenuItem 
-                component={ Link }
-                href={`/admin/validar`}>Qr Scan</MenuItem>
-              <MenuItem>
+              </li>
+                <Link 
+                  href={`/admin/`}>Dashboard</Link>
+              <li>
+                <Link 
+                  href={`/admin/eventos`}>Eventos</Link>
+              </li>
+              <li>
+                <Link 
+                  href={`/admin/validar`}>Qr Scan</Link>
+              </li>
+              <li>
                 <SignOutButton />
-              </MenuItem>
-            </Menu>
+              </li>
+            </ul>
           </div>    
     )
 } 

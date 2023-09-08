@@ -7,7 +7,7 @@ interface MpButtonProps {
     product: Product
 }
 
-export function MpButton ({product}: MpButtonProps) {
+export function MpButton ({ product }: MpButtonProps) {
   const [url, setUrl] = useState<null | string>(null)
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -25,7 +25,7 @@ export function MpButton ({product}: MpButtonProps) {
         const response = await callApi();
         const data = await response.json()
         
-        setUrl(data.response.sandbox_init_point)
+        setUrl(data?.response?.sandbox_init_point)
         setLoading(false)
       } catch (error) {
         console.error(error)
@@ -34,17 +34,14 @@ export function MpButton ({product}: MpButtonProps) {
 
     generateLink()
   }, [product])
-  
 
   return (
-    <div>
-        {
-            loading ? (
-            <button disabled className={s.mp_button}>Pagarrrr</button>
-            ) : (
-                <a href={url!} className={s.mp_button}>Pagar ahora si {url}</a>
-            )
-        }
+    <div style={{
+      marginBottom: 4,
+      textAlign: 'center'
+    }}>
+      {loading ? (<p>Cargando</p>) 
+      : (<a href={url!} className={s.mp_button}>Pagar</a>)}
     </div>
   )
 }
