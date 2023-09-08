@@ -22,13 +22,7 @@ html {
   color: var(--white);
   scrollbar-width: thin;
 
-  background: rgb(14, 11, 40);
-  background: linear-gradient(
-    180deg,
-    var(--clr-neutral-900) 0%,
-    rgb(34, 34, 34) 50%,
-    rgb(14, 11, 40) 100%
-  );
+
 
   &.nav {
     overflow: hidden;
@@ -38,6 +32,7 @@ html {
 html,
 body {
   overscroll-behavior: initial;
+  background: rgb(26, 26, 26);
 }
 
 body {
@@ -52,6 +47,10 @@ label,
 select {
   color: inherit;
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 *::selection {

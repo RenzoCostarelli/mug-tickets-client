@@ -27,11 +27,8 @@ export default function Navbar() {
                         <Link href={`/`}>Home</Link>
                     </li>
                     <li className={s.link}>
-                        <Link href={`/eventos`}>Eventos</Link>
-                    </li>
-                    <li className={s.link}>
                         <Link href={`/`}>FAQ</Link>
-                    </li>               
+                    </li>
                 </ul>
             </nav>
             <div className={s.user_area}>

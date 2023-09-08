@@ -32,3 +32,21 @@ $fs-italic: italic;
 .align-left {
   text-align: left;
 }
+
+.big-title {
+    font-size: clamp(24px, 5vw, 5rem);
+    font-weight: 900;
+    text-align: left;
+    color: white;
+    position: relative;
+    width: max-content;
+    &::after {
+      content: '';
+      position: absolute;
+      height: 5px;
+      width: 25px;
+      background-color: yellow;
+      bottom: -10px;
+      right: 0px;
+    }
+}
