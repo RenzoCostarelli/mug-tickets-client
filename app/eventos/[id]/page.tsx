@@ -12,10 +12,11 @@ async function getEventById(id: string) {
 
 export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
-    console.log('event', event)
-    const date = new Date(event.date)
+    console.log("🚀 ~ file: page.tsx:15 ~ Event ~ event:", event.date)
+    
+    const date = new Date(event?.dates[0]?.date)
     let dateStr = date.toLocaleDateString(); 
-    let timeStr = date.toLocaleTimeString();
+    let timeStr = `${date.toLocaleTimeString().split(':')[0]}:${date.toLocaleTimeString().split(':')[1]}`;
     
     return (
         <main>
@@ -61,7 +62,7 @@ export default async function Event({params}: {params: {id: string}}) {
                         <div className={s.box}>
                             <div className={s.card_image}>
                                 <Image
-                                    src={event.image}
+                                    src={event.image ?? '/images/flyer__test.jpg'}
                                     alt={event.title}
                                     priority
                                     fill

@@ -1,31 +1,58 @@
 'use client'
 
 import { useSession } from "next-auth/react"
+import style from "./create-event-form.module.scss"
+import { useState } from "react";
 
-export default function EventForm({ event }: any) {
+type EventProps = {
+    event: EventData,
+}
+
+type EventData = {
+    eventId: string;
+    title: string;
+    description: string;
+    address: string;
+    eventType: string;
+    ticketsAvailableOnline: number;
+    hasLimitedPlaces: boolean;
+    //date: string;
+}
+
+export default function EventForm({ event }: EventProps) {
     const { data: session } = useSession();
-    /*async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    const [data, setData] = useState<EventData>(event);
+    
+    async function handleSubmit(event: any) {
         event.preventDefault()
-     
-        const formData = new FormData(event.currentTarget)
-        const response = await fetch('/api/admin', {
-          method: 'POST',
-          body: formData,
+        const formData = new FormData(event.currentTarget);
+        
+        const response = await fetch('/api/admin/eventos', {
+            method: 'POST',
+            body: formData,
         })
-     
+    
         // Handle response if necessary
         const data = await response.json()
+        
         // ...
-      }*/
+      }
+
+      const handleInputChange = (event: any) => {
+        const { name, value, type, checked } = event.target;
+        
+        setData(values => ({
+          ...values,
+          [name]: type === 'checkbox' ? checked : value
+        }));
+        
+        console.log("🚀 ~ file: index.tsx:49 ~ handleInputChange ~ data:", data)
+      };
    
     return (
-        <form action='/api/admin/eventos' method='POST'
-            style={{
-                backgroundColor: 'white',
-                padding: '7px 1rem',
-                textAlign: 'center',
-                borderRadius: 5
-            }}>
+        <form 
+            onSubmit={handleSubmit}
+            className={style.form}>
             <input 
                 type="hidden"
                 name="email"
@@ -37,58 +64,96 @@ export default function EventForm({ event }: any) {
             <input 
                 type="hidden"
                 name="eventId"
-                value={event?.eventId || ''}/>
-            <label>Título de tu evento</label>
-            <input 
-                id="title"
-                name="title"
-                value={event?.title || ''}
-                required
-                />
-            <label>description</label>       
-            <textarea 
-                id="description" 
-                name="description"
-                aria-label="minimum height"
-                placeholder="Minimum 3 rows" 
-                value={event?.description || ''}
-                ></textarea>
-            <label>Location</label>
-            <input 
-                id="location" 
-                name="location"
-                required
-                value={event?.address || ''}
-                />
-            <label>Tipo de evento</label>
-            <input 
-                type="string"
-                id="eventType" 
-                name="eventType"
-                required
-                value={event?.eventType || ''}
-                />
-            <label>Localidades</label>
-            <input  
-                type="number"
-                id="availables" 
-                name="availables"
-                required
-                value={event?.ticketsAvailableOnline || ''}
-                />
-                 <label style={{
-                  color:'black'
-                 }}>Lugares limitados</label> 
-            <input type="checkbox"
-              checked={event?.hasLimitedPlaces? true : false}/>
+                value={event?.eventId}/>
 
-            <input
-                id="date"
-                name="date"
-                type="date"
-                autoComplete='true'
-                required
-                />
+            <div className={style.form_control}>
+                <label className={style.label}>Título de tu evento</label>
+                <input 
+                    id="title"
+                    name="title"
+                    value={data?.title}
+                    onChange={handleInputChange}
+                    required
+                    />
+            </div>
+            <div className={style.form_control}>
+                <label className={style.label}>Description</label>       
+                <textarea 
+                    id="description" 
+                    name="description"
+                    aria-label="minimum height"
+                    placeholder="Minimum 3 rows"
+                    value={data?.description}
+                    onChange={handleInputChange}
+                    ></textarea>
+            </div>
+            <div className={style.form_control}>
+                <label className={style.label}>Dirección</label>
+                <input 
+                    type="string"
+                    id="address" 
+                    name="address"
+                    required
+                    value={data?.address}
+                    onChange={handleInputChange}
+                    />
+            </div>
+            <div className={style.form_control}>                
+                <label className={style.label}>Tipo de evento</label>
+                <input 
+                    type="string"
+                    id="eventType" 
+                    name="eventType"
+                    required
+                    value={data?.eventType}
+                    onChange={handleInputChange}
+                    />
+            </div>
+            <div className={style.form_control}>                
+                <label className={style.label}>Localidades</label>
+                <input  
+                    type="number"
+                    id="ticketsAvailableOnline" 
+                    name="ticketsAvailableOnline"
+                    required
+                    value={data?.ticketsAvailableOnline}
+                    onChange={handleInputChange}
+                    />
+            </div>
+            <div className={style.form_control}> 
+                <label className={style.label}>Lugares limitados</label> 
+                <input type="checkbox"
+                    id="hasLimitedPlaces"
+                    name="hasLimitedPlaces"
+                    checked={data?.hasLimitedPlaces}
+                    onChange={handleInputChange}
+                    />
+            </div>
+            { /**
+             * <div className={style.form_control}> 
+                <label className={style.label}>Fecha</label>
+                <input
+                    id="date"
+                    name="date"
+                    type="date"
+                    autoComplete='true'
+                    min={new Date().toJSON().split('T')[0]}
+                    value={data?.date}
+                    required
+                    onChange={handleInputChange}
+                    />
+                <label className={style.label}>Hora</label>
+                <input
+                    id="hour"
+                    name="hour"
+                    type="time"
+                    required
+                    onChange={handleInputChange}
+                    />
+            </div>
+             */}
+            <div className={style.form_control}> 
+            </div>
             <button
                 type="submit">Guardar Evento</button>          
         </form>

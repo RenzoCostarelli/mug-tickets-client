@@ -1,5 +1,5 @@
-import Navbar from '@/app/components/nav-bar';
 import '../styles/global.scss';
+import Navbar from '@/app/components/nav-bar';
 
 export const metadata = {
   title: 'User Mug Tickets'

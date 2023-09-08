@@ -6,7 +6,7 @@ import s from './nav-bar.module.scss';
 import { useSession } from 'next-auth/react';
 import SignOutButton from '../sign-out-button';
 import DashboardButton from '../dashboard-button';
-import { Avatar } from '@mui/material';
+
 import GoogleButton from '../google-button';
 import { usePathname } from 'next/navigation'
 
@@ -16,9 +16,11 @@ export default function Navbar() {
     const userType = session?.user.role;
     return (        
         <div className={s.nav_bar}>
-            <Avatar 
+            <Image 
                 src="https://res.cloudinary.com/dxvxzikri/image/upload/v1692558761/dzmlypgcmhpkb5x6seh4.jpg"
-                alt='MUG'/>                
+                alt='MUG'
+                width={50}
+                height={50}/>                
             <nav className={s.main_navigation}>
                 <ul className={s.links}>
                     <li className={s.link}>

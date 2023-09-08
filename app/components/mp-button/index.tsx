@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useState } from 'react'
 import { Product } from '@/app/types/product'
 import s from './mp-button.module.scss'
@@ -6,13 +7,12 @@ interface MpButtonProps {
     product: Product
 }
 
-export function MpButton ({product}: MpButtonProps) {
+export function MpButton ({ product }: MpButtonProps) {
   const [url, setUrl] = useState<null | string>(null)
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const generateLink = async () => {
-      console.log('producto', product)
       setLoading(true)
       try {
         const callApi = async () => {
@@ -22,9 +22,10 @@ export function MpButton ({product}: MpButtonProps) {
           })
           return preference
         }
-        const algo = await callApi();
-        console.log('preference', algo.url)
-        setUrl(algo.url)
+        const response = await callApi();
+        const data = await response.json()
+        
+        setUrl(data?.response?.sandbox_init_point)
         setLoading(false)
       } catch (error) {
         console.error(error)
@@ -33,17 +34,14 @@ export function MpButton ({product}: MpButtonProps) {
 
     generateLink()
   }, [product])
-  
 
   return (
-    <div>
-        {
-            loading ? (
-            <button disabled className={s.mp_button}>Pagarrrr</button>
-            ) : (
-                <a href={url!} className={s.mp_button}>Pagar ahora si {url}</a>
-            )
-        }
+    <div style={{
+      marginBottom: 4,
+      textAlign: 'center'
+    }}>
+      {loading ? (<p>Cargando</p>) 
+      : (<a href={url!} className={s.mp_button}>Pagar</a>)}
     </div>
   )
 }

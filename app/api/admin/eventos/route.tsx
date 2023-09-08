@@ -6,22 +6,18 @@ export async function POST(request: NextRequest) {
   const formData = await request.formData();
   const token = formData.get('token');
 
+  const hasLimitedPlaces = formData.get('hasLimitedPlaces') === 'on' ? true : false; 
   const bodyData = {
-    "creatorId": "64cd42cb68560e328c553fbf",
-    "email": formData.get('email'),
-    "eventType": formData.get('eventType'),
-    "title": formData.get('title'), 
-    "description": formData.get('description'), 
-    "address": formData.get('location'),
-    "dates": [
-      {
-        "date": `${formData.get('date')}T20:00:00.000Z`
-      }
-    ],
-    "ticketsAvailableOnline": formData.get('availables'),
-    "hasLimitedPlaces": formData.get('limitedPlaces') || false,
-    "ticketPurchaseDeadline": `${formData.get('date')}T20:00:00.000Z`
+    creatorId: "64cd42cb68560e328c553fbf",
+    email: formData.get('email'),
+    eventType: formData.get('eventType'),
+    title: formData.get('title'), 
+    description: formData.get('description'), 
+    address: formData.get('address'),
+    ticketsAvailableOnline: formData.get('ticketsAvailableOnline'),
+    hasLimitedPlaces:  hasLimitedPlaces
   }
+  //console.log('bodyData', bodyData)
   
   const res = await fetch('https://mug-tickets-server.vercel.app/api/events/', {
     method: 'POST',
@@ -41,7 +37,6 @@ export async function GET(request: NextRequest, response: NextResponse) {
   const headersList = headers();
   const token = headersList.get("Authorization");
 
-  console.log(token);
   const res = await fetch('https://mug-tickets-server.vercel.app/api/admins/', {
     method: 'GET',
     headers: {
