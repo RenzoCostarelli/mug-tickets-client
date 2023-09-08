@@ -2,6 +2,7 @@ import Navbar from '@/app/components/nav-bar';
 import s from './page.module.scss'
 import HeroBanner from './components/hero-banner'
 import EventsList from './components/events-list'
+import Toasty from './components/toasty';
 
 async function getData() {
   const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});
@@ -25,6 +26,7 @@ export default async function Home() {
             <h1>PROXIMOS SHOWS</h1>
             <div className={s.event_cards_container}>
               <EventsList props={events}/>
+              <Toasty msg="hi from toasty" type="success"/>
             </div>
           </section>
         </main>

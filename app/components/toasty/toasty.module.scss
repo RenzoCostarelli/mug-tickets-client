@@ -1,0 +1,16 @@
+@import '../../styles/functions';
+@import '../../styles/colors';
+
+.toast_container {
+    position: fixed;
+    width: max-content;
+    margin-inline: auto;
+    border-radius: 5rem;
+    color: white;
+    z-index: 99;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    padding: 1rem 2rem;
+    font-weight: bold;
+}
