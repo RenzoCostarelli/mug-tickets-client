@@ -16,34 +16,37 @@ type EventData = {
     eventType: string;
     ticketsAvailableOnline: number;
     hasLimitedPlaces: boolean;
-    date: string;
+    //date: string;
 }
 
 export default function EventForm({ event }: EventProps) {
     const { data: session } = useSession();
-    console.log(event)
     const [data, setData] = useState<EventData>(event);
-
+    
     async function handleSubmit(event: any) {
         event.preventDefault()
         const formData = new FormData(event.currentTarget);
-
+        
         const response = await fetch('/api/admin/eventos', {
-        method: 'POST',
-        body: formData,
+            method: 'POST',
+            body: formData,
         })
     
         // Handle response if necessary
         const data = await response.json()
-        console.log(data)
+        
         // ...
       }
 
       const handleInputChange = (event: any) => {
+        const { name, value, type, checked } = event.target;
+        
         setData(values => ({
           ...values,
-          [event.target.name]: event.target.value,
+          [name]: type === 'checkbox' ? checked : value
         }));
+        
+        console.log("🚀 ~ file: index.tsx:49 ~ handleInputChange ~ data:", data)
       };
    
     return (
@@ -120,11 +123,14 @@ export default function EventForm({ event }: EventProps) {
             <div className={style.form_control}> 
                 <label className={style.label}>Lugares limitados</label> 
                 <input type="checkbox"
-                    id="limitedPlaces"
-                    checked={data?.hasLimitedPlaces? true : false}
-                    onChange={handleInputChange}/>
+                    id="hasLimitedPlaces"
+                    name="hasLimitedPlaces"
+                    checked={data?.hasLimitedPlaces}
+                    onChange={handleInputChange}
+                    />
             </div>
-            <div className={style.form_control}> 
+            { /**
+             * <div className={style.form_control}> 
                 <label className={style.label}>Fecha</label>
                 <input
                     id="date"
@@ -132,7 +138,7 @@ export default function EventForm({ event }: EventProps) {
                     type="date"
                     autoComplete='true'
                     min={new Date().toJSON().split('T')[0]}
-                    value={data?.ticketsAvailableOnline}
+                    value={data?.date}
                     required
                     onChange={handleInputChange}
                     />
@@ -145,6 +151,7 @@ export default function EventForm({ event }: EventProps) {
                     onChange={handleInputChange}
                     />
             </div>
+             */}
             <div className={style.form_control}> 
             </div>
             <button

@@ -9,8 +9,8 @@ type EventData = {
     eventType: string;
     ticketsAvailableOnline: number;
     hasLimitedPlaces: boolean;
-    date: string;
-    hour: string;
+    //date: string;
+    //hour: string;
 }
 
 const EVENT_INITIAL_DATA = {
@@ -21,8 +21,8 @@ const EVENT_INITIAL_DATA = {
     eventType: "",
     ticketsAvailableOnline: 0,
     hasLimitedPlaces: false,
-    date: "",
-    hour: ""
+    //date: "",
+    //hour: ""
 }
 
 export default async function AdminEvents() {
