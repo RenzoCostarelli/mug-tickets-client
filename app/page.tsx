@@ -1,14 +1,11 @@
-import Navbar from '@/app/components/nav-bar';
 import s from './page.module.scss'
-import HeroBanner from './components/hero-banner'
 import EventsList from './components/events-list'
-import Toasty from './components/toasty';
 
 async function getData() {
   const res = await fetch(`${process.env.apiUrl}/events`, {cache: 'no-store'});
   if (!res.ok) {
     throw new Error('Failed to fetch home data');
-  } 
+  }
   return res.json();
 }
 
@@ -17,16 +14,11 @@ export default async function Home() {
   
   return (
       <>
-        <Navbar />
-        <header>
-          <HeroBanner />
-        </header>  
         <main className={s.main}>
           <section className={s.next_events}>
-            <h1>PROXIMOS SHOWS</h1>
+            <h1 className={'big-title'}>PROXIMOS SHOWS</h1>
             <div className={s.event_cards_container}>
               <EventsList props={events}/>
-              <Toasty msg="hi from toasty" type="success"/>
             </div>
           </section>
         </main>

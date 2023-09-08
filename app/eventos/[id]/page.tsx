@@ -12,7 +12,6 @@ async function getEventById(id: string) {
 
 export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
-    console.log("🚀 ~ file: page.tsx:15 ~ Event ~ event:", event.date)
     
     const date = new Date(event?.dates[0]?.date)
     let dateStr = date.toLocaleDateString(); 

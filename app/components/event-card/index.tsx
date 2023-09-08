@@ -11,19 +11,16 @@ export default function EventCard({showInfo}:any) {
                 <div className={s.card_image}>
                     <Image
                         src={showInfo.image ?? "/images/flyer__test.jpg"}
-                        fill={true}
+                        fill
                         alt={showInfo.title}
-                        loading='lazy'
                     />
                 </div>
                 <div className={s.cardBody}>
-                    <h1 className={s.cardTitle}>{showInfo.title}</h1>
                     <div className={s.date}>
                         <div className={s.day}>23/02/2023</div>                    
                         <div className={s.time}>23:00hs</div>
                     </div>
-
-                    <p className={s.description}>Lorem ipsum dolor sit.</p>
+                    <h1 className={s.cardTitle}>{showInfo.title}</h1>
                 </div>
             </div>
         </Link>
