@@ -14,6 +14,8 @@ interface BuyFormProps {
     type: string;
 }
 
+
+
 export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps) {
     const { data: session } = useSession();
 
@@ -93,6 +95,12 @@ export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps)
     )
 }
 
+
+
+interface Quantities {
+    [ticketType: string]: number;
+}
+
 export default function FormPurchase ({event}: any) {
   const date = new Date(event.date)
   let dateStr = date.toLocaleDateString(); 
@@ -101,6 +109,8 @@ export default function FormPurchase ({event}: any) {
   const [quantity, setQuantity] = useState<number>(1)
   const [total, setTotal] = useState<number>(event.price)
   const [showCheckout, setShowCheckout] = useState<boolean>(false)
+  const [quantities, setQuantities] = useState<Quantities>({});
+  const [globalTotal, setGlobalTotal] = useState(0);
   const [product, setProduct] = useState<Product>({
     id: 123,
     title: "Nombre del evento",
@@ -122,6 +132,23 @@ export default function FormPurchase ({event}: any) {
     setShowCheckout(true)
   } 
 
+  const handleQuantityChange = (type: any, price: any, event: any, ticketsTypeList: any[]) => {
+        const selectedQuantity = parseInt(event.target.value)
+        
+        setQuantities(prev => {
+            const updatedQuantities: Quantities = { ...prev, [type]: selectedQuantity }
+
+            const newTotal = Object.keys(updatedQuantities).reduce((acc, ticketType) => {
+                const ticketPrice = ticketsTypeList.find(ticket => ticket.type === ticketType)?.price || 0;
+                return acc + (updatedQuantities[ticketType] || 0) * ticketPrice;
+            }, 0)
+
+            setGlobalTotal(newTotal)
+            
+            return updatedQuantities
+        });
+    };
+
   const calculateTotal = (e: ChangeEvent<HTMLSelectElement>) => {
     const qty = parseInt(e.target.value)
     setQuantity(qty)
@@ -131,21 +158,20 @@ export default function FormPurchase ({event}: any) {
   return (
       <div className={s.price_grid}>
           <div className={s.grid_header}>
-              <div className={s.type}>Tipo</div>
+              <div className={s.type}></div>
               <div className={s.price}>Precio</div>
               <div className={s.quantity}>Cantidad</div>
-              {/* <div className={s.total}>Total</div> */}
+              <div className={s.total}>Total</div>
           </div>
-
-          {/* cambiar a un componente */}
           {event.ticketsTypeList.map((ticket: any) => (// usar type de ticket
             <div className={`${s.grid_content}`} key={ticket.type}>
-                <div className={s.type}>{ticket.type}</div>
-                <div className={s.price}>$ {ticket.price}</div>
+                <div className={s.type}>{ ticket.type }</div>
+                <div className={s.price}>$ { ticket.price }</div>
                 <div className={s.quantity}>
                     <select name="quantity" 
                             id="quantity"
-                            disabled={ticket.Purchased < ticket.ticketsAvailableOnline}>
+                            disabled={ticket.Purchased < ticket.ticketsAvailableOnline}
+                            onChange={(e) => handleQuantityChange(ticket.type, ticket.price, e, event.ticketsTypeList)}>
                         <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -154,16 +180,14 @@ export default function FormPurchase ({event}: any) {
                         <option value="5">5</option>
                     </select>
                 </div>
-                <div className={s.total}>$ {total}</div>
             </div>
-
-          ))
-
+            ))
           }
+          <div>Total: $ {globalTotal}</div>
           {!showCheckout && 
             <div className={s.buy}>
               <MpButton product={product}/> 
-              <button type="submit" onClick={handleCheckoutClick}>Comprar</button>
+              <button type="submit" onClick={handleCheckoutClick}>Continuar</button>
             </div>
           }
           {showCheckout && 
@@ -172,7 +196,7 @@ export default function FormPurchase ({event}: any) {
                 price={event.price}
                 total={total}
                 quantity={quantity}
-                type={"General"}/>
+                type={event.type}/>
           }
       </div>
   )

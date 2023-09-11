@@ -11,12 +11,12 @@
     .grid_header,
     .grid_content {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         place-items: center;
     }
     .grid_content {
         background-color: rgb(235, 235, 235);
-        padding-block: 0.5rem;
+        padding-block: 1rem;
     }
     .buy {
         margin-inline: auto;

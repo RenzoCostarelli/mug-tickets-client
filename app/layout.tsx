@@ -7,8 +7,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: '-MUG- tickets',
-  description: 'Tickets MUG',
+  title: 'MUG tickets -',
+  description: 'Plataforma de venta de tickets online del MUG',
 }
 
 export default function RootLayout({
