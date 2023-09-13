@@ -1,5 +1,7 @@
-import s from './evento.module.scss';
+import s from './page.module.scss';
 import EventForm from '@/app/components/dashboard-event-form';
+import DropdownList from '@/app/components/dashboard-form-wrapper';
+import { TicketTypeData } from "@/app/types/ticket";
 import TicketForm from '@/app/components/dashboard-ticket-form';
 
 async function getEventById(id: string) {
@@ -10,19 +12,27 @@ async function getEventById(id: string) {
     return res.json();
 }
 
-export default async function PageEvents({params}: {params: {id: string}}) {
+
+const TICKET_INITIAL_DATA = {
+    eventId: "",
+    _id: "",
+    type: "",
+    date: "",
+    hour: "",
+    price: 0,
+    ticketsAvailableOnline: 0,
+    ticketPurchaseDeadline: ""
+}
+
+export default async function PageEvents({ params }: { params: { id: string } }) {
     const { event }  = await getEventById(params.id);
-    
+    const ticket: TicketTypeData = TICKET_INITIAL_DATA;
+    ticket.eventId = event.eventId ?? '';
+
     return(
-        <main>
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    
-                }}>
+        <main className={s.main}>
+            <div 
+                className={s.title_header}>
                 <h2 style={{ 
                     marginBottom:2, 
                     marginTop: 2 
@@ -30,30 +40,14 @@ export default async function PageEvents({params}: {params: {id: string}}) {
                     Crear Evento
                 </h2>
             </div>
-            <div>                
+            <div className={s.main_container}>                
                 <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        //backgroundColor: 'white',
-                        padding: '15px',
-                        borderRadius: '10px'
-                    }}>
+                    className={s.event_form_container}>
                         <EventForm event={ event }/>
                 </div>            
                 <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        //backgroundColor: 'white',
-                        padding: 1,
-                        borderRadius: '10px'
-                    }}>
-                        <TicketForm />
+                    className={s.ticket_form_container}>
+                        <DropdownList event={ event }/>
                 </div>            
             </div>            
         </main>

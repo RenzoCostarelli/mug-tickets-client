@@ -1,17 +1,8 @@
 import EventForm from "@/app/components/dashboard-event-form";
 import TicketForm from "@/app/components/dashboard-ticket-form";
+import { EventData } from "@/app/types/event";
+import { TicketTypeData } from "@/app/types/ticket";
 
-type EventData = {
-    eventId: string;
-    title: string;
-    description: string;
-    address: string;
-    eventType: string;
-    ticketsAvailableOnline: number;
-    hasLimitedPlaces: boolean;
-    //date: string;
-    //hour: string;
-}
 
 const EVENT_INITIAL_DATA = {
     eventId: "",
@@ -20,13 +11,24 @@ const EVENT_INITIAL_DATA = {
     address: "",
     eventType: "",
     ticketsAvailableOnline: 0,
-    hasLimitedPlaces: false,
-    //date: "",
-    //hour: ""
+    hasLimitedPlaces: false
+}
+
+const TICKET_INITIAL_DATA = {
+    eventId: "",
+    _id: "",
+    type: "",
+    date: "",
+    hour: "",
+    price: 0,
+    ticketsAvailableOnline: 0,
+    ticketPurchaseDeadline: ""
 }
 
 export default async function AdminEvents() {
     const event: EventData = EVENT_INITIAL_DATA;
+    const ticket: TicketTypeData = TICKET_INITIAL_DATA;
+
     return(
         <main>
             <div style={{
@@ -63,7 +65,7 @@ export default async function AdminEvents() {
                         borderRadius: '10px',
                         width: '50%'
                     }}>
-                        {/** <TicketForm /> */}
+                        <TicketForm ticket={ ticket }/>
                 </div>
             </div>
                         

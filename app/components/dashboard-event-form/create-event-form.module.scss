@@ -1,12 +1,14 @@
 @import '../../styles/functions';
 
 .form {    
-    background-color: white !important;
+    //background-color: white !important;
     padding: 1.5rem 1rem;
     text-align: center;
+    border: 0.5px solid #888;
     border-radius: 1rem;
     max-width: 960px;
     width: 100%;
+    margin-bottom: 1rem;
 
    .form_control {
         display: flex;
@@ -16,7 +18,7 @@
     
         .label {
             text-align: left;
-            color: black;
+            color: #888;
             min-width: 30%;
         }
 
@@ -25,6 +27,8 @@
             padding: 0.7rem 0.5rem;
             border-radius: 5px;
             border: 0.5px solid lightgray;
+            background-color: transparent;
+            color: #e4e4e4;
         }
     
         textarea {
@@ -33,6 +37,8 @@
             border-radius: 5px;
             min-height: 5rem;
             border: 0.5px solid lightgray;
+            background-color: transparent;
+            color: #e4e4e4;
         }
 
    }
@@ -52,7 +58,6 @@
         text-transform: uppercase;
         min-width: 64px;
         padding: 8px 22px;
-        border-radius: 4px;
     }
 
 }

@@ -3,51 +3,39 @@
 import { useSession } from "next-auth/react"
 import style from "./create-event-form.module.scss"
 import { useState } from "react";
+import { EventData } from "@/app/types/event";
 
 type EventProps = {
     event: EventData,
 }
 
-type EventData = {
-    eventId: string;
-    title: string;
-    description: string;
-    address: string;
-    eventType: string;
-    ticketsAvailableOnline: number;
-    hasLimitedPlaces: boolean;
-    //date: string;
-}
-
 export default function EventForm({ event }: EventProps) {
     const { data: session } = useSession();
     const [data, setData] = useState<EventData>(event);
-    
+    //console.log(data)
     async function handleSubmit(event: any) {
         event.preventDefault()
         const formData = new FormData(event.currentTarget);
-        
+        const eventId = formData.get('eventId') as string;
         const response = await fetch('/api/admin/eventos', {
-            method: 'POST',
+            method: eventId? 'PUT' : 'POST',
             body: formData,
         })
     
         // Handle response if necessary
         const data = await response.json()
-        
+        //console.log(data)
         // ...
-      }
+    }
 
-      const handleInputChange = (event: any) => {
-        const { name, value, type, checked } = event.target;
-        
-        setData(values => ({
-          ...values,
-          [name]: type === 'checkbox' ? checked : value
-        }));
-        
-        console.log("🚀 ~ file: index.tsx:49 ~ handleInputChange ~ data:", data)
-      };
+    const handleInputChange = (event: any) => {
+    const { name, value, type, checked } = event.target;
+    
+    setData(values => ({
+        ...values,
+        [name]: type === 'checkbox' ? checked : value
+    }));        
+    };
    
     return (
         <form 
@@ -64,7 +52,7 @@ export default function EventForm({ event }: EventProps) {
             <input 
                 type="hidden"
                 name="eventId"
-                value={event?.eventId}/>
+                value={data?.eventId}/>
 
             <div className={style.form_control}>
                 <label className={style.label}>Título de tu evento</label>
@@ -128,32 +116,8 @@ export default function EventForm({ event }: EventProps) {
                     checked={data?.hasLimitedPlaces}
                     onChange={handleInputChange}
                     />
-            </div>
-            { /**
-             * <div className={style.form_control}> 
-                <label className={style.label}>Fecha</label>
-                <input
-                    id="date"
-                    name="date"
-                    type="date"
-                    autoComplete='true'
-                    min={new Date().toJSON().split('T')[0]}
-                    value={data?.date}
-                    required
-                    onChange={handleInputChange}
-                    />
-                <label className={style.label}>Hora</label>
-                <input
-                    id="hour"
-                    name="hour"
-                    type="time"
-                    required
-                    onChange={handleInputChange}
-                    />
-            </div>
-             */}
-            <div className={style.form_control}> 
-            </div>
+            </div>            
+            
             <button
                 type="submit">Guardar Evento</button>          
         </form>
