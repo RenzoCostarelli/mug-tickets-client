@@ -1,3 +1,5 @@
+import { TicketTypeData } from "./ticket";
+
 export type EventData = {
     eventId: string;
     title: string;
@@ -6,4 +8,5 @@ export type EventData = {
     eventType: string;
     ticketsAvailableOnline: number;
     hasLimitedPlaces: boolean;
+    ticketsTypeList: TicketTypeData[]
 }
