@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react"
 import style from "./create-event-form.module.scss"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EventData } from "@/app/types/event";
 
 type EventProps = {
@@ -12,7 +12,7 @@ type EventProps = {
 export default function EventForm({ event }: EventProps) {
     const { data: session } = useSession();
     const [data, setData] = useState<EventData>(event);
-    //console.log(data)
+    
     async function handleSubmit(event: any) {
         event.preventDefault()
         const formData = new FormData(event.currentTarget);
@@ -23,9 +23,12 @@ export default function EventForm({ event }: EventProps) {
         })
     
         // Handle response if necessary
-        const data = await response.json()
-        //console.log(data)
+        const { ok, newEvent, message} = await response.json();
+        if(ok) {
+            setData(newEvent)
+        }
         // ...
+        
     }
 
     const handleInputChange = (event: any) => {
@@ -47,15 +50,10 @@ export default function EventForm({ event }: EventProps) {
                 value={session?.user.email || ''}/>
             <input 
                 type="hidden"
-                name="token"
-                value={session?.user.token || ''}/>
-            <input 
-                type="hidden"
                 name="eventId"
                 value={data?.eventId}/>
-
             <div className={style.form_control}>
-                <label className={style.label}>Título de tu evento</label>
+                <label className={style.label}>Nombre del evento</label>
                 <input 
                     id="title"
                     name="title"
