@@ -5,24 +5,21 @@ import a from './login.module.scss';
 export default function LoginAdmin() {
   
   return (
-    <main>
-      <div
-        style={{
-            textAlign: 'center',
-            backgroundColor: 'white',
-            padding: '1rem',
-            marginTop: '1rem',
-            borderRadius: '10px'
-        }}>            
-        <div>
-          <h2 style={{
-            color: 'black'
-          }}>
-            Login
-          </h2>
-        </div>
-        <FormLogin />            
-      </div>        
+    <main  
+      style={{
+          textAlign: 'center',
+          padding: '1rem',
+          marginTop: '1rem',
+          borderRadius: '10px'
+      }}>          
+      <div>
+        <h2 style={{
+          color: '#e4e4e4'
+        }}>
+          Login
+        </h2>
+      </div>
+      <FormLogin />        
     </main>
   );
 }
