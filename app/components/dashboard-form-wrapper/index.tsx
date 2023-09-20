@@ -21,13 +21,16 @@ const TICKET_INITIAL_DATA = {
 
 export default function DropdownList({ event }: any) {   
     const { ticketsTypeList = [] } = event;    
+
     const initTickets = useTicketsStore((state) => state.initTickets);    
     const tickets = useTicketsStore((state) => state.tickets);
+    
     const newTicket: TicketTypeData = { 
         ...TICKET_INITIAL_DATA, 
         eventId: event.eventId ?? '' 
     };
-    
+
+    console.log(event)
     useEffect(() => {
         initTickets(ticketsTypeList)
     }, [ticketsTypeList])

@@ -73,17 +73,17 @@ export default function TicketForm({ ticket }: EventProps) {
                     <input 
                         type="hidden"
                         name="ticketId"
-                        value={data?._id || ''}/>
-                        <input 
+                        value={data?._id || data?.ticketId || ''}/>
+                    <input 
                         type="hidden"
                         name="eventId"
                         value={data?.eventId || ''}/>
                     <div className={style.form_control}> 
-                        <label className={style.label}>Tipo de entrada</label>
+                        <label htmlFor="type" className={style.label}>Tipo de entrada</label>
                         <input
                             id="type"
                             name="type"
-                            autoComplete='true'
+                            autoComplete='off'
                             value={data.type}
                             placeholder='Título de tu evento'
                             onChange={handleInputChange}
@@ -91,7 +91,7 @@ export default function TicketForm({ ticket }: EventProps) {
                         />
                     </div>
                     <div className={style.form_control}> 
-                        <label className={style.label}>Fecha</label>
+                        <label htmlFor="date" className={style.label}>Fecha</label>
                         <input
                             id="date"
                             name="date"
@@ -104,7 +104,7 @@ export default function TicketForm({ ticket }: EventProps) {
                             />                        
                     </div>
                     <div className={style.form_control}>
-                        <label className={style.label}>Hora</label>
+                        <label htmlFor="hour" className={style.label}>Hora</label>
                         <input
                             id="hour"
                             name="hour"
@@ -115,7 +115,7 @@ export default function TicketForm({ ticket }: EventProps) {
                             />
                     </div>
                     <div className={style.form_control}> 
-                        <label className={style.label}>Precio</label>
+                        <label htmlFor="price" className={style.label}>Precio</label>
                         <input
                             id="price"
                             name="price"
@@ -127,7 +127,7 @@ export default function TicketForm({ ticket }: EventProps) {
                         />
                     </div>
                     <div className={style.form_control}> 
-                        <label className={style.label}>Cantidad disponible</label>
+                        <label htmlFor="ticketsAvailableOnline" className={style.label}>Cantidad disponible</label>
                         <input
                             id="ticketsAvailableOnline"
                             name="ticketsAvailableOnline"

@@ -1,16 +1,36 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signIn } from 'next-auth/react';
   
 export default function FormLogin() {
 
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+  
 
+    const [data, setData] = useState<{email: string | null, password: string | null}>({
+      email: null,
+      password: null
+    });
+
+    /*const [hydrated, setHydrated] = useState<boolean>(false);
+    useEffect(() => {
+      setHydrated(true);
+    }, []);
+    if (!hydrated) {
+      return null;
+    }*/
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;        
+      setData((values: any) => ({
+        ...values,
+        [name]: value
+      }));        
+    };
+    
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      
-      const data = await signIn("credentials", {
+      const { email, password } = data;
+      await signIn("credentials", {
         redirect: true,
         email,
         password,
@@ -28,27 +48,30 @@ export default function FormLogin() {
           margin: 'auto',
           maxWidth: '60vw'
         }}>            
-        <input style={{
+        
+          <label htmlFor='email'>Email</label>
+          <input style={{
               width: '100%',
               marginTop: '1rem',
               marginBottom: '1rem' 
             }}
             type="email"
-            id="email_field"
-            className="form-control"
-            //value={email}
+            id="email"
+            name="email"
             required
-            onChange={(e) => setEmail(e.target.value)}/>
-        <input  style={{
-            width: '100%',
-            marginTop: '1rem',
-            marginBottom: '1rem' 
-          }}
-          type="password"
-          id="password_field"
-          className="form-control"
-          required
-          onChange={(e) => setPassword(e.target.value)}/>
+            onChange={handleInputChange}/>
+        
+          <label htmlFor='password'>Password</label>
+          <input style={{
+              width: '100%',
+              marginTop: '1rem',
+              marginBottom: '1rem' 
+            }}
+            type="password"
+            id="password"
+            name="password"
+            required
+            onChange={handleInputChange}/>       
 
         <button style={{
             width: '100%',

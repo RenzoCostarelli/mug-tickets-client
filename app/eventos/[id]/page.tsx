@@ -5,8 +5,9 @@ import FormPurchase from '@/app/components/form-purchase';
 async function getEventById(id: string) {
     const res = await fetch(`${process.env.apiUrl}/events/${id}`, {cache: 'no-store'});
     if (!res.ok) {
-      throw new Error('Failed to fetch data');
+        throw new Error('Failed to fetch data');
     } 
+    console.log("🚀 ~ file: page.tsx:8 ~ getEventById ~ res:", res)
     return res.json();
 }
 

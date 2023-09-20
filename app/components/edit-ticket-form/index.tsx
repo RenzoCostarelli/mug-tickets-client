@@ -5,6 +5,7 @@ import style from "./page.module.scss"
 import { TicketTypeData } from "@/app/types/ticket";
 import Toasty from "../toasty";
 import useTicketsStore from "@/app/store/ticketsTypeStore";
+import Dialog from "../dialog";
 
 type EventProps = {
     ticket: TicketTypeData;
@@ -18,16 +19,20 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
 
     const [data, setData] = useState<TicketTypeData>(ticket);
     const [toggle, setToggle] = useState<boolean>(false);
+    const [dialog, setDialog] = useState<boolean>(false);
     const removeTicket = useTicketsStore((store) => store.removeTicket);
     
     useEffect(() => {
         setData(ticket);
-    }, [ticket]);
-    
+    }, [ticket]);    
     
     const handleToggleClick = () => {
         setToggle(!toggle);
     };
+
+    const handleDialogClick = () => {
+        setDialog(true)
+    }
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -70,7 +75,19 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
         }
     }
     
+    const onClose = () => {
+        setDialog(false)
+    }
+
+    const onOk = () => handleDelete(data?._id)
+
     return (
+        <>
+        { dialog && (
+            <Dialog title={`Eliminar`} showDialog={dialog} onClose={onClose} onOk={onOk}>
+                <p>Desea eliminar la entrada {data.type}?</p>
+            </Dialog>
+        )}
         <div 
             key={index}>
             <div 
@@ -97,13 +114,13 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                     <input 
                         type="hidden"
                         name="ticketId"
-                        value={data?._id || data?.ticketId || ''}/>
-                        <input 
+                        value={data?._id || ''}/>
+                    <input 
                         type="hidden"
                         name="eventId"
                         value={data?.eventId || ''}/>
                     <div className={style.form_control}> 
-                        <label className={style.label}>Tipo de entrada</label>
+                        <label htmlFor="type" className={style.label}>Tipo de entrada</label>
                         <input
                             id="type"
                             name="type"
@@ -115,7 +132,7 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                         />
                     </div>
                     <div className={style.form_control}> 
-                        <label className={style.label}>Fecha</label>
+                        <label htmlFor="date" className={style.label}>Fecha</label>
                         <input
                             id="date"
                             name="date"
@@ -128,7 +145,7 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                             />                        
                     </div>
                     <div className={style.form_control}>
-                        <label className={style.label}>Hora</label>
+                        <label htmlFor="hour" className={style.label}>Hora</label>
                         <input
                             id="hour"
                             name="hour"
@@ -139,7 +156,7 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                             />
                     </div>
                     <div className={style.form_control}> 
-                        <label className={style.label}>Precio</label>
+                        <label htmlFor="price" className={style.label}>Precio</label>
                         <input
                             id="price"
                             name="price"
@@ -151,7 +168,7 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                         />
                     </div>
                     <div className={style.form_control}> 
-                        <label className={style.label}>Cantidad disponible</label>
+                        <label htmlFor="ticketsAvailableOnline" className={style.label}>Cantidad disponible</label>
                         <input
                             id="ticketsAvailableOnline"
                             name="ticketsAvailableOnline"
@@ -178,13 +195,13 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                                 borderRadius: '5px',
                                 marginLeft: '1rem'
                             }}
-                            onClick={() => handleDelete(data?._id ?? data?.ticketId)}>
+                            onClick={handleDialogClick}>
                                 <svg 
                                     xmlns="http://www.w3.org/2000/svg" 
                                     height="1em" 
                                     viewBox="0 0 448 512"
                                     style={{
-                                        fill: '#888'
+                                        fill: '#02fba0'
                                     }}>
                                     <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
                             </button>
@@ -192,5 +209,6 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                 </form>
             </div>
         </div>
+        </>
     )
 }

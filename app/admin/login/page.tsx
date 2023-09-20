@@ -1,6 +1,10 @@
-
-import FormLogin from '@/app/components/form-login';
 import a from './login.module.scss';
+import { Suspense } from 'react';
+import FormLogin from '@/app/components/form-login';
+
+function Loading() {
+  return <h2>🌀 Loading...</h2>;
+}
 
 export default function LoginAdmin() {
   
@@ -18,8 +22,8 @@ export default function LoginAdmin() {
         }}>
           Login
         </h2>
-      </div>
-      <FormLogin />        
+      </div>      
+        <FormLogin />      
     </main>
   );
 }

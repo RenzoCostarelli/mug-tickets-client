@@ -8,6 +8,7 @@ const EVENT_INITIAL_DATA = {
     title: "",
     description: "",
     address: "",
+    image:"",
     eventType: "",
     ticketsAvailableOnline: 0,
     hasLimitedPlaces: false,
@@ -23,7 +24,8 @@ export default async function AdminEvents() {
                 className={s.title_header}>
                 <h2 style={{ 
                     marginBottom:2,
-                    marginTop: 2 
+                    marginTop: 2 ,
+                    textTransform: 'uppercase',
                     }}>
                     Crear Evento
                 </h2>

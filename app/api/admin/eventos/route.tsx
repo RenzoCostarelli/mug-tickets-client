@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
-import { headers } from 'next/dist/client/components/headers';
  
 export async function POST(request: NextRequest) {
   const account = await getToken({ req: request, secret: process.env.SECRET });
