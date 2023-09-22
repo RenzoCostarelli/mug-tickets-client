@@ -52,12 +52,7 @@ export default function DropdownList({ event }: any) {
                     borderRadius: '30px',
                     padding: 15,
                 }}>                
-                    <div style={{                    
-                        maxHeight: '68vh',
-                        overflowX: 'hidden',
-                        overflowY: 'scroll',
-                        paddingRight: '10px',
-                    }}>
+                    <div>
                         
                         { 
                             tickets.map((ticket: TicketTypeData, index: number) => (

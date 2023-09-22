@@ -56,7 +56,7 @@ export default function TicketForm({ ticket }: EventProps) {
                     padding: '5px 12px',
                     cursor: 'pointer'
                 }}>
-                { data.type || 'Crear un ticket nuevo' }
+                { data.type || 'Crear entrada' }
             </div>
             <div 
                 className={style.dropdown_list_content} 

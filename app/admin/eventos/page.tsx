@@ -10,9 +10,11 @@ const EVENT_INITIAL_DATA = {
     address: "",
     image:"",
     eventType: "",
+    price: 0,
     ticketsAvailableOnline: 0,
     hasLimitedPlaces: false,
-    ticketsTypeList: []
+    ticketsTypeList: [],
+    purchasedTicketsList: []
 }
 
 export default async function AdminEvents() {
@@ -27,7 +29,7 @@ export default async function AdminEvents() {
                     marginTop: 2 ,
                     textTransform: 'uppercase',
                     }}>
-                    Crear Evento
+                    CREAR EVENTO
                 </h2>
             </div>            
             <div
@@ -35,10 +37,7 @@ export default async function AdminEvents() {
                 <div
                     className={s.event_form_container}>
                         <EventForm event={ event }/>
-                </div>
-                <div
-                    className={s.ticket_form_container}>
-                        <DropdownList event={ event }/>
+                        {/**<DropdownList event={ event }/> */}
                 </div>
             </div>                        
         </main>

@@ -2,14 +2,9 @@
 
 import { useSession } from "next-auth/react"
 import style from "./create-event-form.module.scss"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { EventData } from "@/app/types/event";
 import { useRouter } from 'next/navigation';
-import ImageUploader from "../image-uploader";
-
-type EventProps = {
-    event: EventData,
-}
 
 const EVENT_INITIAL_DATA = {
     eventId: "",
@@ -20,25 +15,16 @@ const EVENT_INITIAL_DATA = {
     eventType: "",
     ticketsAvailableOnline: 0,
     hasLimitedPlaces: false,
-    ticketsTypeList: []
+    ticketsTypeList: [],
+    price: 0, 
+    purchasedTicketsList: [],
 }
 
-export default function EventForm({ event }: EventProps) {
-    const { data: session } = useSession();
+export default function EventForm({ event }: { event: EventData }) {
+    const { data: session, status } = useSession();
     const [ data, setData ] = useState<EventData>(event);
     const emptyEvent: EventData = EVENT_INITIAL_DATA;
     const { push } = useRouter();
-    /*useEffect(() =>{
-        setData(event)
-    },[event])*/
-
-    /*const [hydrated, setHydrated] = useState<boolean>(false);
-    useEffect(() => {
-      setHydrated(true);
-    }, []);
-    if (!hydrated) {
-      return null;// loading
-    }*/
     
     async function handleSubmit(event: any) {
         try {

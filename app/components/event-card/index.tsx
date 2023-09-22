@@ -1,26 +1,41 @@
 import Image from 'next/image'
 import Link from 'next/link';
 import s from './event-card.module.scss';
+import { EventData } from '@/app/types/event';
 
-// title, timestamp, description, id, price
-
-export default function EventCard({showInfo}:any) {
+export default function EventCard({ 
+    showInfo: {
+        eventType,
+        ticketsAvailableOnline,
+        hasLimitedPlaces,
+        title,
+        image,
+        description,
+        address,
+        price,
+        purchasedTicketsList,
+        ticketsTypeList,
+        eventId,
+    }}: { showInfo: EventData }) {
+    
+    const date = new Date(ticketsTypeList[0]?.date?.split('T')[0]);
+    const time = ticketsTypeList[0]?.date?.split('T')[1];
     return (
-        <Link href={`/eventos/${showInfo.eventId}`}>
+        <Link href={`/eventos/${eventId}`}>
             <div className={s.card}>
                 <div className={s.card_image}>
                     <Image
-                        src={showInfo.image ?? "/images/flyer__test.jpg"}
+                        src={image ?? "/images/flyer__test.jpg"}
                         fill
-                        alt={showInfo.title}
+                        alt={title}
                     />
                 </div>
                 <div className={s.cardBody}>
                     <div className={s.date}>
-                        <div className={s.day}>23/02/2023</div>                    
-                        <div className={s.time}>23:00hs</div>
+                        <div className={s.day}>{ date.toLocaleDateString() }</div>                    
+                        <div className={s.time}>{ time?.split(':')[0] ?? '00' }:{ time?.split(':')[1] ?? '00' }hs</div>
                     </div>
-                    <h1 className={s.cardTitle}>{showInfo.title}</h1>
+                    <h2 className={s.cardTitle}>{title}</h2>
                 </div>
             </div>
         </Link>

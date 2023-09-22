@@ -44,15 +44,10 @@ export default async function PageEvents({ params }: { params: { id: string } })
                                     color: '#e4e4e4',
                                     textTransform: 'uppercase',
                                 }}>
-                                Crear Evento
+                                EDITAR EVENTO
                             </h2>
                         </div>
                         <EventForm event={ event }/>
-                        <ImageUploader eventId={ event.eventId } url={ event.image }/>
-
-                </div>            
-                <div
-                    className={s.ticket_form_container}>
                         <div 
                             className={s.title_header}>
                             <h2 style={{ 
@@ -60,11 +55,22 @@ export default async function PageEvents({ params }: { params: { id: string } })
                                     color: '#e4e4e4',
                                     textTransform: 'uppercase',
                                 }}>
-                                Crear Entrada
+                                CARGAR IMAGEN
+                            </h2>
+                        </div>
+                        <ImageUploader eventId={ event.eventId } url={ event.image }/>
+                        <div 
+                            className={s.title_header}>
+                            <h2 style={{ 
+                                    margin: '2rem',
+                                    color: '#e4e4e4',
+                                    textTransform: 'uppercase',
+                                }}>
+                                EDITAR ENTRADA
                             </h2>
                         </div>
                         <DropdownList event={ event }/>
-                </div>            
+                </div>         
             </div>            
         </main>
     ) 

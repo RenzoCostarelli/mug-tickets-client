@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import style from "./page.module.scss"
 import { TicketTypeData } from "@/app/types/ticket";
-import Toasty from "../toasty";
 import useTicketsStore from "@/app/store/ticketsTypeStore";
 import Dialog from "../dialog";
 
@@ -75,11 +74,9 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
         }
     }
     
-    const onClose = () => {
-        setDialog(false)
-    }
+    const onClose = () => setDialog(false);
 
-    const onOk = () => handleDelete(data?._id)
+    const onOk = () => handleDelete(data?._id);
 
     return (
         <>

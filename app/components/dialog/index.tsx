@@ -1,6 +1,7 @@
 'use client'
 import { useSearchParams } from "next/navigation";
 import { useRef, useEffect } from "react";
+import s from './dialog.module.scss';
 
 type Props = {
     title: string
@@ -33,10 +34,12 @@ export default function Dialog({ title, onClose, onOk, showDialog, children}: Pr
     }
 
     const dialog: JSX.Element | null = showDialog ? (
-        <dialog ref={dialogRef}>
+        <dialog 
+            ref={dialogRef}
+            className={s.container}>
             <div>
-                <div>
-                    <h1>{title}</h1>
+                <div className={s.header}>
+                    <h3>{title}</h3>
                     <button
                         onClick={closeDialog}>x</button>
                 </div>

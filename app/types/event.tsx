@@ -10,4 +10,6 @@ export type EventData = {
     ticketsAvailableOnline: number
     hasLimitedPlaces: boolean
     ticketsTypeList: TicketTypeData[]
+    price: number
+    purchasedTicketsList: string[]
 }

@@ -1,23 +1,15 @@
 'use client'
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { signIn } from 'next-auth/react';
+import s from './page.module.scss';
   
 export default function FormLogin() {
-
   
 
     const [data, setData] = useState<{email: string | null, password: string | null}>({
       email: null,
       password: null
     });
-
-    /*const [hydrated, setHydrated] = useState<boolean>(false);
-    useEffect(() => {
-      setHydrated(true);
-    }, []);
-    if (!hydrated) {
-      return null;
-    }*/
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;        
@@ -41,43 +33,46 @@ export default function FormLogin() {
     return (
       <form 
         onSubmit={ submitHandler }
+        className={s.form}
         style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           margin: 'auto',
           maxWidth: '60vw'
-        }}>            
-        
-          <label htmlFor='email'>Email</label>
-          <input style={{
-              width: '100%',
-              marginTop: '1rem',
-              marginBottom: '1rem' 
-            }}
-            type="email"
-            id="email"
-            name="email"
-            required
-            onChange={handleInputChange}/>
-        
-          <label htmlFor='password'>Password</label>
-          <input style={{
-              width: '100%',
-              marginTop: '1rem',
-              marginBottom: '1rem' 
-            }}
-            type="password"
-            id="password"
-            name="password"
-            required
-            onChange={handleInputChange}/>       
-
-        <button style={{
-            width: '100%',
-            marginTop: 3, 
-            marginBottom: 2
-          }}
+        }}>
+          <div className={s.form_control}>
+            <label 
+              htmlFor='email'
+              className={s.label}>Email</label>
+            <input style={{
+                width: '100%',
+                marginTop: '1rem',
+                marginBottom: '1rem' 
+              }}
+              type="email"
+              id="email"
+              name="email"
+              required
+              autoComplete='on'
+              onChange={handleInputChange}/>
+          </div>
+          <div className={s.form_control}>
+            <label 
+              htmlFor='password'
+              className={s.label}>Password</label>
+            <input style={{
+                width: '100%',
+                marginTop: '1rem',
+                marginBottom: '1rem' 
+              }}
+              type="password"
+              id="password"
+              name="password"
+              required
+              onChange={handleInputChange}/>
+          </div>
+        <button
             type="submit">
             Sign in
         </button>                  
