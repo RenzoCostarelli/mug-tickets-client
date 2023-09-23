@@ -18,7 +18,7 @@
 }
 
 html {
-  font-family: $ff-primary;
+  font-family: 'Inter', sans-serif;
   color: var(--white);
   scrollbar-width: thin;
 
@@ -89,7 +89,7 @@ svg.icon {
     z-index: 0;
     width: max-content;
     &::after {
-      content: '';
+      // content: '';
       position: absolute;
       right: 0.5rem;
       top: 0.9rem;
@@ -103,7 +103,7 @@ svg.icon {
       transition: transform 100ms linear;
     }
     &::before {
-      content: '';
+      // content: '';
       position: absolute;
       right: 0.5rem;
       top: 0.7rem;
@@ -131,6 +131,6 @@ svg.icon {
     padding-block: 1rem;
     padding-inline: 1rem 2rem;
     border-radius: 0.5rem;
-    appearance: none;
+    // appearance: none;
   }
 }

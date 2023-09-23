@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import s from './evento.module.scss'
 import FormPurchase from '@/app/components/form-purchase';
+import TicketsPicker from '@/app/components/ticket-picker';
 
 async function getEventById(id: string) {
     const res = await fetch(`${process.env.apiUrl}/events/${id}`, {cache: 'no-store'});
@@ -13,7 +14,7 @@ async function getEventById(id: string) {
 export default async function Event({params}: {params: {id: string}}) {
     const { event }  = await getEventById(params.id);
     
-    const date = new Date(event?.dates[0]?.date)
+    const date = new Date(event!.ticketsTypeList[0].date)
     let dateStr = date.toLocaleDateString(); 
     let timeStr = `${date.toLocaleTimeString().split(':')[0]}:${date.toLocaleTimeString().split(':')[1]}`;
     
@@ -75,7 +76,7 @@ export default async function Event({params}: {params: {id: string}}) {
                 </div>
                 <div className={s.buy_area}>
                     <h1>Compra tu entrada</h1>
-                    <FormPurchase event={event}/>
+                    <TicketsPicker event={event}/>
                 </div>
             </div>
         </main>
