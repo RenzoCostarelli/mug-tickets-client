@@ -1,12 +1,12 @@
 import s from './events-lists.module.scss';
 import EventCard from "../event-card";
 
-export default function EventsList({ props = [] }: any) {
+export default function EventsList({ events } : {events : Event[]}) {
     return (
         <div className={s.cardsContainer}>
           {
-            props.map((da: {eventType: string}) => (
-              <EventCard showInfo={da}/>
+            events.map((event) => (
+              <EventCard showInfo={event}/>
             ))
           }
         </div>

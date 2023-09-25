@@ -18,7 +18,7 @@ export default async function Home() {
           <section className={s.next_events}>
             <h1 className={'big-title'}>PROXIMOS EVENTOS</h1>
             <div className={s.event_cards_container}>
-              <EventsList props={events}/>
+              <EventsList events={events}/>
             </div>
           </section>
         </main>
