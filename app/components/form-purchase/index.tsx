@@ -1,101 +1,9 @@
 'use client'
 import { ChangeEvent, useEffect, useState } from 'react';
-import Link from 'next/link';
 import s from './form-purchase.module.scss';
-import { useSession } from 'next-auth/react';
 import { Product } from '@/app/types/product';
 import { MpButton } from '../mp-button';
-
-interface BuyFormProps {
-    eventId: string,
-    price: number;
-    quantity: number;
-    total: number;
-    type: string;
-}
-
-
-
-export function BuyForm({ eventId, price, quantity, type, total }: BuyFormProps) {
-    const { data: session } = useSession();
-
-    const callApi = async () => {
-        await fetch('/api/tickets', {
-            method: 'POST',
-            body: JSON.stringify({ price, quantity, type, total }),
-        });
-    }
-
-    return (        
-        <form action="/api/tickets" method="POST" className={s.buy_form}>            
-            <input 
-                type="hidden"
-                name="id"
-                value={eventId}/>
-            <div className={s.columns}>
-                <div className={s.form_area}>
-                    <label htmlFor="name">Nombre</label>
-                    <input 
-                        type="text"
-                        name="name"
-                        id="name"
-                        required
-                        placeholder='Nombre'/>
-                </div>
-                <div className={s.form_area}>
-                    <label htmlFor="dni">DNI</label>
-                    <input 
-                        type="text"
-                        name="dni"
-                        id="dni"
-                        required
-                        placeholder='DNI'/>
-                </div>
-                <div className={s.form_area}>
-                    <label htmlFor="last-name">Apellido</label>
-                    <input 
-                        type="text" 
-                        name="last-name" 
-                        id="last-name"
-                        required
-                        placeholder='Apellido'/>
-                </div>                    
-                <div className={s.form_area}>
-                    <label htmlFor="phone">Telefono</label>
-                    <input 
-                        type="phone"
-                        name="phone"
-                        id="phone"
-                        required
-                        placeholder='Telefono'/>
-                </div>
-
-            </div>
-            <div className={s.form_area}>
-                <label htmlFor="email">E-MAIL</label>
-                <input 
-                    type="email"
-                    name="email"
-                    id="email"
-                    required
-                    placeholder='email'/>
-            </div>
-            <div className={s.form_area_inline}>
-                <input
-                    type="checkbox"
-                    name="phone"
-                    id="phone"
-                    required
-                    placeholder='Telefono'/> 
-                <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
-            </div>
-            <button
-                type="submit">FINALIZAR</button>
-        </form>        
-    )
-}
-
-
+import CheckoutBuyerForm from '../checkout-buyer-form';
 
 interface Quantities {
     [ticketType: string]: number;
@@ -103,8 +11,6 @@ interface Quantities {
 
 export default function FormPurchase ({event}: any) {
   const date = new Date(event.date)
-  let dateStr = date.toLocaleDateString(); 
-  let timeStr = date.toLocaleTimeString();
 
   const [quantity, setQuantity] = useState<number>(1)
   const [total, setTotal] = useState<number>(event.price)
@@ -129,50 +35,51 @@ export default function FormPurchase ({event}: any) {
   }, []); 
   
   const handleCheckoutClick = () => {
+    // llamar a la api de crear ticket con un email que sea pendiente@tickets.com o algo similar
+    // guardar el id que viene en la respuesta y usarlo para generar el objeto Product y cargarlo en el store
+    // crear el Product con los datos correspondientes
+    // redirigir a pagina para cargar los datos del cliente (agregar un timer de 15min)
+    // si el timer llega a 00, el ticket se elimina
+    // si la respuesta de mercadopago es success, se guardan los datos del usuario en el ticket
+    // si es un error, el ticket se elimina de la db y del state
+
     setShowCheckout(true)
   } 
 
   const handleQuantityChange = (type: any, price: any, event: any, ticketsTypeList: any[]) => {
-        const selectedQuantity = parseInt(event.target.value)
+    const selectedQuantity = parseInt(event.target.value)
         
-        setQuantities(prev => {
-            const updatedQuantities: Quantities = { ...prev, [type]: selectedQuantity }
-
-            const newTotal = Object.keys(updatedQuantities).reduce((acc, ticketType) => {
-                const ticketPrice = ticketsTypeList.find(ticket => ticket.type === ticketType)?.price || 0;
-                return acc + (updatedQuantities[ticketType] || 0) * ticketPrice;
-            }, 0)
-
-            setGlobalTotal(newTotal)
-            
-            return updatedQuantities
-        });
-    };
-
-  const calculateTotal = (e: ChangeEvent<HTMLSelectElement>) => {
-    const qty = parseInt(e.target.value)
-    setQuantity(qty)
-    setTotal(qty * event.price)
-  }
+    setQuantities(prev => {
+        const updatedQuantities: Quantities = { ...prev, [type]: selectedQuantity }
+        const newTotal = Object.keys(updatedQuantities).reduce((acc, ticketType) => {
+            const ticketPrice = ticketsTypeList.find(ticket => ticket.type === ticketType)?.price || 0;
+            return acc + (updatedQuantities[ticketType] || 0) * ticketPrice;
+        }, 0)
+        setGlobalTotal(newTotal)
+        
+        return updatedQuantities
+    });
+  };
 
   return (
       <div className={s.price_grid}>
-          <div className={s.grid_header}>
-              <div className={s.type}></div>
-              <div className={s.price}>Precio</div>
-              <div className={s.quantity}>Cantidad</div>
-              <div className={s.total}>Total</div>
+          <div className={`${s.ticket_form} d-flex`}>
+          <div className="input-area">
+            <label htmlFor="ticketType">Tipo de entrada</label>
+            <div className="select-wrapper">
+                <select className='custom-select' name="ticketType" id="ticketType">
+                    <option value="0" disabled selected>Seleccionar</option>
+                    {event.ticketsTypeList.map((ticket: any) => (
+                        <option value={ ticket.type }>{ ticket.type } - $ { ticket.price } </option>
+                    ))}
+                </select>
+            </div>
           </div>
-          {event.ticketsTypeList.map((ticket: any) => (// usar type de ticket
-            <div className={`${s.grid_content}`} key={ticket.type}>
-                <div className={s.type}>{ ticket.type }</div>
-                <div className={s.price}>$ { ticket.price }</div>
-                <div className={s.quantity}>
-                    <select name="quantity" 
-                            id="quantity"
-                            disabled={ticket.Purchased < ticket.ticketsAvailableOnline}
-                            onChange={(e) => handleQuantityChange(ticket.type, ticket.price, e, event.ticketsTypeList)}>
-                        <option value="0">0</option>
+            <div className="input-area">
+                <label htmlFor="quantity">Cantidad</label>
+                <div className="select-wrapper">
+                    <select className='custom-select' name="quantity" id="quantity">
+                        <option value="0" disabled selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -181,22 +88,17 @@ export default function FormPurchase ({event}: any) {
                     </select>
                 </div>
             </div>
-            ))
-          }
+          </div>
           <div>Total: $ {globalTotal}</div>
           {!showCheckout && 
             <div className={s.buy}>
-              <MpButton product={product}/> 
               <button type="submit" onClick={handleCheckoutClick}>Continuar</button>
             </div>
           }
           {showCheckout && 
-            <BuyForm
+            <CheckoutBuyerForm
                 eventId={event.eventId}
-                price={event.price}
-                total={total}
-                quantity={quantity}
-                type={event.type}/>
+                product={product}/>
           }
       </div>
   )

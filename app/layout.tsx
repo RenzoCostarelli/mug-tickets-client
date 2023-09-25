@@ -7,7 +7,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'MUG tickets -',
+  title: 'MUG | Entradas online',
   description: 'Plataforma de venta de tickets online del MUG',
 }
 
