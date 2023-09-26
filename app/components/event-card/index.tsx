@@ -3,20 +3,8 @@ import Link from 'next/link';
 import s from './event-card.module.scss';
 import { EventData } from '@/app/types/event';
 
-export default function EventCard({ 
-    showInfo: {
-        eventType,
-        ticketsAvailableOnline,
-        hasLimitedPlaces,
-        title,
-        image,
-        description,
-        address,
-        price,
-        purchasedTicketsList,
-        ticketsTypeList,
-        eventId,
-    }}: { showInfo: EventData }) {
+export default function EventCard({ showInfo }: { showInfo: EventData }) {
+    const { title, image, ticketsTypeList, eventId } = showInfo;
     
     const date = new Date(ticketsTypeList[0]?.date?.split('T')[0]);
     const time = ticketsTypeList[0]?.date?.split('T')[1];

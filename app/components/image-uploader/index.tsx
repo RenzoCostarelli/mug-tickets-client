@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function ImageUploader({ eventId, url }: { eventId: string, url: string}) {
-    const [file, setFile] = useState<string | Blob>('');
+    const [file, setFile] = useState<any | Blob>('');
     const [fileUrl, setFileUrl] = useState<string | null>(url);
 
     const handleFileChange = (e: any) => {
@@ -16,13 +16,14 @@ export default function ImageUploader({ eventId, url }: { eventId: string, url: 
         e.preventDefault();
         const formData = new FormData();
         formData.append('image', file);
+        formData.append('eventId', eventId);
 
         const res = await fetch('/api/upload', {
           method: 'POST',
           body: formData
         });
         const imageUploaded = await res.json();
-        setFileUrl(imageUploaded.secure_url);
+        setFileUrl(imageUploaded.url);
       } catch (error) {
           console.error(error);
       }
