@@ -1,16 +1,28 @@
 'use client'
-import { useState } from 'react';
+import {  useState } from 'react';
 import { signIn } from 'next-auth/react';
+import s from './page.module.scss';
   
 export default function FormLogin() {
+  
 
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const [data, setData] = useState<{email: string | null, password: string | null}>({
+      email: null,
+      password: null
+    });
 
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;        
+      setData((values: any) => ({
+        ...values,
+        [name]: value
+      }));        
+    };
+    
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      
-      const data = await signIn("credentials", {
+      const { email, password } = data;
+      await signIn("credentials", {
         redirect: true,
         email,
         password,
@@ -18,44 +30,52 @@ export default function FormLogin() {
       });      
     };
 
-    return (             
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}>
-          <form onSubmit={ submitHandler }>            
+    return (
+      <form 
+        onSubmit={ submitHandler }
+        className={s.form}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          margin: 'auto',
+          maxWidth: '60vw'
+        }}>
+          <div className={s.form_control}>
+            <label 
+              htmlFor='email'
+              className={s.label}>Email</label>
             <input style={{
                 width: '100%',
                 marginTop: '1rem',
                 marginBottom: '1rem' 
               }}
-                type="email"
-                id="email_field"
-                className="form-control"
-                //value={email}
-                required
-                onChange={(e) => setEmail(e.target.value)}/>
-            <input  style={{
+              type="email"
+              id="email"
+              name="email"
+              required
+              autoComplete='on'
+              onChange={handleInputChange}/>
+          </div>
+          <div className={s.form_control}>
+            <label 
+              htmlFor='password'
+              className={s.label}>Password</label>
+            <input style={{
                 width: '100%',
                 marginTop: '1rem',
                 marginBottom: '1rem' 
               }}
               type="password"
-              id="password_field"
-              className="form-control"
+              id="password"
+              name="password"
               required
-              onChange={(e) => setPassword(e.target.value)}/>
-
-            <button style={{
-                width: '100%',
-                marginTop: 3, 
-                marginBottom: 2
-              }}
-                type="submit">
-                Sign in
-            </button>                  
-          </form>
-      </div>            
+              onChange={handleInputChange}/>
+          </div>
+        <button
+            type="submit">
+            Sign in
+        </button>                  
+      </form>         
     )
 }

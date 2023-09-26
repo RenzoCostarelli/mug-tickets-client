@@ -1,7 +1,8 @@
 import s from './events-lists.module.scss';
 import EventCard from "../event-card";
+import { Events } from '@/app/types/events';
 
-export default function EventsList({ events } : {events : Event[]}) {
+export default function EventsList({ events } : {events : Events[]}) {
     return (
         <div className={s.cardsContainer}>
           {

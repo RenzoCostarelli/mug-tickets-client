@@ -61,14 +61,17 @@ export const handler: NextAuthOptions = NextAuth({
     })
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if(!user) {
         return { ...token }
       }
-      return { ...token, ...user }
+      token.accessToken = account?.access_token;
+      return { ...token, ...user, ...account }
     },
     async session({ session, token }) {
-      session.user = token as any;
+      session.user.role = token.role;
+      session.token = token.accessToken;
+      session.user.token = token.accessToken;
       return session;
     }
   },
@@ -81,7 +84,8 @@ export const handler: NextAuthOptions = NextAuth({
     updateAge: 24 * 60 * 60,
   },
   jwt: {
-    maxAge: 24 * 60 * 60
+    maxAge: 24 * 60 * 60,
+    secret: process.env.NEXTAUTH_SECRET
   },
   secret: process.env.NEXTAUTH_SECRET
 });

@@ -1,4 +1,5 @@
 import NextAuth, { DefaultSession, DefaultUser } from "next-auth";
+import type { Session, Account,JWT } from "next-auth";
 import { DefaultJWT } from "next-auth/jwt";
 
 declare module "next-auth" {
@@ -6,6 +7,7 @@ declare module "next-auth" {
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
   interface Session {
+    token?: accessToken;
     user: {      
       role: string,
       name: string,
@@ -13,8 +15,8 @@ declare module "next-auth" {
       image: string,
       dni: string,
       telephone: string,
-      token: any
-    } & DefaultSession
+      token?: accessToken,
+    } & DefaultSession["user"]
   }
 
   interface User extends DefaultUser {
@@ -25,6 +27,12 @@ declare module "next-auth" {
     role: string
   } 
 
+  interface Account {
+    access_token: accessToken;
+    user: {
+      token?: accessToken;
+    } & DefaultSession["user"];
+  }
 }
 
 declare module "next-auth/jwt" {
@@ -34,5 +42,6 @@ declare module "next-auth/jwt" {
     image: string, 
     token: string,
     role: string
- }
+  }
+  
 }

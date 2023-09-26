@@ -11,17 +11,21 @@ export default function AdminEventCard({ showInfo }: any) {
                 display: 'block'
             }}>            
             <div style={{
-                    border: '0.5px solid rgba(194, 224, 255, 0.08)',
-                    borderRadius: 5,
+                    borderRadius: 10,
                     overflow: 'hidden',
-                    backgroundColor: 'rgb(16, 20, 24)'
+                    backgroundColor: 'rgb(16, 20, 24)',
+                    position: 'relative',                    
+                    height: '100%',
                 }}>
                 
                 <Image 
                     src={ showInfo.image ?? "/images/flyer__test.jpg" }
                     alt="Entrada"                    
-                    width='150'
-                    height='100'                   
+                    fill={true}
+                    style={{
+                        objectFit: 'cover',
+                    }}
+                    loading='lazy'
                 />
                     
                 <h3 style={{ 

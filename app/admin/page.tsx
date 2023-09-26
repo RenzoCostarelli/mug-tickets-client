@@ -17,19 +17,8 @@ export default async function AdminDashboard() {
     return(
         <main className={s.main}>
             <div className={s.title}>
-                <h2>Mis eventos</h2>
-            </div>
-            <ul>
-                <li>
-                    <Link href={`/admin`}>Eventos</Link>
-                </li>
-                <li>                           
-                    <Link href={`/admin/eventos/`}>Crear Evento</Link>
-                </li>
-                <li>
-                    <Link href={`/admin/validar/`}>Qr Scan</Link>                    
-                </li>
-            </ul>
+                <h2>MIS EVENTOS</h2>
+            </div>            
             <div className={s.container}>
                 <AdminEventsList da={ data }/>
             </div>
