@@ -1,11 +1,11 @@
-export type TicketTypeData = {
+export interface TicketType {
     _id: string;
     eventId: string;
-    ticketId: string;
     type: string;
-    date: string;
     price: number;
-    hour: string;
-    ticketsAvailableOnline: number;
-    ticketPurchaseDeadline: string;
+    ticketId?: string;
+    date?: string;
+    hour?: string;
+    ticketsAvailableOnline?: number;
+    ticketPurchaseDeadline?: string;
 }
