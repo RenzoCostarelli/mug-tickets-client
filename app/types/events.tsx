@@ -1,3 +1,4 @@
+import { TicketType } from "./ticket";
 export interface Events {
     eventId: string;
     title: string;
@@ -6,5 +7,8 @@ export interface Events {
     eventType: string;
     ticketsAvailableOnline: number;
     hasLimitedPlaces: boolean;
-    ticketsTypeList: any;
+    ticketsTypeList: TicketType[];
+    image: string
+    price: number
+    purchasedTicketsList: string[]
 }

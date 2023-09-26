@@ -1,0 +1,29 @@
+@import '../../styles/functions';
+
+.container {
+    //position: absolute;
+    background-color: #1a1a1a;
+    //border: 0.5px solid #888;
+    //border-radius: 30px;
+    //min-width: 640px;
+    //height: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #e4e4e4;
+        button {
+            width: 1rem!important;
+        }
+    }
+}

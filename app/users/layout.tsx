@@ -12,9 +12,6 @@ export default function UserLayout({
 }) {
   
   return (
-    <>
-        <Navbar />
-        {children}         
-    </>
+    <>{children}</>
   )
 }

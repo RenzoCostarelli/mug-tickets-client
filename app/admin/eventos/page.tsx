@@ -1,72 +1,45 @@
 import EventForm from "@/app/components/dashboard-event-form";
-import TicketForm from "@/app/components/dashboard-ticket-form";
-
-type EventData = {
-    eventId: string;
-    title: string;
-    description: string;
-    address: string;
-    eventType: string;
-    ticketsAvailableOnline: number;
-    hasLimitedPlaces: boolean;
-    //date: string;
-    //hour: string;
-}
+import DropdownList from "@/app/components/dashboard-form-wrapper";
+import { EventData } from "@/app/types/event";
+import s from './page.module.scss';
 
 const EVENT_INITIAL_DATA = {
     eventId: "",
     title: "",
     description: "",
     address: "",
+    image:"",
     eventType: "",
+    price: 0,
     ticketsAvailableOnline: 0,
     hasLimitedPlaces: false,
-    //date: "",
-    //hour: ""
+    ticketsTypeList: [],
+    purchasedTicketsList: []
 }
 
 export default async function AdminEvents() {
     const event: EventData = EVENT_INITIAL_DATA;
+
     return(
-        <main>
-            <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',                    
-                }}>
+        <main className={s.main}>
+            <div 
+                className={s.title_header}>
                 <h2 style={{ 
                     marginBottom:2,
-                    marginTop: 2 
+                    marginTop: 2 ,
+                    textTransform: 'uppercase',
                     }}>
-                    Crear Evento
+                    CREAR EVENTO
                 </h2>
-            </div>
-            
-            <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',                
-                flexDirection: 'row',
-            }}>
+            </div>            
+            <div
+                className={s.main_container}>
                 <div
-                    style={{
-                        padding: '15px',
-                        borderRadius: '10px',
-                        width: '50%'
-                    }}>
+                    className={s.event_form_container}>
                         <EventForm event={ event }/>
+                        {/**<DropdownList event={ event }/> */}
                 </div>
-                <div
-                    style={{
-                        padding: '15px',
-                        borderRadius: '10px',
-                        width: '50%'
-                    }}>
-                        {/** <TicketForm /> */}
-                </div>
-            </div>
-                        
+            </div>                        
         </main>
     )
 }

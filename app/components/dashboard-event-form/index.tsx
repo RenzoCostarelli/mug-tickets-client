@@ -3,51 +3,68 @@
 import { useSession } from "next-auth/react"
 import style from "./create-event-form.module.scss"
 import { useState } from "react";
+import { Events } from "@/app/types/events";
+import { useRouter } from 'next/navigation';
 
-type EventProps = {
-    event: EventData,
+const EVENT_INITIAL_DATA = {
+    eventId: "",
+    title: "",
+    description: "",
+    address: "",
+    image: "",
+    eventType: "",
+    ticketsAvailableOnline: 0,
+    hasLimitedPlaces: false,
+    ticketsTypeList: [],
+    price: 0, 
+    purchasedTicketsList: [],
 }
 
-type EventData = {
-    eventId: string;
-    title: string;
-    description: string;
-    address: string;
-    eventType: string;
-    ticketsAvailableOnline: number;
-    hasLimitedPlaces: boolean;
-    //date: string;
-}
-
-export default function EventForm({ event }: EventProps) {
-    const { data: session } = useSession();
-    const [data, setData] = useState<EventData>(event);
+export default function EventForm({ event }: { event: Events }) {
+    const { data: session, status } = useSession();
+    const [ data, setData ] = useState<Events>(event);
+    const emptyEvent: Events = EVENT_INITIAL_DATA;
+    const { push } = useRouter();
     
     async function handleSubmit(event: any) {
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget);
+        try {
+            event.preventDefault()
+            const formData = new FormData(event.currentTarget);
+            const eventId = formData.get('eventId') as string;
+            const response = await fetch('/api/admin/eventos', {
+                method: eventId? 'PUT' : 'POST',
+                body: formData,
+            })
         
-        const response = await fetch('/api/admin/eventos', {
-            method: 'POST',
-            body: formData,
-        })
-    
-        // Handle response if necessary
-        const data = await response.json()
+            // Handle response if necessary
+            const res = await response.json();
+            const { ok, newEvent, updatedEvent, message} = res;
+            if(ok) { 
+                console.log(res)    
+                if(eventId) {
+                    setData(updatedEvent);    
+                    return;
+                } else {
+                    setData(newEvent);
+                    push(`/admin/eventos/${newEvent.eventId}`)
+                }     
+            }
+            console.error(message)
+            // ...
+        } catch (error) {
+            console.error(error)
+        }
         
-        // ...
-      }
+    }
 
-      const handleInputChange = (event: any) => {
+    const handleInputChange = (event: any) => {
         const { name, value, type, checked } = event.target;
         
         setData(values => ({
-          ...values,
-          [name]: type === 'checkbox' ? checked : value
-        }));
-        
-        console.log("🚀 ~ file: index.tsx:49 ~ handleInputChange ~ data:", data)
-      };
+            ...values,
+            [name]: type === 'checkbox' ? checked : value
+        }));        
+    };
    
     return (
         <form 
@@ -59,15 +76,10 @@ export default function EventForm({ event }: EventProps) {
                 value={session?.user.email || ''}/>
             <input 
                 type="hidden"
-                name="token"
-                value={session?.user.token || ''}/>
-            <input 
-                type="hidden"
                 name="eventId"
-                value={event?.eventId}/>
-
+                value={data?.eventId}/>
             <div className={style.form_control}>
-                <label className={style.label}>Título de tu evento</label>
+                <label htmlFor="title" className={style.label}>Nombre del evento</label>
                 <input 
                     id="title"
                     name="title"
@@ -77,7 +89,7 @@ export default function EventForm({ event }: EventProps) {
                     />
             </div>
             <div className={style.form_control}>
-                <label className={style.label}>Description</label>       
+                <label htmlFor="description" className={style.label}>Description</label>       
                 <textarea 
                     id="description" 
                     name="description"
@@ -88,7 +100,7 @@ export default function EventForm({ event }: EventProps) {
                     ></textarea>
             </div>
             <div className={style.form_control}>
-                <label className={style.label}>Dirección</label>
+                <label htmlFor="address" className={style.label}>Dirección</label>
                 <input 
                     type="string"
                     id="address" 
@@ -99,7 +111,7 @@ export default function EventForm({ event }: EventProps) {
                     />
             </div>
             <div className={style.form_control}>                
-                <label className={style.label}>Tipo de evento</label>
+                <label htmlFor="eventType" className={style.label}>Tipo de evento</label>
                 <input 
                     type="string"
                     id="eventType" 
@@ -110,7 +122,7 @@ export default function EventForm({ event }: EventProps) {
                     />
             </div>
             <div className={style.form_control}>                
-                <label className={style.label}>Localidades</label>
+                <label htmlFor="ticketsAvailableOnline" className={style.label}>Localidades</label>
                 <input  
                     type="number"
                     id="ticketsAvailableOnline" 
@@ -121,7 +133,7 @@ export default function EventForm({ event }: EventProps) {
                     />
             </div>
             <div className={style.form_control}> 
-                <label className={style.label}>Lugares limitados</label> 
+                <label htmlFor="hasLimitedPlaces" className={style.label}>Lugares limitados</label> 
                 <input type="checkbox"
                     id="hasLimitedPlaces"
                     name="hasLimitedPlaces"
@@ -129,31 +141,7 @@ export default function EventForm({ event }: EventProps) {
                     onChange={handleInputChange}
                     />
             </div>
-            { /**
-             * <div className={style.form_control}> 
-                <label className={style.label}>Fecha</label>
-                <input
-                    id="date"
-                    name="date"
-                    type="date"
-                    autoComplete='true'
-                    min={new Date().toJSON().split('T')[0]}
-                    value={data?.date}
-                    required
-                    onChange={handleInputChange}
-                    />
-                <label className={style.label}>Hora</label>
-                <input
-                    id="hour"
-                    name="hour"
-                    type="time"
-                    required
-                    onChange={handleInputChange}
-                    />
-            </div>
-             */}
-            <div className={style.form_control}> 
-            </div>
+
             <button
                 type="submit">Guardar Evento</button>          
         </form>
