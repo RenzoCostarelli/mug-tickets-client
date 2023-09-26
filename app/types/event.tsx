@@ -9,7 +9,7 @@ export type EventData = {
     image: string
     ticketsAvailableOnline: number
     hasLimitedPlaces: boolean
-    ticketsTypeList: TicketTypeData[]
     price: number
     purchasedTicketsList: string[]
+    ticketsTypeList: TicketTypeData[]
 }

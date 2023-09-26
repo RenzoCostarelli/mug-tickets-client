@@ -15,7 +15,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const data = await request.formData();
     const file = data.get('image') as any; 
     const eventId = data.get('eventId') as string;
-
+    
     if(!file) {
       return NextResponse.json({
         ok: false,
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     }
 
     const bytes: ArrayBuffer = await file.arrayBuffer();
-    const buffer: Buffer = Buffer.from(bytes);    
+    const buffer: Buffer = Buffer.from(bytes);  
     
     const cloudData: any = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream({}, (err, result) => {
@@ -36,19 +36,22 @@ export async function POST(request: NextRequest, response: NextResponse) {
       }).end(buffer);
     });
     
-    console.log(cloudData?.secure_url)
 
     //falta endpoint PUT { eventId, image }
-
-    const res = await fetch(`${process.env.apiUrl}/events/${eventId}`, {
+    const imageData = {
+      url: cloudData?.secure_url,
+      type: 'events',
+      eventId
+    }
+    
+    const res = await fetch(`${process.env.apiUrl}/upload`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'x-token': `${account?.token}`
       },
-      body: JSON.stringify({eventId, image: cloudData?.secure_url})
-    })
-  
+      body: JSON.stringify(imageData)
+    });  
     const response = await res.json();
     return NextResponse.json(response);
   } catch (error) {
