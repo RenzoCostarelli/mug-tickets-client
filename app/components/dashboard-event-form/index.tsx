@@ -37,18 +37,18 @@ export default function EventForm({ event }: { event: Events }) {
             })
         
             // Handle response if necessary
-            const res = await response.json();
-            const { ok, newEvent, updatedEvent, message} = res;
-            if(ok) { 
-                console.log(res)    
-                if(eventId) {
-                    setData(updatedEvent);    
-                    return;
-                } else {
+            const data = await response.json();
+            const { ok, newEvent, updatedEvent, message} = data;
+            if(ok) {   
+                if(newEvent) {
                     setData(newEvent);
-                    push(`/admin/eventos/${newEvent.eventId}`)
-                }     
+                    push(`/admin/eventos/${newEvent.eventId}`);                
+                }
+                setData(updatedEvent);
+                return;
             }
+
+
             console.error(message)
             // ...
         } catch (error) {
