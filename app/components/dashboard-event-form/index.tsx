@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react"
 import style from "./create-event-form.module.scss"
 import { useState } from "react";
-import { EventData } from "@/app/types/event";
+import { Events } from "@/app/types/events";
 import { useRouter } from 'next/navigation';
 
 const EVENT_INITIAL_DATA = {
@@ -20,10 +20,10 @@ const EVENT_INITIAL_DATA = {
     purchasedTicketsList: [],
 }
 
-export default function EventForm({ event }: { event: EventData }) {
+export default function EventForm({ event }: { event: Events }) {
     const { data: session, status } = useSession();
-    const [ data, setData ] = useState<EventData>(event);
-    const emptyEvent: EventData = EVENT_INITIAL_DATA;
+    const [ data, setData ] = useState<Events>(event);
+    const emptyEvent: Events = EVENT_INITIAL_DATA;
     const { push } = useRouter();
     
     async function handleSubmit(event: any) {
@@ -37,11 +37,17 @@ export default function EventForm({ event }: { event: EventData }) {
             })
         
             // Handle response if necessary
-            const { ok, newEvent, message} = await response.json();
-            if(ok) {                
-                setData(emptyEvent);
-                push(`/admin/eventos/${newEvent.eventId}`)
-                return;
+            const res = await response.json();
+            const { ok, newEvent, updatedEvent, message} = res;
+            if(ok) { 
+                console.log(res)    
+                if(eventId) {
+                    setData(updatedEvent);    
+                    return;
+                } else {
+                    setData(newEvent);
+                    push(`/admin/eventos/${newEvent.eventId}`)
+                }     
             }
             console.error(message)
             // ...
