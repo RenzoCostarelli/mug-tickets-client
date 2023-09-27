@@ -65,7 +65,7 @@ export default async function BuyTicket({params}: { params: { id: string }}) {
                 </div> */}
                 <div className={`${s.row} ${s.accent}`}>
                   <p>Total</p>
-                  <p>$ {calculateTotal(order.ticketType.price, order.quantity)}</p>
+                  <p>$ {calculateTotal(order.ticketType.price, order.quantity).toLocaleString()}</p>
                 </div>
               </div>
             </div>
