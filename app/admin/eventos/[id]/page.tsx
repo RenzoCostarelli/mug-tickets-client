@@ -2,7 +2,7 @@ import s from './page.module.scss';
 import EventForm from '@/app/components/dashboard-event-form';
 import DropdownList from '@/app/components/dashboard-form-wrapper';
 import ImageUploader from '@/app/components/image-uploader';
-import { TicketTypeData } from "@/app/types/ticket";
+import { TicketType } from "@/app/types/ticket";
 import { useEffect, useState } from 'react';
 
 async function getEventById(id: string) {
@@ -28,7 +28,7 @@ const TICKET_INITIAL_DATA = {
 export default async function PageEvents({ params }: { params: { id: string } }) {
     const { event }  = await getEventById(params.id);
 
-    const ticket: TicketTypeData = TICKET_INITIAL_DATA;
+    const ticket: TicketType = TICKET_INITIAL_DATA;
     ticket.eventId = event.eventId ?? '';
     
     return(
