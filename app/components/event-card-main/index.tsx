@@ -1,6 +1,10 @@
 import Image from "next/image";
 import s from './event-header.module.scss'
 
+const formatTime = (date: string): string => {
+  const time = date.split('T')[1];
+  return `${time.split(':')[0]}:${time.split(':')[1]}`;
+}
 export default function EventCardMain({event}: any) {
     let formatedDate = "";
     let timeStr = "";
@@ -8,13 +12,11 @@ export default function EventCardMain({event}: any) {
     if (event!.ticketsTypeList && event!.ticketsTypeList.length > 0) {
       const date = new Date(event!.ticketsTypeList[0].date);
       
-      formatedDate = event!.ticketsTypeList[0].date;
-      // formatedDate = new Intl.DateTimeFormat('es-AR', { dateStyle: 'full', timeStyle: 'long', timeZone: 'America/Buenos_Aires' }).format(date);
-      console.log('date', formatedDate)
-      // const date = new Date(event!.ticketsTypeList[0].date);
-      // dateStr = "date.toDateString()";
-      timeStr = ``;
-      // timeStr = `${date.toTimeString().split(":")[0]}:${date.toTimeString().split(":")[1]}`;
+      formatedDate = new Intl.DateTimeFormat('es-AR', {
+        dateStyle: 'full',
+        timeZone: 'America/Buenos_Aires'
+      }).format(date)//date.toLocaleDateString();
+      timeStr = formatTime(event!.ticketsTypeList[0].date);
     }
     return (
         <div className={`${s.inner}`}>
