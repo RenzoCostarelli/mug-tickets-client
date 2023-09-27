@@ -5,7 +5,7 @@ import s from './mp-button.module.scss'
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 initMercadoPago(process.env.MP_PUBLIC_KEY!);
 
-export function MpButton ({prod}: {prod: Product}) {
+export function MpButton ({prod}:{prod: Product}) {
   const [url, setUrl] = useState<null | string>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [preferenceState, setPreference] = useState<string>('')

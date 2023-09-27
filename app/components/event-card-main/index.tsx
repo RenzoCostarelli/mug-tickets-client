@@ -90,6 +90,7 @@ export default function EventCardMain({event}: any) {
                   alt={event.title}
                   priority
                   fill
+                  sizes="100"
                   style={{
                     objectFit: "contain",
                   }}

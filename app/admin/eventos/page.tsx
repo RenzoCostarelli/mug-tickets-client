@@ -1,6 +1,6 @@
 import EventForm from "@/app/components/dashboard-event-form";
 import DropdownList from "@/app/components/dashboard-form-wrapper";
-import { EventData } from "@/app/types/event";
+import { Events } from "@/app/types/events";
 import s from './page.module.scss';
 
 const EVENT_INITIAL_DATA = {
@@ -18,7 +18,7 @@ const EVENT_INITIAL_DATA = {
 }
 
 export default async function AdminEvents() {
-    const event: EventData = EVENT_INITIAL_DATA;
+    const event: Events = EVENT_INITIAL_DATA;
 
     return(
         <main className={s.main}>

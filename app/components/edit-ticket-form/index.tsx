@@ -13,7 +13,7 @@ type EventProps = {
 }
 
 export default function EditTicketForm({ ticket, index }: EventProps) {
-    let timeStr = `${ticket?.date.split('T')[1].split('.')[0]}`;    
+    let timeStr = `${ticket?.date!.split('T')[1].split('.')[0]}`;    
     ticket.hour = timeStr;
 
     const [data, setData] = useState<TicketType>(ticket);
@@ -136,7 +136,7 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                             type="date"
                             autoComplete='true'
                             min={ new Date().toJSON().split('T')[0] }
-                            value={data?.date.split('T')[0]}
+                            value={data?.date!.split('T')[0]}
                             required
                             onChange={handleInputChange}
                             />                        
