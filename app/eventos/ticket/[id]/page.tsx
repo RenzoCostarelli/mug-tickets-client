@@ -2,6 +2,8 @@ import EventCardMain from "@/app/components/event-card-main";
 import s from "./ticket.module.scss";
 import Image from "next/image";
 import { QuerystringParser } from "formidable/parsers";
+import { MpButton } from "@/app/components/mp-button";
+import { Product } from "@/app/types/product";
 
 async function getEvent(id: string) {
   const res = await fetch(`${process.env.apiUrl}/orders/${id}`);
@@ -15,6 +17,15 @@ export default async function BuyTicket({params}: { params: { id: string }}) {
   const { id } = params;
   const { order } = await getEvent(id);
   let event = order.event
+
+  const orderMpInfo: Product = {
+    id: order._id,
+    title: `${order.ticketType.type} x${order.quantity}`,
+    img: "img",
+    quantity: order.quantity,
+    price: order.ticketType.price * order.quantity,
+    description: event.title
+  }
 
   const date = new Date(order.ticketType.date);
   const dateStr = date.toLocaleDateString()
@@ -126,6 +137,7 @@ export default async function BuyTicket({params}: { params: { id: string }}) {
                     He leido y acepto los Terminos y condiciones
                   </label>
                 </div>
+                <MpButton prod={orderMpInfo}/>
               </form>
             </div>
           </div>
