@@ -2,38 +2,27 @@
 import { Events } from "@/app/types/events";
 import { useState } from "react";
 import { TicketType } from "@/app/types/ticket";
-import { useRouter } from 'next/navigation';
-import  useStore  from '@/lib/store'
+import { useRouter } from "next/navigation";
 import s from "./ticket-piker.module.scss";
 
-interface Ticket {
-  event: string;
-  purchaser: {
-    purchaserFirstName: string;
-    purchaserLastName: string;
-    purchaserId: string;
-    purchaserDni: number;
-    purchaserEmail: string;
-  };
-  attendee: {
-    attendeeFirstName: string;
-    attendeeLastName: string;
-    attendeeDni: number;
-  };
-  validated: boolean;
-  purchased: boolean;
-  purchaseDate: string;
-  validationDate: string | null;
-  ticketNumber: string;
-  ticketId: string;
-};
+interface offersBody {
+    eventId: string,
+    quantity: number,
+    ticketType: {
+        price: number,
+        date: string,
+        type: string
+    },
+    expirationDate: string
+}
 
 export default function TicketsPicker({ event }: { event: Events }) {
+  
   const [globalTotal, setGlobalTotal] = useState<number>(0);
   const [quantityValue, setQuantityValue] = useState<number>(0);
   const [currentPrice, setCurrentPrice] = useState<number>(0);
+  const [currentDate, setCurrentDate] = useState<string>("");
   const [currentTicketType, setCurrentTicketType] = useState<string>("");
-  const { setTicketIds, ticketIds } = useStore()
   const { push } = useRouter();
 
   const calculateTotal = (q: number) => {
@@ -51,48 +40,25 @@ export default function TicketsPicker({ event }: { event: Events }) {
     setGlobalTotal(0);
     setCurrentTicketType(type);
     let ticket = event.ticketsTypeList.filter(
-      (e: TicketType) => e._id === type
+      (e: TicketType) => e.type === type
     );
     setCurrentPrice(ticket[0].price);
+    setCurrentDate(ticket[0].date!)
   };
 
-  async function createNewTicket() {
-    let data = {
-      tickets: [
-        {
-          event: "64c97c216239656a51f8a4d7",
-          purchaser: {
-            purchaserFirstName: "Robert",
-            purchaserLastName: "Benegui",
-            purchaserEmail: "benegui@yopmail.com",
-            purchaserDni: 123123123,
-          },
-          attendee: {
-            attendeeFirstName: "Renzo",
-            attendeeLastName: "Leonard",
-            attendeeDni: 12234079,
-            email: "test@test.com",
-          },
-        },
-        {
-          event: "64c97c216239656a51f8a4d7",
-          purchaser: {
-            purchaserFirstName: "Roberti",
-            purchaserLastName: "Benegui",
-            purchaserEmail: "benegui@yopmail.com",
-            purchaserDni: 123123123,
-          },
-          attendee: {
-            attendeeFirstName: "Renzo",
-            attendeeLastName: "Leonard",
-            attendeeDni: 12234079,
-            email: "test@test.com",
-          },
-        },
-      ],
+  async function createNewOffer() {
+    let data: offersBody = {
+      eventId: event.eventId,
+      quantity: quantityValue,
+      ticketType: {
+        price: currentPrice,
+        date: currentDate,
+        type: currentTicketType,
+      },
+      expirationDate: "2023-12-29T20:30:00.000Z",
     };
 
-    fetch("http://localhost:3000/api/ticketstest", {
+    fetch("http://localhost:3000/api/offer", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -101,17 +67,12 @@ export default function TicketsPicker({ event }: { event: Events }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('data', data.savedTickets[0].ticketId);
-        const ids = data.savedTickets.map((ticket: Ticket) => ticket.ticketId);
-        console.log('ticket', ids)
-        setTicketIds(ids);
-        console.log(ticketIds)
-        push(`/eventos/ticket/${data.savedTickets[0].ticketId}`)
+        push(`/eventos/ticket/${data.savedNewOrder._id}`);
       })
       .catch((error) => {
-        console.error('ERRORRR', error);
+        console.error("ERROR", error);
       });
-  };
+  }
 
   return (
     <div className={s.price_grid}>
@@ -130,8 +91,8 @@ export default function TicketsPicker({ event }: { event: Events }) {
                 Seleccionar
               </option>
               {event.ticketsTypeList.map((ticket: TicketType) => (
-                <option value={ticket._id} key={ticket._id}>
-                  {ticket.type} - $ {ticket.price}
+                <option value={ticket.type} key={ticket._id}>
+                  {ticket.type} {ticket.date} - $ {ticket.price}
                 </option>
               ))}
             </select>
@@ -161,7 +122,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
       </div>
       <div>Total: $ {globalTotal}</div>
       <div className="cta_area">
-        <button onClick={createNewTicket}>Continuar</button>
+        <button onClick={createNewOffer}>Continuar</button>
       </div>
     </div>
   );

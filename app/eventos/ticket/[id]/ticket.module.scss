@@ -1,0 +1,54 @@
+.header {
+  width: 100%;
+  height: 300px;
+  background-color: lightblue;
+  overflow-y: hidden;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background: linear-gradient(0deg, rgb(31 31 32) 0%, rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(9px);
+  }
+  img {
+    filter: grayscale(0.5);
+  }
+}
+.event_wrapper {
+  position: relative;
+  width: min(800px, 95vw);
+  margin: 0 auto;
+  top: -15rem;
+}
+
+.wrapper {
+    background-color: white;
+    padding: 1rem;
+    color: black;
+    text-align: center;
+    .info_grid {
+        color: black;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        .ticket_type {
+            grid-column: span 2;
+            background-color: lightgray;
+        }
+        .quantity {
+            grid-column: 3;
+            text-align: right;
+            background-color: lightblue;
+        }
+        .price_table {
+            grid-column: span 3;
+            background-color: lightcyan;
+            .row {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}

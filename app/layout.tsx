@@ -2,9 +2,9 @@
 import Navbar from './components/nav-bar';
 import Provider from './components/provider/provider';
 import './styles/global.scss'
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
  
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'MUG | Entradas online',
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={montserrat.className}>
         <Provider>      
         <Navbar />
           {children}
