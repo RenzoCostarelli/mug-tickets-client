@@ -2,21 +2,21 @@
 
 import { useEffect, useState } from "react";
 import style from "./page.module.scss"
-import { TicketTypeData } from "@/app/types/ticket";
+import { TicketType } from "@/app/types/ticket";
 import useTicketsStore from "@/app/store/ticketsTypeStore";
 import Dialog from "../dialog";
 
 type EventProps = {
-    ticket: TicketTypeData;
+    ticket: TicketType;
     key: number;
     index: number;
 }
 
 export default function EditTicketForm({ ticket, index }: EventProps) {
-    let timeStr = `${ticket?.date.split('T')[1].split('.')[0]}`;    
+    let timeStr = `${ticket?.date!.split('T')[1].split('.')[0]}`;    
     ticket.hour = timeStr;
 
-    const [data, setData] = useState<TicketTypeData>(ticket);
+    const [data, setData] = useState<TicketType>(ticket);
     const [toggle, setToggle] = useState<boolean>(false);
     const [dialog, setDialog] = useState<boolean>(false);
     const removeTicket = useTicketsStore((store) => store.removeTicket);
@@ -53,7 +53,7 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = event.target;
     
-        setData((values: TicketTypeData) => ({
+        setData((values: TicketType) => ({
             ...values,
             [name]: type === 'checkbox' ? checked : value
         }));        
@@ -136,7 +136,7 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
                             type="date"
                             autoComplete='true'
                             min={ new Date().toJSON().split('T')[0] }
-                            value={data?.date.split('T')[0]}
+                            value={data?.date!.split('T')[0]}
                             required
                             onChange={handleInputChange}
                             />                        

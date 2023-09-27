@@ -76,7 +76,7 @@ export default function CheckoutBuyerForm( {eventId, product}:{eventId: string, 
                     placeholder='Telefono'/> 
                 <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
             </div>
-            <MpButton product={product}/> 
+            <MpButton prod={product}/> 
         </form>        
     )
 }

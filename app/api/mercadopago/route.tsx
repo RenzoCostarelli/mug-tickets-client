@@ -22,10 +22,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
                 }
             ],
             auto_return: 'approved',
-            // back_urls: {
-            //     success: `${URL}`,
-            //     failure: `${URL}`
-            // },
+            back_urls: {
+                success: `${URL}`,
+                failure: `${URL}`
+            },
             notification_url: `${URL}/api/notify`
         }
         const response = await mercadopago.preferences.create(preference)

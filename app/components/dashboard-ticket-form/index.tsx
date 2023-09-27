@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import style from "./page.module.scss"
-import { TicketTypeData } from "@/app/types/ticket";
+import { TicketType } from "@/app/types/ticket";
 import useTicketsStore from "@/app/store/ticketsTypeStore";
 
 type EventProps = {
-    ticket: TicketTypeData;
+    ticket: TicketType;
 }
 
 export default function TicketForm({ ticket }: EventProps) {
-    const [data, setData] = useState<TicketTypeData>(ticket);
+    const [data, setData] = useState<TicketType>(ticket);
     const [toggle, setToggle] = useState<boolean>(false);
     const addTicket = useTicketsStore((state) => state.addTicket);
     
@@ -40,7 +40,7 @@ export default function TicketForm({ ticket }: EventProps) {
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = event.target;    
-        setData((values: TicketTypeData) => ({
+        setData((values: TicketType) => ({
             ...values,
             [name]: type === 'checkbox' ? checked : value
         }));        
@@ -98,7 +98,7 @@ export default function TicketForm({ ticket }: EventProps) {
                             type="date"
                             autoComplete='true'
                             min={ new Date().toJSON().split('T')[0] }
-                            value={data?.date.split('T')[0]}
+                            value={data?.date!.split('T')[0]}
                             required
                             onChange={handleInputChange}
                             />                        
