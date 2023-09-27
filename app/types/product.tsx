@@ -6,3 +6,4 @@ export interface Product {
   quantity: number;
   description: string;
 }
+
