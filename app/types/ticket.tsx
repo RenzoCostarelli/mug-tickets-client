@@ -4,7 +4,7 @@ export interface TicketType {
     type: string;
     price: number;
     ticketId?: string;
-    date?: string;
+    date: string;
     hour?: string;
     ticketsAvailableOnline?: number;
     ticketPurchaseDeadline?: string;

@@ -31,6 +31,7 @@ export default function EventForm({ event }: { event: Events }) {
             event.preventDefault()
             const formData = new FormData(event.currentTarget);
             const eventId = formData.get('eventId') as string;
+            
             const response = await fetch('/api/admin/eventos', {
                 method: eventId? 'PUT' : 'POST',
                 body: formData,
@@ -38,18 +39,18 @@ export default function EventForm({ event }: { event: Events }) {
         
             // Handle response if necessary
             const data = await response.json();
-            const { ok, newEvent, updatedEvent, message} = data;
-            if(ok) {   
-                if(newEvent) {
-                    setData(newEvent);
-                    push(`/admin/eventos/${newEvent.eventId}`);                
-                }
-                setData(updatedEvent);
+            const { ok, newEvent, updatedEvent, message } = data;
+            if(!ok) {   
+                // excepcion message
+                console.log( message )
                 return;
             }
+            
+            if(newEvent) {
+                push(`/admin/eventos/${newEvent.eventId}`);                
+            }
 
-
-            console.error(message)
+            setData(updatedEvent);
             // ...
         } catch (error) {
             console.error(error)
@@ -58,8 +59,7 @@ export default function EventForm({ event }: { event: Events }) {
     }
 
     const handleInputChange = (event: any) => {
-        const { name, value, type, checked } = event.target;
-        
+        const { name, value, type, checked } = event.target;        
         setData(values => ({
             ...values,
             [name]: type === 'checkbox' ? checked : value

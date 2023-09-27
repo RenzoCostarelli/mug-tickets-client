@@ -1,11 +1,11 @@
 import { create } from 'zustand';
-import { TicketTypeData } from '../types/ticket';
+import { TicketType } from '../types/ticket';
 
 type StoreTicketTypes = {
-  tickets: TicketTypeData[];
-  addTicket: (ticket: TicketTypeData) => void;
+  tickets: TicketType[];
+  addTicket: (ticket: TicketType) => void;
   removeTicket: (id: string) => void
-  initTickets: (array: TicketTypeData[]) => void
+  initTickets: (array: TicketType[]) => void
 };
 
 const useTicketsStore = create<StoreTicketTypes>((set) => ({

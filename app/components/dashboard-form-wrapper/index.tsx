@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import TicketForm from "../dashboard-ticket-form"
-import { TicketTypeData } from "@/app/types/ticket";
+import { TicketType } from "@/app/types/ticket";
 import style from "./page.module.scss"
 import EditTicketForm from "../edit-ticket-form";
 import useTicketsStore from "@/app/store/ticketsTypeStore";
@@ -25,7 +25,7 @@ export default function DropdownList({ event }: any) {
     const initTickets = useTicketsStore((state) => state.initTickets);    
     const tickets = useTicketsStore((state) => state.tickets);
     
-    const newTicket: TicketTypeData = { 
+    const newTicket: TicketType = { 
         ...TICKET_INITIAL_DATA, 
         eventId: event.eventId ?? '' 
     };
@@ -55,7 +55,7 @@ export default function DropdownList({ event }: any) {
                     <div>
                         
                         { 
-                            tickets.map((ticket: TicketTypeData, index: number) => (
+                            tickets.map((ticket: TicketType, index: number) => (
                                 <div 
                                     key={index} 
                                     style={{

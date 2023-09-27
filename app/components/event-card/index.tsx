@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link';
 import s from './event-card.module.scss';
-import { EventData } from '@/app/types/event';
+import { Events } from '@/app/types/events';
 
-export default function EventCard({ showInfo }: { showInfo: EventData }) {
+export default function EventCard({ showInfo }: { showInfo: Events }) {
     const { title, image, ticketsTypeList, eventId } = showInfo;
     
     const date = new Date(ticketsTypeList[0]?.date?.split('T')[0]);
