@@ -8,7 +8,6 @@ async function getEvent(id: string) {
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-  console.log('res', res)
   return res.json();
 }
 
@@ -26,7 +25,6 @@ export default async function BuyTicket({params}: { params: { id: string }}) {
     return total
   } 
 
-  console.log('order', order)
   return (
     <main>
       <div className={s.header}>

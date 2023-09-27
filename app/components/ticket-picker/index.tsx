@@ -25,6 +25,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
   const [currentTicketType, setCurrentTicketType] = useState<string>("");
   const { push } = useRouter();
 
+
   const calculateTotal = (q: number) => {
     let newTotal = q * currentPrice;
     setGlobalTotal(newTotal);
@@ -107,6 +108,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
               name="quantity"
               id="quantity"
               onChange={(e) => handleQuantityChange(Number(e.target.value))}
+              disabled={currentTicketType == ""}
             >
               <option value={0} disabled>
                 0
@@ -122,7 +124,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
       </div>
       <div>Total: $ {globalTotal}</div>
       <div className="cta_area">
-        <button onClick={createNewOffer}>Continuar</button>
+        <button onClick={createNewOffer} disabled={quantityValue == 0}>Continuar</button>
       </div>
     </div>
   );

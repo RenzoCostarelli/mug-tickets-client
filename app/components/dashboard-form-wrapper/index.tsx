@@ -30,7 +30,6 @@ export default function DropdownList({ event }: any) {
         eventId: event.eventId ?? '' 
     };
 
-    //console.log(event)
     useEffect(() => {
         initTickets(ticketsTypeList)
     }, [ticketsTypeList])
