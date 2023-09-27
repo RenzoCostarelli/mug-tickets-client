@@ -5,10 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import BackButton from '../components/back-button';
 
-export const metadata = {
-  title: 'Admin Mug Tickets'
-}
-
 export default function AdminLayout({
   children,
 }: {
