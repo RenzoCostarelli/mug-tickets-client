@@ -50,3 +50,35 @@ $fs-italic: italic;
       right: 0px;
     }
 }
+
+.special-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+  span {
+      font-weight: 500;
+  }
+}
+
+.backLine-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  z-index: 0;
+  position: relative;
+  margin-block: 0;
+  &::after, &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: calc(40% - 100px);
+    height: 1px;
+    background-color: rgb(169, 169, 169);
+  }
+  &::before {
+    left: auto;
+    right: 0;
+  }
+}
