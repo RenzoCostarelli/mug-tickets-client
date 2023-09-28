@@ -26,29 +26,74 @@
 
 .wrapper {
     background-color: white;
-    padding: 1rem;
+    padding: 3rem;
     color: black;
     text-align: center;
+    display: grid;
+    gap: 2rem;
     .info_grid {
-        color: black;
+        color: white;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
         .ticket_type {
             grid-column: span 2;
-            background-color: lightgray;
+            background-color: rgb(0, 0, 0);
+            padding: 1rem;
+            text-align: left;
         }
         .quantity {
             grid-column: 3;
-            text-align: right;
-            background-color: lightblue;
+            text-align: left;
+            background-color: rgb(0, 0, 0);
+            padding: 1rem;
         }
         .price_table {
             grid-column: span 3;
-            background-color: lightcyan;
+            background-color: rgb(0, 0, 0);
             .row {
                 display: flex;
                 justify-content: space-between;
+                padding: 1rem;
             }
         }
     }
+}
+
+.info_area {
+  background-color: rgb(231, 231, 231);
+  padding: 1rem 3rem;
+  margin-inline: auto;
+  margin-block: 0;
+  border-radius: 1rem 0rem 1rem 0rem;
+  span {
+    font-weight: 900;
+  }
+}
+
+.form_area_inline {
+  margin-top: 1rem;
+  span {
+    font-weight: bold;
+  }
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form_area{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  flex: 1;
+  label {
+    text-align: left;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
 }

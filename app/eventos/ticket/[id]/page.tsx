@@ -13,10 +13,14 @@ async function getEvent(id: string) {
   return res.json();
 }
 
-export default async function BuyTicket({params}: { params: { id: string }}) {
+export default async function BuyTicket({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id } = params;
   const { order } = await getEvent(id);
-  let event = order.event
+  let event = order.event;
 
   const orderMpInfo: Product = {
     id: order._id,
@@ -24,17 +28,19 @@ export default async function BuyTicket({params}: { params: { id: string }}) {
     img: "img",
     quantity: order.quantity,
     price: order.ticketType.price * order.quantity,
-    description: event.title
-  }
+    description: event.title,
+  };
 
   const date = new Date(order.ticketType.date);
-  const dateStr = date.toLocaleDateString()
-  const timeStr = `${date.toLocaleTimeString().split(":")[0]}:${date.toLocaleTimeString().split(":")[1]}`;
+  const dateStr = date.toLocaleDateString();
+  const timeStr = `${date.toLocaleTimeString().split(":")[0]}:${
+    date.toLocaleTimeString().split(":")[1]
+  }`;
 
-  const calculateTotal = (pri: number, qty:number) => {
-    let total = pri * qty
-    return total
-  } 
+  const calculateTotal = (pri: number, qty: number) => {
+    let total = pri * qty;
+    return total;
+  };
 
   return (
     <main>
@@ -54,60 +60,78 @@ export default async function BuyTicket({params}: { params: { id: string }}) {
         <EventCardMain event={event} />
         <div className={s.container}>
           <div className={`${s.wrapper}`}>
-            <h1>Datos de tu reserva</h1>
+            <h1 className="special-title">
+              Confirmar <span>compra</span>
+            </h1>
+            <p className={s.info_area}>
+              Tu reserva es por tiempo limitado. <br /> Una vez vencida no se
+              podrá realizar la compra
+            </p>
+            <h1 className="backLine-title">Datos de tu reserva</h1>
             <div className={s.info_grid}>
-              <div className={s.ticket_type}>{ order.ticketType.type } {dateStr} { timeStr }</div>
+              <div className={s.ticket_type}>
+                {order.ticketType.type} {dateStr} {timeStr}
+              </div>
               <div className={s.quantity}>{order.quantity}</div>
               <div className={s.price_table}>
-                {/* <div className={s.row}>
-                  <p>Subtotal</p>
-                  <p>$ 12333</p>
-                </div> */}
                 <div className={`${s.row} ${s.accent}`}>
                   <p>Total</p>
-                  <p>$ {calculateTotal(order.ticketType.price, order.quantity).toLocaleString()}</p>
+                  <p>
+                    ${" "}
+                    {calculateTotal(
+                      order.ticketType.price,
+                      order.quantity
+                    ).toLocaleString()}
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={s.wrapper}>
-            <h1>Tus datos</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-              sapiente at incidunt deleniti libero labore aliquam quibusdam
-              voluptatum qui quos.
+            <p className={s.info_area}>
+              TU RESERVA VENCE EN <span>14:59</span>
+            </p>
+            <h1 className="backLine-title">Tus datos</h1>
+            <p className={s.info_area}>
+              Una vez que completes tus datos podrás realizar el pago.
+              <br />
+              Vas a recibir los Tickets en tu casilla de e-mail.
             </p>
             <div className={s.form_wrapper}>
               <form action="/api/tickets" method="POST" className={s.buy_form}>
-                <div className={s.columns}>
+                <div className={s.row}>
                   <div className={s.form_area}>
                     <label htmlFor="name">Nombre</label>
                     <input
                       type="text"
                       name="name"
                       id="name"
+                      className="custom-input"
                       required
                       placeholder="Nombre"
-                    />
-                  </div>
-                  <div className={s.form_area}>
-                    <label htmlFor="dni">DNI</label>
-                    <input
-                      type="text"
-                      name="dni"
-                      id="dni"
-                      required
-                      placeholder="DNI"
                     />
                   </div>
                   <div className={s.form_area}>
                     <label htmlFor="last-name">Apellido</label>
                     <input
                       type="text"
-                      name="last-name"
                       id="last-name"
+                      name="last-name"
+                      className="custom-input"
                       required
                       placeholder="Apellido"
+                    />
+                  </div>
+
+                </div>
+                <div className={s.row}>
+                <div className={s.form_area}>
+                    <label htmlFor="dni">DNI</label>
+                    <input
+                      type="text"
+                      name="dni"
+                      id="dni"
+                      className="custom-input"
+                      required
+                      placeholder="DNI"
                     />
                   </div>
                   <div className={s.form_area}>
@@ -116,17 +140,19 @@ export default async function BuyTicket({params}: { params: { id: string }}) {
                       type="phone"
                       name="phone"
                       id="phone"
+                      className="custom-input"
                       required
                       placeholder="Telefono"
                     />
                   </div>
                 </div>
-                <div className={s.form_area}>
+                <div className={`${s.form_area} ${s.full}`}>
                   <label htmlFor="email">E-MAIL</label>
                   <input
                     type="email"
                     name="email"
                     id="email"
+                    className="custom-input"
                     required
                     placeholder="email"
                   />
@@ -134,10 +160,10 @@ export default async function BuyTicket({params}: { params: { id: string }}) {
                 <div className={s.form_area_inline}>
                   <input type="checkbox" name="terms" id="terms" required />
                   <label htmlFor="terms">
-                    He leido y acepto los Terminos y condiciones
+                    He leido y acepto los <span>Terminos y condiciones</span>
                   </label>
                 </div>
-                <MpButton prod={orderMpInfo}/>
+                <MpButton prod={orderMpInfo} />
               </form>
             </div>
           </div>
