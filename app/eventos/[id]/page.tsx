@@ -40,7 +40,7 @@ export default async function Event({ params }: { params: { id: string } }) {
         <div className={s.buy_area}>
         {event!.ticketsTypeList && event!.ticketsTypeList.length > 0 && (
             <>
-              <h1>Compra tu entrada</h1>
+              <h1>Comprá tu <span>entrada</span></h1>
               <TicketsPicker event={event} />
             </>
         )}

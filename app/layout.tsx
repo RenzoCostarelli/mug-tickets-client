@@ -4,7 +4,7 @@ import Provider from './components/provider/provider';
 import './styles/global.scss'
 import { Montserrat } from 'next/font/google'
  
-const montserrat = Montserrat({ subsets: ['latin'] })
+const montserrat = Montserrat({ subsets: ['latin'], weight: ['900', '700', '500', '400'] })
 
 export const metadata = {
   title: 'MUG | Entradas online',

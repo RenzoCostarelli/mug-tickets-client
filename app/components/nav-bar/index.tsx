@@ -17,7 +17,7 @@ export default function Navbar() {
     return (        
         <div className={s.nav_bar}>
             <Image 
-                src="https://res.cloudinary.com/dxvxzikri/image/upload/v1692558761/dzmlypgcmhpkb5x6seh4.jpg"
+                src="https://res.cloudinary.com/dkgnaegp9/image/upload/v1695928585/MUG_LOGO_PNG_tw6x2s.png"
                 alt='MUG'
                 width={50}
                 height={50}/>                

@@ -78,53 +78,59 @@ export default function TicketsPicker({ event }: { event: Events }) {
   return (
     <div className={s.price_grid}>
       <div className={`${s.ticket_form} d-flex`}>
-        <div className="input-area">
-          <label htmlFor="ticketType">Tipo de entrada</label>
-          <div className="select-wrapper">
-            <select
-              className="custom-select"
-              value={currentTicketType}
-              name="ticketType"
-              id="ticketType"
-              onChange={(e) => handleTicketChange(e.target.value)}
-            >
-              <option value="" disabled>
-                Seleccionar
-              </option>
-              {event.ticketsTypeList.map((ticket: TicketType) => (
-                <option value={ticket.type} key={ticket._id}>
-                  {ticket.type} {ticket.date} - $ {ticket.price}
+        <div className={s.form_wrapper}>
+          <div className="input-area">
+            <label htmlFor="ticketType">Tipo de entrada</label>
+            <div className="select-wrapper">
+              <select
+                className="custom-select"
+                value={currentTicketType}
+                name="ticketType"
+                id="ticketType"
+                onChange={(e) => handleTicketChange(e.target.value)}
+              >
+                <option value="" disabled>
+                  Seleccionar
                 </option>
-              ))}
-            </select>
+                {event.ticketsTypeList.map((ticket: TicketType) => (
+                  <option value={ticket.type} key={ticket._id}>
+                    {ticket.type} {ticket.date} - $ {ticket.price}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="input-area">
+            <label htmlFor="quantity">Cantidad</label>
+            <div className="select-wrapper">
+              <select
+                value={quantityValue}
+                className={`custom-select ${s.select_number}`}
+                name="quantity"
+                id="quantity"
+                onChange={(e) => handleQuantityChange(Number(e.target.value))}
+                disabled={currentTicketType == ""}
+              >
+                <option value={0} disabled>
+                  0
+                </option>
+                {[1, 2, 3, 4, 5].map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
-        <div className="input-area">
-          <label htmlFor="quantity">Cantidad</label>
-          <div className="select-wrapper">
-            <select
-              value={quantityValue}
-              className="custom-select"
-              name="quantity"
-              id="quantity"
-              onChange={(e) => handleQuantityChange(Number(e.target.value))}
-              disabled={currentTicketType == ""}
-            >
-              <option value={0} disabled>
-                0
-              </option>
-              {[1, 2, 3, 4, 5].map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
+        <div className={s.form_footer}>
+          <div className={s.total_label}>
+           <span>Total: $ {globalTotal}</span>
+          </div>
+          <div className={s.cta_area}>
+            <button onClick={createNewOffer} disabled={quantityValue == 0}>Continuar</button>
           </div>
         </div>
-      </div>
-      <div>Total: $ {globalTotal}</div>
-      <div className="cta_area">
-        <button onClick={createNewOffer} disabled={quantityValue == 0}>Continuar</button>
       </div>
     </div>
   );

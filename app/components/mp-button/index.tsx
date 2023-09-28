@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Product } from "@/app/types/product";
 import s from "./mp-button.module.scss";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-initMercadoPago(process.env.MP_PUBLIC_KEY!);
+initMercadoPago(process.env.MP_PUBLIC_KEY!, {locale: 'es-AR'});
 
 export function MpButton({ prod }: { prod: Product }) {
   const [url, setUrl] = useState<null | string>(null);
@@ -31,7 +31,6 @@ export function MpButton({ prod }: { prod: Product }) {
         };
         const response = await callApi();
         const data = await response.json();
-        console.log("data", data);
         setPreference(data.response.id);
         setUrl(data?.response?.sandbox_init_point);
         setLoading(false);
