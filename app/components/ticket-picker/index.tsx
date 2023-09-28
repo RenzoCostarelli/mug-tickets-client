@@ -59,7 +59,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
       expirationDate: "2023-12-29T20:30:00.000Z",
     };
 
-    fetch("http://localhost:3000/api/offer", {
+    fetch("/api/offer", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
