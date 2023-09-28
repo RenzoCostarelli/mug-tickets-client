@@ -1,0 +1,53 @@
+.ticket_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    label {
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+}
+
+.select_number {
+    padding-right: 1rem;
+}
+
+.total_label {
+    font-size: 2rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+}
+
+.form_wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.price_grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    .form_footer {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.cta_area {
+    button {
+        background-color: #b5f4b8;
+        border: none;
+        padding: 1rem 2rem;
+        font-weight: 900;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        &:disabled {
+            opacity: 0.8;
+            cursor: auto;
+            filter: grayscale(0.5);
+        }
+    }
+}
