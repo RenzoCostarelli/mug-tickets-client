@@ -10,7 +10,7 @@ mercadopago.configure({
 export async function POST(req: NextRequest, res: NextResponse) {
     const body = await req.json();
     const product: Product = body.product;    
-    const URL =  'http://localhost:3000';
+    const URL =  'https://www.mug.ar/eventos/64ca907f2e06679b881af02f';
 
     try {
         const preference: CreatePreferencePayload = {
