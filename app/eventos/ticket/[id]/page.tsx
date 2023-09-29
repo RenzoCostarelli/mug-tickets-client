@@ -1,11 +1,12 @@
 import EventCardMain from "@/app/components/event-card-main";
 import s from "./ticket.module.scss";
 import Image from "next/image";
-import { QuerystringParser } from "formidable/parsers";
 import { MpButton } from "@/app/components/mp-button";
 import { Product } from "@/app/types/product";
+import OrderDataForm from "@/app/components/order-user-data-fom";
 
-async function getEvent(id: string) {
+
+async function getOffer(id: string) {
   const res = await fetch(`${process.env.apiUrl}/orders/${id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -13,23 +14,12 @@ async function getEvent(id: string) {
   return res.json();
 }
 
-export default async function BuyTicket({
-  params,
-}: {
-  params: { id: string };
-}) {
+
+export default async function BuyTicket({params}: {params: { id: string }}) {
   const { id } = params;
-  const { order } = await getEvent(id);
+  const { order } = await getOffer(id);
   let event = order.event;
 
-  const orderMpInfo: Product = {
-    id: order._id,
-    title: `${order.ticketType.type} x${order.quantity}`,
-    img: "img",
-    quantity: order.quantity,
-    price: order.ticketType.price * order.quantity,
-    description: event.title,
-  };
 
   const date = new Date(order.ticketType.date);
   const dateStr = date.toLocaleDateString();
@@ -95,7 +85,8 @@ export default async function BuyTicket({
               <br />
               Vas a recibir los Tickets en tu casilla de e-mail.
             </p>
-            <div className={s.form_wrapper}>
+            <OrderDataForm order={order}/>
+            {/* <div className={s.form_wrapper}>
               <form className={s.buy_form}>
                 <div className={s.row}>
                   <div className={s.form_area}>
@@ -163,9 +154,11 @@ export default async function BuyTicket({
                     He leido y acepto los <span>Terminos y condiciones</span>
                   </label>
                 </div>
-                <MpButton prod={orderMpInfo} />
+                <div className={s.form_area_inline}>
+                  <MpButton prod={orderMpInfo} offerId={order._id} isEnabled={false}/>
+                </div>
               </form>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

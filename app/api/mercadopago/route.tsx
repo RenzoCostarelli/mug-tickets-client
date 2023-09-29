@@ -10,7 +10,7 @@ mercadopago.configure({
 export async function POST(req: NextRequest, res: NextResponse) {
     const body = await req.json();
     const product: Product = body.product;    
-    const URL =  'https://www.mug.ar/eventos/64ca907f2e06679b881af02f';
+    const URL =  'https://96a1-186-13-96-126.ngrok-free.app';
 
     try {
         const preference: CreatePreferencePayload = {
@@ -21,12 +21,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
                     quantity: 1
                 }
             ],
+            external_reference: product.offerId,
             auto_return: 'approved',
             back_urls: {
-                success: `${URL}`,
+                success: `${URL}/eventos/ticket/${product.offerId}`,
                 failure: `${URL}`
             },
-            notification_url: `${URL}/api/notify`
+            notification_url: `${URL}/api/mpNotify`
         }
         const response = await mercadopago.preferences.create(preference)
         return NextResponse.json(response);
