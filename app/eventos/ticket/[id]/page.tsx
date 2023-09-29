@@ -96,7 +96,7 @@ export default async function BuyTicket({
               Vas a recibir los Tickets en tu casilla de e-mail.
             </p>
             <div className={s.form_wrapper}>
-              <form action="/api/tickets" method="POST" className={s.buy_form}>
+              <form className={s.buy_form}>
                 <div className={s.row}>
                   <div className={s.form_area}>
                     <label htmlFor="name">Nombre</label>
