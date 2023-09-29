@@ -1,3 +1,5 @@
+@import '../../styles/functions';
+
 .inner {
     display: flex;
     justify-content: space-between;
@@ -7,6 +9,11 @@
     padding: 1.5rem;
     border-radius: 0.25rem;
     box-shadow: 0 10px 20px 0 rgba(52, 52, 52, 0.317);
+    @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .event_info {
         padding-inline: 1rem;
         display: flex;

@@ -13,7 +13,7 @@ export default function EventCardMain({event}: any) {
       const date = new Date(event!.ticketsTypeList[0].date);
       
       formatedDate = new Intl.DateTimeFormat('es-AR', {
-        dateStyle: 'full',
+        dateStyle: 'medium',
         timeZone: 'America/Buenos_Aires'
       }).format(date)//date.toLocaleDateString();
       timeStr = formatTime(event!.ticketsTypeList[0].date);
