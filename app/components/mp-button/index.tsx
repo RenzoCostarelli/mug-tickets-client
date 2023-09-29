@@ -5,8 +5,8 @@ import s from "./mp-button.module.scss";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 initMercadoPago(process.env.MP_PUBLIC_KEY!, {locale: 'es-AR'});
 
-export function MpButton({ prod }: { prod: Product }) {
-  const [url, setUrl] = useState<null | string>(null);
+export function MpButton({ prod, offerId, isEnabled }: { prod: Product, offerId: string, isEnabled: boolean }) {
+  const [url, setUrl] = useState<string>();
   const [loading, setLoading] = useState<boolean>(true);
   const [preferenceState, setPreference] = useState<string>("");
   const [product, setProduct] = useState<Product>({
@@ -16,6 +16,7 @@ export function MpButton({ prod }: { prod: Product }) {
     quantity: prod.quantity,
     price: prod.price,
     description: prod.description,
+    offerId: offerId
   });
 
   useEffect(() => {
@@ -44,21 +45,24 @@ export function MpButton({ prod }: { prod: Product }) {
 
   return (
     <>
-      <div id="wallet_container"></div>
-      {loading ? (
-        <p>Cargando</p>
+      {/* <div id="wallet_container"></div> */}
+      {loading || !isEnabled ? (
+        <a className={`${s.main_pay_button} ${s.disabled}`}>Realizar pago</a>
       ) : (
-        <Wallet
+        <> 
+        
+        <a className={s.main_pay_button} href={url}>Realizar pago</a>
+        {/* <Wallet
           initialization={{
             preferenceId: preferenceState,
-            redirectMode: "modal",
           }}
           customization={{
             texts: {
               action: "pay",
             },
           }}
-        />
+        /> */}
+        </>
       )}
     </>
   );

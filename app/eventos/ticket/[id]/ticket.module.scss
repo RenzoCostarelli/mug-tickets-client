@@ -71,29 +71,5 @@
   }
 }
 
-.form_area_inline {
-  margin-top: 1rem;
-  span {
-    font-weight: bold;
-  }
-}
 
-.row {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
 
-.form_area{
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  flex: 1;
-  label {
-    text-align: left;
-    margin-bottom: 0.2rem;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-}

@@ -10,7 +10,7 @@ interface BuyFormProps {
     type: string;
 }
 
-export default function CheckoutBuyerForm( {eventId, product}:{eventId: string, product: Product, user?: any} ) {
+export default function CheckoutBuyerForm( {orderId, eventId, product}:{orderId: string, eventId: string, product: Product, user?: any} ) {
 
     // if user: autocompletar el form
     return (
@@ -76,7 +76,7 @@ export default function CheckoutBuyerForm( {eventId, product}:{eventId: string, 
                     placeholder='Telefono'/> 
                 <label htmlFor="phone">He leido y acepto los Terminos y condiciones</label>
             </div>
-            <MpButton prod={product}/> 
+            <MpButton prod={product} offerId='123'/> 
         </form>        
     )
 }
