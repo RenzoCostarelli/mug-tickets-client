@@ -10,7 +10,7 @@ mercadopago.configure({
 export async function POST(req: NextRequest, res: NextResponse) {
     const body = await req.json();
     const product: Product = body.product;    
-    const URL =  'https://mug.ar/';
+    const URL =  'https://www.mug.ar';
 
     try {
         const preference: CreatePreferencePayload = {

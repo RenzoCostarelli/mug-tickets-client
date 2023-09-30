@@ -9,6 +9,7 @@ mercadopago.configure({
 export async function POST(req: NextRequest, res: NextApiResponse) {
     const r = await req.json();
     const topic = r.topic || r.type
+    console.log('pagando')
     try {
         if(topic === "payment") {
             const paymentId = r.data.id
@@ -26,6 +27,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
                     });
                     
                     const result = await response.json();
+                    console.log('result', result)
                   } catch (error) {
                     console.error(error);
                   }
