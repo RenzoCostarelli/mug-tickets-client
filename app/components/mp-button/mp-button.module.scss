@@ -11,13 +11,28 @@
     box-shadow: 0px 0px 0px 0px #a0d8a3;
     transition: box-shadow 200ms linear;
     &.disabled {
-        opacity: 0.8;
+        opacity: 0.5;
         cursor: auto;
         filter: grayscale(0.5);
+        &.animated {
+            background-size: 300% !important;
+            background: rgb(0,255,213);
+            background: linear-gradient(85deg, rgba(0,255,213,1) 0%, rgba(0,148,127,1) 28%, rgba(190,247,239,1) 61%, rgba(17,255,222,1) 100%);
+            animation: bg-gradient-animation 5500ms linear infinite;
+        }
     }
     &:not(.disabled) {
         &:hover {
             box-shadow: 0px 0px 0px 3px #a0d8a3;
         }
+    }
+}
+
+@keyframes bg-gradient-animation {
+    from {
+        background-position-x: -100%;
+    }
+    to {
+        background-position-x: 300%;
     }
 }

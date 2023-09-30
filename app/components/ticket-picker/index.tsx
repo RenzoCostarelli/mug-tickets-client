@@ -16,6 +16,20 @@ interface offersBody {
     expirationDate: string
 }
 
+const formatTime = (date: any): string => {
+  const time = date.split('T')[1];
+  return `${time.split(':')[0]}:${time.split(':')[1]}`;
+}
+
+const formatDate = (date: any): string => {
+  const d = new Date(date)
+  const formatedDate = new Intl.DateTimeFormat('es-AR', {
+    dateStyle: 'medium',
+    timeZone: 'America/Buenos_Aires'
+  }).format(d)
+  return formatedDate
+}
+
 export default function TicketsPicker({ event }: { event: Events }) {
   
   const [globalTotal, setGlobalTotal] = useState<number>(0);
@@ -25,6 +39,18 @@ export default function TicketsPicker({ event }: { event: Events }) {
   const [currentTicketType, setCurrentTicketType] = useState<string>("");
   const { push } = useRouter();
 
+  let formatedDate = "";
+  let timeStr = "";
+
+  // if (event!.ticketsTypeList && event!.ticketsTypeList.length > 0) {
+  //   const date = new Date(event!.ticketsTypeList[0].date);
+    
+  //   formatedDate = new Intl.DateTimeFormat('es-AR', {
+  //     dateStyle: 'medium',
+  //     timeZone: 'America/Buenos_Aires'
+  //   }).format(date)//date.toLocaleDateString();
+  //   timeStr = formatTime(event!.ticketsTypeList[0].date);
+  // }
 
   const calculateTotal = (q: number) => {
     let newTotal = q * currentPrice;
@@ -94,7 +120,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
                 </option>
                 {event.ticketsTypeList.map((ticket: TicketType) => (
                   <option value={ticket.type} key={ticket._id}>
-                    {ticket.type} {ticket.date} - $ {ticket.price}
+                    {ticket.type} | {formatDate(ticket.date)} - {formatTime(ticket.date)}hs - $ {ticket.price}
                   </option>
                 ))}
               </select>

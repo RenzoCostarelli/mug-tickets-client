@@ -3,8 +3,7 @@
 // ABRIR CAMARA
 // Y VALIDAR
 
-export default async function AdminValidate() {
-    
+export default async function AdminValidate() {    
     return(   
         <main>QR Scan</main>
     )
