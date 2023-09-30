@@ -1,27 +1,51 @@
-import s from './page.module.scss'
-import EventsList from './components/events-list'
+import Image from "next/image";
+import s from "./evento.module.scss";
+import TicketsPicker from "@/app/components/ticket-picker";
+import EventCardMain from "@/app/components/event-card-main";
 
-async function getData() {
-  const res = await fetch(`${process.env.apiUrl}/events`);
+async function getEventById(id: string) {
+  const res = await fetch(`${process.env.apiUrl}/events/${id}`, {
+    cache: "no-store",
+  });
   if (!res.ok) {
-    throw new Error('Failed to fetch home data');
+    throw new Error("Failed to fetch data");
   }
   return res.json();
 }
 
-export default async function Home() {
-  const { events } = await getData() || {};
+export const metadata = {
+    title: 'MUG | Entradas online',
+    description: 'Plataforma de venta de tickets online del MUG',
+}
+
+export default async function Event() {
+  const { event } = await getEventById('64c977b5d1e10a82be3facc5');
   
   return (
-      <>
-        <main className={s.main}>
-          <section className={s.next_events}>
-            <h1 className={'big-title'}>PROXIMOS EVENTOS</h1>
-            <div className={s.event_cards_container}>
-              <EventsList events={events}/>
-            </div>
-          </section>
-        </main>
-      </>
-  )
+    <main>
+      <div className={s.header}>
+        {
+          <Image
+            src={event.image ?? "/images/flyer__test.jpg"}
+            alt={event.title ?? "Mug"}
+            fill
+            style={{
+              objectFit: "cover",
+            }}
+          />
+        }
+      </div>
+      <div className={s.event_wrapper}>
+        <EventCardMain event={event}/>
+        <div className={s.buy_area}>
+        {event!.ticketsTypeList && event!.ticketsTypeList.length > 0 && (
+            <>
+              <h1 className="special-title">Comprá tu <span>entrada</span></h1>
+              <TicketsPicker event={event} />
+            </>
+        )}
+        </div>
+      </div>
+    </main>
+  );
 }
