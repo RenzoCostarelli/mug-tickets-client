@@ -24,7 +24,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
             external_reference: product.offerId,
             auto_return: 'approved',
             back_urls: {
-                success: `${URL}/eventos/ticket/${product.offerId}`,
+                success: `${URL}`,
                 failure: `${URL}`
             },
             notification_url: `${URL}/api/mpNotify`
