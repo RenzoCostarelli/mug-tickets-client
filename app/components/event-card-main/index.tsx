@@ -41,7 +41,7 @@ export default function EventCardMain({event}: any) {
                       </g>
                     </svg>
                   </span>
-                  {formatedDate}
+                  10 y 11 de Noviembre
                 </div>
                 <div className={s.time}>
                   <span>
