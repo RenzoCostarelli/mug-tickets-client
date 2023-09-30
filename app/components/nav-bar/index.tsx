@@ -24,7 +24,7 @@ export default function Navbar() {
             <nav className={s.main_navigation}>
                 <ul className={s.links}>
                     <li className={s.link}>
-                        <Link href={`/eventos/64ef67bee993f72825a84282`}>Entradas</Link>
+                        <Link href={`/`}>Entradas</Link>
                     </li>
                     {/* <li className={s.link}>
                         <Link href={`/`}>Home</Link>
