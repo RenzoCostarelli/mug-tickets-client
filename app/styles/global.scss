@@ -53,10 +53,10 @@ a {
   text-decoration: none;
 }
 
-*::selection {
-  background-color: var(--white);
-  color: var(--black);
-}
+// *::selection {
+//   background-color: var(--white);
+//   color: var(--black);
+// }
 
 svg.icon {
   path[fill],
@@ -140,10 +140,19 @@ svg.icon {
 .custom-input {
   padding-block: 1rem;
   padding-inline: 1rem 2rem;
-  background-color: black;
-  color: white;
+  background-color: black !important;
   font-size: 1rem;
+  font-weight: 600;
   width: 100%;
   color: #b5f4b8;
+  &.valid {
+    box-shadow: 0 0 0 2px rgb(156, 252, 156);
+  }  
+  &.invalid {
+    box-shadow: 0 0 0 2px red;
+  }
+  &:disabled {
+    opacity: 0.8;
+  }
 }
 

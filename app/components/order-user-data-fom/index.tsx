@@ -3,6 +3,8 @@ import { Product } from "@/app/types/product";
 import { MpButton } from "../mp-button";
 import s from "./order-data-form.module.scss";
 import { useState } from "react";
+import { Buyer } from "@/app/types/buyer";
+import useStore from "@/app/store/formStore";
 
 export default function OrderDataForm({ order }: { order: any }) {
     const [name, setName] = useState<string>('');
@@ -12,6 +14,14 @@ export default function OrderDataForm({ order }: { order: any }) {
     const [email, setEmail] = useState<string>('');
     const [terms, setTerms] = useState<boolean>(false);
     const [isEnabled, setIsEnabled] = useState<boolean>(false);
+    const [buyer, setBuyer] = useState<Buyer>({
+        purchaserFirstName: name,
+        purchaserLastName: lastName,
+        purchaserDni: dni,
+        phone: phone,
+        purchaserEmail: email
+    });
+    const isSubmitting = useStore((state) => state.isSubmitting);
 
     const isValidName = (str: string): boolean => /^[a-zA-Z\s]+$/.test(str);
     const isValidDNI = (str: string): boolean => /^\d{8}$/.test(str);
@@ -26,6 +36,13 @@ export default function OrderDataForm({ order }: { order: any }) {
             isValidEmail(email)
         ) {
             console.log('valid')
+            setBuyer({
+                purchaserFirstName: name,
+                purchaserLastName: lastName,
+                purchaserDni: dni,
+                phone: phone,
+                purchaserEmail: email
+            })
             // editar order con los datos
             setIsEnabled(true);
         } else {
@@ -43,6 +60,22 @@ export default function OrderDataForm({ order }: { order: any }) {
         validateForm();
     };  
 
+    interface ValidatorFunctions {
+        [key: string]: (val: string) => boolean;
+    }
+
+    const validators: ValidatorFunctions = {
+        name: isValidName,
+        lastName: isValidName,
+        dni: isValidDNI,
+        phone: (val: string) => !!val,
+        email: isValidEmail,
+    };
+
+    const getInputStyle = (field: keyof ValidatorFunctions, value: string) => {
+        return validators[field](value) ? 'valid' : 'invalid';
+    }
+
 
   // Esto es para el <MpButton />  
   let event = order.event;
@@ -57,7 +90,7 @@ export default function OrderDataForm({ order }: { order: any }) {
   };
   return (
     <div className={s.form_wrapper}>
-      <form className={s.buy_form}>
+      <form className={s.buy_form} onSubmit={e => e.preventDefault()}>
         <div className={s.row}>
           <div className={s.form_area}>
             <label htmlFor="name">Nombre</label>
@@ -65,11 +98,12 @@ export default function OrderDataForm({ order }: { order: any }) {
               type="text"
               name="name"
               id="name"
-              className="custom-input"
+              className={`custom-input ${getInputStyle('name', name)}`}
               required
               placeholder="Nombre"
               value={name}
               onChange={handleChange(setName)}
+              disabled={isSubmitting}
             />
           </div>
           <div className={s.form_area}>
@@ -78,11 +112,12 @@ export default function OrderDataForm({ order }: { order: any }) {
               type="text"
               id="last-name"
               name="lastName"
-              className="custom-input"
+              className={`custom-input ${getInputStyle('lastName', lastName)}`}
               required
               placeholder="Apellido"
               value={lastName}
               onChange={handleChange(setLastName)}
+              disabled={isSubmitting}
             />
           </div>
         </div>
@@ -93,12 +128,13 @@ export default function OrderDataForm({ order }: { order: any }) {
               type="text"
               name="dni"
               id="dni"
-              className="custom-input"
+              className={`custom-input ${getInputStyle('dni', dni)}`}
               required
               placeholder="DNI"
               value={dni}
               maxLength={8}
               onChange={handleChange(setDni)}
+              disabled={isSubmitting}
             />
           </div>
           <div className={s.form_area}>
@@ -107,11 +143,12 @@ export default function OrderDataForm({ order }: { order: any }) {
               type="phone"
               name="phone"
               id="phone"
-              className="custom-input"
+              className={`custom-input ${getInputStyle('phone', phone)}`}
               required
               placeholder="Telefono"
               value={phone}
               onChange={handleChange(setPhone)}
+              disabled={isSubmitting}
             />
           </div>
         </div>
@@ -121,11 +158,12 @@ export default function OrderDataForm({ order }: { order: any }) {
             type="email"
             name="email"
             id="email"
-            className="custom-input"
+            className={`custom-input ${getInputStyle('email', email)}`}
             required
             placeholder="email"
             value={email}
             onChange={handleChange(setEmail)}
+            disabled={isSubmitting}
           />
         </div>
         {/* <div className={s.form_area_inline}>
@@ -135,7 +173,7 @@ export default function OrderDataForm({ order }: { order: any }) {
           </label>
         </div> */}
         <div className={s.form_area_inline}>
-          <MpButton prod={orderMpInfo} offerId={order._id} isEnabled={isEnabled} />
+          <MpButton prod={orderMpInfo} offerId={order._id} isEnabled={isEnabled} buyer={buyer}/>
         </div>
       </form>
     </div>

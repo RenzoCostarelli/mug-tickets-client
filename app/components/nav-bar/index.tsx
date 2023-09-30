@@ -24,15 +24,18 @@ export default function Navbar() {
             <nav className={s.main_navigation}>
                 <ul className={s.links}>
                     <li className={s.link}>
+                        <Link href={`/eventos/64ef67bee993f72825a84282`}>Entradas</Link>
+                    </li>
+                    {/* <li className={s.link}>
                         <Link href={`/`}>Home</Link>
-                    </li>
-                    <li className={s.link}>
+                    </li> */}
+                    {/* <li className={s.link}>
                         <Link href={`/`}>FAQ</Link>
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
             <div className={s.user_area}>
-                <ul className={`${s.links} ${s.user_links}`}>
+                {/* <ul className={`${s.links} ${s.user_links}`}>
                     {
                         !session?.user ? (
                             <li className={s.link}>
@@ -54,7 +57,7 @@ export default function Navbar() {
                         </>
                     )
                     }                
-                </ul>
+                </ul> */}
             </div>
         </div>        
     )

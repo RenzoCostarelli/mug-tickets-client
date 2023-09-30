@@ -14,6 +14,20 @@ async function getOffer(id: string) {
   return res.json();
 }
 
+const formatTime = (date: any): string => {
+  const time = date.split('T')[1];
+  return `${time.split(':')[0]}:${time.split(':')[1]}`;
+}
+
+const formatDate = (date: any): string => {
+  const d = new Date(date)
+  const formatedDate = new Intl.DateTimeFormat('es-AR', {
+    dateStyle: 'medium',
+    timeZone: 'America/Buenos_Aires'
+  }).format(d)
+  return formatedDate
+}
+
 
 export default async function BuyTicket({params}: {params: { id: string }}) {
   const { id } = params;
@@ -21,11 +35,9 @@ export default async function BuyTicket({params}: {params: { id: string }}) {
   let event = order.event;
 
 
-  const date = new Date(order.ticketType.date);
-  const dateStr = date.toLocaleDateString();
-  const timeStr = `${date.toLocaleTimeString().split(":")[0]}:${
-    date.toLocaleTimeString().split(":")[1]
-  }`;
+  const date = order.ticketType.date;
+  const dateStr = formatDate(date);
+  const timeStr = formatTime(date)
 
   const calculateTotal = (pri: number, qty: number) => {
     let total = pri * qty;
@@ -60,12 +72,12 @@ export default async function BuyTicket({params}: {params: { id: string }}) {
             <h1 className="backLine-title">Datos de tu reserva</h1>
             <div className={s.info_grid}>
               <div className={s.ticket_type}>
-                {order.ticketType.type} {dateStr} {timeStr}
+                <span className="fw-bold">{order.ticketType.type}</span> | {dateStr} {timeStr}hs
               </div>
               <div className={s.quantity}>{order.quantity}</div>
               <div className={s.price_table}>
                 <div className={`${s.row} ${s.accent}`}>
-                  <p>Total</p>
+                  <p className="fw-bold">Total</p>
                   <p>
                     ${" "}
                     {calculateTotal(
@@ -86,79 +98,6 @@ export default async function BuyTicket({params}: {params: { id: string }}) {
               Vas a recibir los Tickets en tu casilla de e-mail.
             </p>
             <OrderDataForm order={order}/>
-            {/* <div className={s.form_wrapper}>
-              <form className={s.buy_form}>
-                <div className={s.row}>
-                  <div className={s.form_area}>
-                    <label htmlFor="name">Nombre</label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      className="custom-input"
-                      required
-                      placeholder="Nombre"
-                    />
-                  </div>
-                  <div className={s.form_area}>
-                    <label htmlFor="last-name">Apellido</label>
-                    <input
-                      type="text"
-                      id="last-name"
-                      name="last-name"
-                      className="custom-input"
-                      required
-                      placeholder="Apellido"
-                    />
-                  </div>
-
-                </div>
-                <div className={s.row}>
-                <div className={s.form_area}>
-                    <label htmlFor="dni">DNI</label>
-                    <input
-                      type="text"
-                      name="dni"
-                      id="dni"
-                      className="custom-input"
-                      required
-                      placeholder="DNI"
-                    />
-                  </div>
-                  <div className={s.form_area}>
-                    <label htmlFor="phone">Telefono</label>
-                    <input
-                      type="phone"
-                      name="phone"
-                      id="phone"
-                      className="custom-input"
-                      required
-                      placeholder="Telefono"
-                    />
-                  </div>
-                </div>
-                <div className={`${s.form_area} ${s.full}`}>
-                  <label htmlFor="email">E-MAIL</label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    className="custom-input"
-                    required
-                    placeholder="email"
-                  />
-                </div>
-                <div className={s.form_area_inline}>
-                  <input type="checkbox" name="terms" id="terms" required />
-                  <label htmlFor="terms">
-                    He leido y acepto los <span>Terminos y condiciones</span>
-                  </label>
-                </div>
-                <div className={s.form_area_inline}>
-                  <MpButton prod={orderMpInfo} offerId={order._id} isEnabled={false}/>
-                </div>
-              </form>
-            </div> */}
           </div>
         </div>
       </div>
