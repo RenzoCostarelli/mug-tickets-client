@@ -27,38 +27,54 @@ export default function OrderDataForm({ order }: { order: any }) {
     const isValidDNI = (str: string): boolean => /^\d{8}$/.test(str);
     const isValidEmail = (str: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
 
-    const validateForm = (): void => {
+    const validateForm = (  
+      nameValue: string,
+      lastNameValue: string,
+      dniValue: string,
+      phoneValue: string,
+      emailValue: string): void => {
         if (
-            isValidName(name) &&
-            isValidName(lastName) &&
-            isValidDNI(dni) &&
-            phone && 
-            isValidEmail(email)
+            isValidName(nameValue) &&
+            isValidName(lastNameValue) &&
+            isValidDNI(dniValue) &&
+            phoneValue && 
+            isValidEmail(emailValue)
         ) {
             console.log('valid')
             setBuyer({
-                purchaserFirstName: name,
-                purchaserLastName: lastName,
-                purchaserDni: dni,
-                phone: phone,
-                purchaserEmail: email
+                purchaserFirstName: nameValue,
+                purchaserLastName: lastNameValue,
+                purchaserDni: dniValue,
+                phone: phoneValue,
+                purchaserEmail: emailValue
             })
-            // editar order con los datos
             setIsEnabled(true);
         } else {
             setIsEnabled(false);
         }
     };
 
-    const handleChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>): void => {
-        setter(e.target.value);
-        validateForm();
+    const handleChange = (setter: React.Dispatch<React.SetStateAction<string>>, key: string) => (e: React.ChangeEvent<HTMLInputElement>): void => {
+      const updatedValue = e.target.value;
+      setter(updatedValue);
+    
+      if(key === 'name') {
+        validateForm(updatedValue, lastName, dni, phone, email);
+      } else if(key === 'lastName') {
+        validateForm(name, updatedValue, dni, phone, email);
+      } else if(key === 'dni') {
+        validateForm(name, lastName, updatedValue, phone, email);
+      } else if(key === 'phone') {
+        validateForm(name, lastName, dni, updatedValue, email);
+      } else if(key === 'email') {
+        validateForm(name, lastName, dni, phone, updatedValue);
+      }
     };
 
     const handleCheckboxChange = (setter: React.Dispatch<React.SetStateAction<boolean>>) => (e: React.ChangeEvent<HTMLInputElement>): void => {
-        setter(e.target.checked);
-        validateForm();
-    };  
+      setter(e.target.checked);
+      validateForm(name, lastName, dni, phone, email);
+    };
 
     interface ValidatorFunctions {
         [key: string]: (val: string) => boolean;
@@ -102,7 +118,7 @@ export default function OrderDataForm({ order }: { order: any }) {
               required
               placeholder="Nombre"
               value={name}
-              onChange={handleChange(setName)}
+              onChange={handleChange(setName, 'name')}
               disabled={isSubmitting}
             />
           </div>
@@ -116,7 +132,7 @@ export default function OrderDataForm({ order }: { order: any }) {
               required
               placeholder="Apellido"
               value={lastName}
-              onChange={handleChange(setLastName)}
+              onChange={handleChange(setLastName, 'lastName')}
               disabled={isSubmitting}
             />
           </div>
@@ -133,7 +149,7 @@ export default function OrderDataForm({ order }: { order: any }) {
               placeholder="DNI"
               value={dni}
               maxLength={8}
-              onChange={handleChange(setDni)}
+              onChange={handleChange(setDni, 'dni')}
               disabled={isSubmitting}
             />
           </div>
@@ -147,7 +163,7 @@ export default function OrderDataForm({ order }: { order: any }) {
               required
               placeholder="Telefono"
               value={phone}
-              onChange={handleChange(setPhone)}
+              onChange={handleChange(setPhone, 'phone')}
               disabled={isSubmitting}
             />
           </div>
@@ -162,7 +178,7 @@ export default function OrderDataForm({ order }: { order: any }) {
             required
             placeholder="email"
             value={email}
-            onChange={handleChange(setEmail)}
+            onChange={handleChange(setEmail, 'email')}
             disabled={isSubmitting}
           />
         </div>
