@@ -33,6 +33,7 @@ export default async function BuyTicket({params}: {params: { id: string }}) {
   const { id } = params;
   const { order } = await getOffer(id);
   let event = order.event;
+  console.log('buy ticket form')
 
   const date = order.ticketType.date;
   const dateStr = formatDate(date);

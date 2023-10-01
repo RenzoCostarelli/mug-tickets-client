@@ -1,0 +1,43 @@
+.notification_container {
+    position: fixed;
+    z-index: 9;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.58);
+    display: grid;
+    place-items: center;
+    .notification_wrapper {
+        background-size: 100% 100%;
+        background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+        background-image: radial-gradient(18% 28% at 24% 50%, #CEFAFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 36% 76%, #73F2FFFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 15% 94%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #FFFFFFFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #D3FF6D9C 24%, #073AFF00 100%),radial-gradient(35% 56% at 91% 74%, #8A4FFFF5 9%, #073AFF00 100%),radial-gradient(74% 86% at 67% 38%, #6DFFAEF5 24%, #073AFF00 100%),linear-gradient(125deg, #4EB5FFFF 1%, #4C00FCFF 100%);
+        color: rgb(21, 21, 21);
+        border-radius: 0.5rem;
+        width: min(450px, 95vw);
+        text-align: center;
+        position: relative;
+        z-index: 0;
+        box-shadow:  inset 0px 0px 50px 20px #ffffff7d;
+        &::after {
+            // content: '';
+            position: absolute;
+            height: 90%;
+            width: 90%;
+            inset: 0;
+            margin: auto;
+            z-index: -1;
+        }
+        .notification {
+            padding: 4rem 2rem;
+            .title {
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+            }
+            .text {
+                font-weight: bold;
+                margin: 0;
+            }
+
+        }
+    }
+}
