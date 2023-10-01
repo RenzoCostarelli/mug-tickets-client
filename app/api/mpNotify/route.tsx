@@ -6,7 +6,7 @@ mercadopago.configure({
     access_token: process.env.MP_ACCESS_TOKEN!,
 })
 
-export async function POST(req: NextRequest, res: NextApiResponse) {
+export async function POST(req: NextRequest, res: NextResponse) {
     const r = await req.json();
     const topic = r.topic || r.type
     console.log('pagando')
@@ -28,6 +28,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
                     
                     const result = await response.json();
                     console.log('result', result)
+                    return NextResponse.json(result)
                   } catch (error) {
                     console.error(error);
                   }
