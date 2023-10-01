@@ -2,11 +2,10 @@ import Image from "next/image";
 import s from "./evento.module.scss";
 import TicketsPicker from "@/app/components/ticket-picker";
 import EventCardMain from "@/app/components/event-card-main";
+import Notificator from "./components/notificator";
 
 async function getEventById(id: string) {
-  const res = await fetch(`${process.env.apiUrl}/events/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`${process.env.apiUrl}/events/${id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -46,6 +45,7 @@ export default async function Event() {
         )}
         </div>
       </div>
+      <Notificator />
     </main>
   );
 }
