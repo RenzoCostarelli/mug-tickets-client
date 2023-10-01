@@ -176,7 +176,7 @@ export default function OrderDataForm({ order }: { order: any }) {
             id="email"
             className={`custom-input ${getInputStyle('email', email)}`}
             required
-            placeholder="email"
+            placeholder="E-Mail"
             value={email}
             onChange={handleChange(setEmail, 'email')}
             disabled={isSubmitting}
