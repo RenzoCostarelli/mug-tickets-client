@@ -17,7 +17,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
             let paymentStatus = payment.body.status
             if (paymentStatus === "approved") {
                 let offerId = payment.body.external_reference
-                try {
+
                     const response = await fetch(`${process.env.apiUrl}/orders/${offerId}`, {
                       method: 'PATCH',
                       headers: {
@@ -28,10 +28,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
                     
                     const result = await response.json();
                     console.log('result', result)
-                    // return NextResponse.json(result)
-                  } catch (error) {
-                    console.error(error);
-                  }
+
+
             }
         }
     } catch (error) {
