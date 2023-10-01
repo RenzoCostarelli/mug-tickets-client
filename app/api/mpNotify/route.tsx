@@ -28,7 +28,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
                     
                     const result = await response.json();
                     console.log('result', result)
-                    return NextResponse.json(result)
+                    if(result) {
+                      const wake = await fetch(`${process.env.apiUrl}/orders/${offerId}`)
+                      const re = await wake.json()
+                      console.log('re', re)
+                      return NextResponse.json(re)
+                    }
+                    // return NextResponse.json(result)
                   } catch (error) {
                     console.error(error);
                   }
