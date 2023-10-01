@@ -24,8 +24,6 @@ export function MpButton({ prod, offerId, isEnabled, buyer }: { prod: Product, o
     offerId: offerId
   });
 
-
-
   useEffect(() => {
     const generateLink = async () => {
       setLoading(true);
@@ -42,7 +40,6 @@ export function MpButton({ prod, offerId, isEnabled, buyer }: { prod: Product, o
         setPreference(data.response.id);
         setUrl(data?.response?.sandbox_init_point);
         setLoading(false);
-        console.log('buyer', buyer)
       } catch (error) {
         console.error(error);
       }

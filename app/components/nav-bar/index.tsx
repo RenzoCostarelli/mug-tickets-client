@@ -26,38 +26,11 @@ export default function Navbar() {
                     <li className={s.link}>
                         <Link href={`/`}>Entradas</Link>
                     </li>
-                    {/* <li className={s.link}>
-                        <Link href={`/`}>Home</Link>
-                    </li> */}
-                    {/* <li className={s.link}>
-                        <Link href={`/`}>FAQ</Link>
-                    </li> */}
+
                 </ul>
             </nav>
             <div className={s.user_area}>
-                {/* <ul className={`${s.links} ${s.user_links}`}>
-                    {
-                        !session?.user ? (
-                            <li className={s.link}>
-                                {
-                                    !pathname.startsWith('/admin') && 
-                                    (
-                                        <GoogleButton/>
-                                    ) 
-                                }
-                            </li>
-                    ) : (
-                        <>
-                            <li className={s.link}>
-                                <DashboardButton />
-                            </li>
-                            <li className={s.link}>
-                                <SignOutButton />
-                            </li>
-                        </>
-                    )
-                    }                
-                </ul> */}
+
             </div>
         </div>        
     )
