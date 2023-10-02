@@ -48,6 +48,12 @@
             opacity: 0.8;
             cursor: auto;
             filter: grayscale(0.5);
+            &.animated {
+                background-size: 300% !important;
+                background: rgb(0,255,213);
+                background: linear-gradient(85deg, rgba(0,255,213,1) 0%, rgba(0,148,127,1) 28%, rgba(190,247,239,1) 61%, rgba(17,255,222,1) 100%);
+                animation: bg-gradient-animation 5500ms linear infinite;
+            }
         }
     }
 }

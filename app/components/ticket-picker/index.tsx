@@ -159,7 +159,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
            <span>Total: $ {globalTotal}</span>
           </div>
           <div className={s.cta_area}>
-            <button onClick={createNewOffer} disabled={quantityValue == 0 || isSubmitting}>Continuar</button>
+            <button className={`${isSubmitting ? s.animated : ''}`} onClick={createNewOffer} disabled={quantityValue == 0 || isSubmitting}>Continuar</button>
           </div>
         </div>
       </div>
