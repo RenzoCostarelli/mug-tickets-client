@@ -4,6 +4,7 @@ import { useState } from "react";
 import { TicketType } from "@/app/types/ticket";
 import { useRouter } from "next/navigation";
 import s from "./ticket-piker.module.scss";
+import useStore from "@/app/store/formStore";
 
 interface offersBody {
     eventId: string,
@@ -37,8 +38,9 @@ export default function TicketsPicker({ event }: { event: Events }) {
   const [currentPrice, setCurrentPrice] = useState<number>(0);
   const [currentDate, setCurrentDate] = useState<string>("");
   const [currentTicketType, setCurrentTicketType] = useState<string>("");
+  const setSubmitting = useStore((state) => state.setSubmitting);
+  const isSubmitting = useStore((state) => state.isSubmitting);
   const { push } = useRouter();
-
   let formatedDate = "";
   let timeStr = "";
 
@@ -74,6 +76,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
   };
 
   async function createNewOffer() {
+    setSubmitting(true)
     let data: offersBody = {
       eventId: event.eventId,
       quantity: quantityValue,
@@ -99,6 +102,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
       .catch((error) => {
         console.error("ERROR", error);
       });
+      setSubmitting(false)
   }
 
   return (
@@ -114,6 +118,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
                 name="ticketType"
                 id="ticketType"
                 onChange={(e) => handleTicketChange(e.target.value)}
+                disabled={isSubmitting}
               >
                 <option value="" disabled>
                   Seleccionar
@@ -135,7 +140,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
                 name="quantity"
                 id="quantity"
                 onChange={(e) => handleQuantityChange(Number(e.target.value))}
-                disabled={currentTicketType == ""}
+                disabled={currentTicketType == "" || isSubmitting}
               >
                 <option value={0} disabled>
                   0
@@ -154,7 +159,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
            <span>Total: $ {globalTotal}</span>
           </div>
           <div className={s.cta_area}>
-            <button onClick={createNewOffer} disabled={quantityValue == 0}>Continuar</button>
+            <button onClick={createNewOffer} disabled={quantityValue == 0 || isSubmitting}>Continuar</button>
           </div>
         </div>
       </div>
