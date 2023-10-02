@@ -98,11 +98,11 @@ export default function TicketsPicker({ event }: { event: Events }) {
       .then((response) => response.json())
       .then((data) => {
         push(`/eventos/ticket/${data.savedNewOrder._id}`);
+        setSubmitting(false)
       })
       .catch((error) => {
         console.error("ERROR", error);
       });
-      setSubmitting(false)
   }
 
   return (
