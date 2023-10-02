@@ -78,6 +78,7 @@ export function MpButton({ prod, offerId, isEnabled, buyer }: { prod: Product, o
     } catch (error) {
       console.error(error);
     }
+    setSubmitting(false)
   }
 
   return (
