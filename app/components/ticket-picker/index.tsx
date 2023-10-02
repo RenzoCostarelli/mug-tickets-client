@@ -38,8 +38,8 @@ export default function TicketsPicker({ event }: { event: Events }) {
   const [currentPrice, setCurrentPrice] = useState<number>(0);
   const [currentDate, setCurrentDate] = useState<string>("");
   const [currentTicketType, setCurrentTicketType] = useState<string>("");
-  const setSubmitting = useStore((state) => state.setSubmitting);
   const isSubmitting = useStore((state) => state.isSubmitting);
+  const setSubmitting = useStore((state) => state.setSubmitting);
   const { push } = useRouter();
   let formatedDate = "";
   let timeStr = "";
@@ -98,7 +98,10 @@ export default function TicketsPicker({ event }: { event: Events }) {
       .then((response) => response.json())
       .then((data) => {
         push(`/eventos/ticket/${data.savedNewOrder._id}`);
-        setSubmitting(false)
+        setTimeout(() => {
+          setSubmitting(false)
+          
+        }, 1000);
       })
       .catch((error) => {
         console.error("ERROR", error);
@@ -159,7 +162,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
            <span>Total: $ {globalTotal}</span>
           </div>
           <div className={s.cta_area}>
-            <button className={`${isSubmitting ? s.animated : ''}`} onClick={createNewOffer} disabled={quantityValue == 0 || isSubmitting}>Continuar</button>
+            <button className={isSubmitting ? s.animated : 'cta-button'} onClick={createNewOffer} disabled={quantityValue == 0 || isSubmitting}>Continuar</button>
           </div>
         </div>
       </div>

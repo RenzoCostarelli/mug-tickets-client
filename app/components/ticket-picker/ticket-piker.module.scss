@@ -57,3 +57,12 @@
         }
     }
 }
+
+@keyframes bg-gradient-animation {
+    from {
+        background-position-x: -100%;
+    }
+    to {
+        background-position-x: 300%;
+    }
+}
