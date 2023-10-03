@@ -1,13 +1,12 @@
 import EventCardMain from "@/app/components/event-card-main";
 import s from "./ticket.module.scss";
 import Image from "next/image";
-import { MpButton } from "@/app/components/mp-button";
-import { Product } from "@/app/types/product";
 import OrderDataForm from "@/app/components/order-user-data-fom";
+import Timer from "@/app/components/timer";
 
 
 async function getOffer(id: string) {
-  const res = await fetch(`${process.env.apiUrl}/orders/${id}`);
+  const res = await fetch(`${process.env.apiUrl}/orders/${id}`, { cache: 'no-store' });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -33,7 +32,7 @@ export default async function BuyTicket({params}: {params: { id: string }}) {
   const { id } = params;
   const { order } = await getOffer(id);
   let event = order.event;
-  console.log('buy ticket form')
+  console.log('buy ticket form', order)
 
   const date = order.ticketType.date;
   const dateStr = formatDate(date);
@@ -62,6 +61,8 @@ export default async function BuyTicket({params}: {params: { id: string }}) {
         <EventCardMain event={event} />
         <div className={s.container}>
           <div className={`${s.wrapper}`}>
+        { order.status !== 'aproved' && (
+          <>       
             <h1 className="special-title">
               Confirmar <span>compra</span>
             </h1>
@@ -88,9 +89,10 @@ export default async function BuyTicket({params}: {params: { id: string }}) {
                 </div>
               </div>
             </div>
-            <p className={s.info_area}>
+            {/* <p className={s.info_area}>
               TU RESERVA VENCE EN <span>14:59</span>
-            </p>
+              <Timer />
+            </p> */}
             <h1 className="backLine-title">Tus datos</h1>
             <p className={s.info_area}>
               Una vez que completes tus datos podrás realizar el pago.
@@ -98,6 +100,8 @@ export default async function BuyTicket({params}: {params: { id: string }}) {
               Vas a recibir los Tickets en tu casilla de e-mail.
             </p>
             <OrderDataForm order={order}/>
+            </>
+            )}
           </div>
         </div>
       </div>
