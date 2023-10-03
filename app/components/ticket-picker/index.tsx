@@ -38,6 +38,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
   const [currentPrice, setCurrentPrice] = useState<number>(0);
   const [currentDate, setCurrentDate] = useState<string>("");
   const [currentTicketType, setCurrentTicketType] = useState<string>("");
+  const [isDisabled, setIsDisabled] = useState<boolean>(false)
   const isSubmitting = useStore((state) => state.isSubmitting);
   const setSubmitting = useStore((state) => state.setSubmitting);
   const { push } = useRouter();
@@ -77,6 +78,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
 
   async function createNewOffer() {
     setSubmitting(true)
+    setIsDisabled(true)
     let data: offersBody = {
       eventId: event.eventId,
       quantity: quantityValue,
@@ -162,7 +164,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
            <span>Total: $ {globalTotal}</span>
           </div>
           <div className={s.cta_area}>
-            <button className={isSubmitting ? s.animated : 'cta-button'} onClick={createNewOffer} disabled={quantityValue == 0 || isSubmitting}>Continuar</button>
+            <button className={isSubmitting || isDisabled ? s.animated : 'cta-button'} onClick={createNewOffer} disabled={quantityValue == 0 || isSubmitting || isDisabled}>Continuar</button>
           </div>
         </div>
       </div>
