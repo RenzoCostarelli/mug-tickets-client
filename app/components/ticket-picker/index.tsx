@@ -123,7 +123,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
                 name="ticketType"
                 id="ticketType"
                 onChange={(e) => handleTicketChange(e.target.value)}
-                disabled={isSubmitting}
+                disabled={isSubmitting || isDisabled}
               >
                 <option value="" disabled>
                   Seleccionar
@@ -145,7 +145,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
                 name="quantity"
                 id="quantity"
                 onChange={(e) => handleQuantityChange(Number(e.target.value))}
-                disabled={currentTicketType == "" || isSubmitting}
+                disabled={currentTicketType == "" || isSubmitting || isDisabled}
               >
                 <option value={0} disabled>
                   0
