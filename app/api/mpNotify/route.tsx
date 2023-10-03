@@ -4,7 +4,7 @@ import mercadopago, { payment } from "mercadopago";
 mercadopago.configure({
     access_token: process.env.MP_ACCESS_TOKEN!,
 })
-// Cambiar a un GET
+
 export async function POST(req: NextRequest, res: NextResponse) {
     const r = await req.json();
     const topic = r.topic || r.type
