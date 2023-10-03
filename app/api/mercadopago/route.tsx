@@ -10,7 +10,7 @@ mercadopago.configure({
 export async function POST(req: NextRequest, res: NextResponse) {
     const body = await req.json();
     const product: Product = body.product;    
-    const URL =  'https://www.mug.ar';
+    const URL =  'https://ee15-186-13-96-126.ngrok-free.app';
 
     try {
         const preference: CreatePreferencePayload = {
