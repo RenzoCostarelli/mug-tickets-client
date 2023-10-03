@@ -18,7 +18,7 @@ export const metadata = {
 }
 
 export default async function Event() {
-  const { event } = await getEventById('6518771168d2abd27512b941');
+  const { event } = await getEventById('651c6ea6ff2b039a8f6d42ab');
   
   return (
     <main>
