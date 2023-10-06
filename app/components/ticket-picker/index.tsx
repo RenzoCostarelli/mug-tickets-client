@@ -10,6 +10,7 @@ interface offersBody {
     eventId: string,
     quantity: number,
     ticketType: {
+        _id: string,
         price: number,
         date: string,
         type: string
@@ -38,6 +39,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
   const [currentDate, setCurrentDate] = useState<string>("");
   const [currentTicketType, setCurrentTicketType] = useState<string>("");
   const [isDisabled, setIsDisabled] = useState<boolean>(false)
+  const [idTicketType, setTicketTypeId] = useState<string>("")
   const isSubmitting = useStore((state) => state.isSubmitting);
   const setSubmitting = useStore((state) => state.setSubmitting);
   const { push } = useRouter();
@@ -71,6 +73,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
     let ticket = event.ticketsTypeList.filter(
       (e: TicketType) => e.type === type
     );
+    setTicketTypeId(ticket[0]._id)
     setCurrentPrice(ticket[0].price);
     setCurrentDate(ticket[0].date!)
   };
@@ -82,6 +85,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
       eventId: event.eventId,
       quantity: quantityValue,
       ticketType: {
+        _id: idTicketType,
         price: currentPrice,
         date: currentDate,
         type: currentTicketType,
@@ -98,6 +102,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log('data', data)
         push(`/eventos/ticket/${data.savedNewOrder._id}`);
         setTimeout(() => {
           setSubmitting(false)
