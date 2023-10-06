@@ -32,7 +32,6 @@ const formatDate = (date: any): string => {
 }
 
 export default function TicketsPicker({ event }: { event: Events }) {
-  console.log('event', event)
   const [globalTotal, setGlobalTotal] = useState<number>(0);
   const [quantityValue, setQuantityValue] = useState<number>(0);
   const [currentPrice, setCurrentPrice] = useState<number>(0);
