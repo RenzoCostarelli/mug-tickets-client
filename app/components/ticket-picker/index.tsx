@@ -32,7 +32,7 @@ const formatDate = (date: any): string => {
 }
 
 export default function TicketsPicker({ event }: { event: Events }) {
-  
+  console.log('event', event)
   const [globalTotal, setGlobalTotal] = useState<number>(0);
   const [quantityValue, setQuantityValue] = useState<number>(0);
   const [currentPrice, setCurrentPrice] = useState<number>(0);
@@ -129,7 +129,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
                   Seleccionar
                 </option>
                 {event.ticketsTypeList.map((ticket: TicketType) => (
-                  <option value={ticket.type} key={ticket._id}>
+                  <option value={ticket.type} key={ticket._id} disabled={!ticket.isActive}>
                     {ticket.type} | {formatDate(ticket.date)} - {formatTime(ticket.date)}hs - $ {ticket.price}
                   </option>
                 ))}
