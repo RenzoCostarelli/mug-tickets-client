@@ -37,7 +37,7 @@ export function MpButton({ prod, offerId, isEnabled, buyer }: { prod: Product, o
         };
         const response = await callApi();
         const data = await response.json();
-        console.log('data mp', data.response)
+        // console.log('data mp', data.response)
         setPreference(data.response.id);
         setUrl(data?.response?.init_point);
         setLoading(false);
