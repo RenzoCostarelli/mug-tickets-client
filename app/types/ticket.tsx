@@ -6,6 +6,7 @@ export interface TicketType {
     ticketId?: string;
     date?: string;
     hour?: string;
+    isActive?: boolean;
     ticketsAvailableOnline?: number;
     ticketPurchaseDeadline?: string;
 }
