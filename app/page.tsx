@@ -18,7 +18,8 @@ export const metadata = {
 }
 
 export default async function Event() {
-  const { event } = await getEventById('651c6ea6ff2b039a8f6d42ab');
+  const id = process.env.MAIN_EVENT
+  const { event } = await getEventById(id!);
   
   return (
     <main>
