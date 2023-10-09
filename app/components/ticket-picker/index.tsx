@@ -102,7 +102,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('data', data)
+        // console.log('data', data)
         push(`/eventos/ticket/${data.savedNewOrder._id}`);
         setTimeout(() => {
           setSubmitting(false)
