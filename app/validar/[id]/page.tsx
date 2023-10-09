@@ -18,9 +18,19 @@ async function getEventById(id: string) {
     return res.json();
 }
 
+async function getTicketsList() {
+    const res = await fetch(`${process.env.apiUrl}/tickets`, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+}
+
 export default async function ValidationPage({ params }: { params: { id: string } }) {
     const { event } = await getEventById(params.id);
-    console.log('event', event)
+    const ticketsList = await getTicketsList();
     const { ticketsPurchased, title} = event
     return(   
         <main className={s.main}>
@@ -41,7 +51,7 @@ export default async function ValidationPage({ params }: { params: { id: string 
                     </div>
                 </section>
                 <section className={s.attendees_list}>
-                    <AttendeeList />
+                    <AttendeeList ticketsList={ticketsList}/>
                 </section>
             </div>
         </main>

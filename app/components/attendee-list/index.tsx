@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import s from './list.module.scss'
+import { Buyer } from '@/app/types/buyer';
 
 // agregar GET de tickets aca
 const initialAttendees = [
@@ -20,11 +21,14 @@ interface Attendee  {
     name: string;
     dni: string;
     ticketType: string;
+    purchaser?: Buyer;
+    validated?: boolean;
+    tickets?: any;
 };
 
 
-export default function AttendeeList () {
-
+export default function AttendeeList ({ ticketsList } : {ticketsList : any}) {
+    const { purchaser, validated } = ticketsList.tickets
     const [attendees, setAttendees] = useState<Attendee[]>(initialAttendees);
     const [isAscending, setIsAscending] = useState<boolean>(true);
     const [sortCriteria, setSortCriteria] = useState<string>('name');
@@ -57,11 +61,11 @@ export default function AttendeeList () {
         </div>
 
         <div className={s.table_body}>
-        {attendees.map((attendee) => (
+        {ticketsList.tickets.map((attendee: any) => (
             <div key={attendee.dni} className={s.table_row}>
-                <div className={s.name}>{attendee.name}</div>
-                <div className={s.dni}>{attendee.dni}</div>
-                <div className={s.tipo}>{attendee.ticketType}</div>
+                <div className={s.name}>{attendee.purchaser.purchaserFirstName} {attendee.purchaser.purchaserLastName}</div>
+                <div className={s.dni}>{attendee.purchaser.purchaserDni}</div>
+                <div className={s.tipo}>{attendee.ticketId}</div>
             </div>
         ))}
         </div>
