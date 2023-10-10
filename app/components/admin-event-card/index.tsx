@@ -1,42 +1,38 @@
-import Image from 'next/image'
-import Link from 'next/link';
-import s from './event-card.module.scss';
+import Image from "next/image";
+import Link from "next/link";
+import s from "./event-card.module.scss";
 
 export default function AdminEventCard({ showInfo }: any) {
-    
-    return (
-        <Link href={`/admin/eventos/${showInfo.eventId}`} 
+    console.log(showInfo)
+  return (
+    <div className={s.card}>
+      <div className={s.image_wrapper}>
+        <Link href={`/admin/eventos/${showInfo.eventId}`}>
+          <Image
+            src={showInfo.image ?? "/images/flyer__test.jpg"}
+            alt="Entrada"
+            fill={true}
             style={{
-                width: '100%',
-                display: 'block'
-            }}>            
-            <div style={{
-                    borderRadius: 10,
-                    overflow: 'hidden',
-                    backgroundColor: 'rgb(16, 20, 24)',
-                    position: 'relative',                    
-                    height: '100%',
-                }}>
-                
-                <Image 
-                    src={ showInfo.image ?? "/images/flyer__test.jpg" }
-                    alt="Entrada"                    
-                    fill={true}
-                    style={{
-                        objectFit: 'cover',
-                    }}
-                    loading='lazy'
-                />
-                    
-                <h3 style={{ 
-                        margin: '1rem 0',
-                        padding: '0 1rem',
-                        fontStyle: 'none', 
-                        color: '#d1d1d1'
-                    }}>
-                    {showInfo.title}
-                </h3>                
-            </div>
+              objectFit: "cover",
+            }}
+            loading="lazy"
+          />
         </Link>
-    )
+      </div>
+      <div className={s.card_body}>
+        <h1 className={s.title}>{showInfo.title}</h1>
+        { showInfo.ticketsTypeList.map((ticket:any) => (
+            <p>{ticket.date}</p>
+        ))
+
+        }
+        <div className={s.tool_bar}>
+            <button><img src='/images/icons/editar.svg' alt="Icono de editar" /></button>
+            <button><img src='/images/icons/escanear.svg' alt="Icono de escanear" /></button>
+            <button><img src='/images/icons/estadisticas.svg' alt="Icono de estadisticas" /></button>
+            <button><img src='/images/icons/eliminar.svg' alt="Icono de eliminar" /></button>
+        </div>
+      </div>
+    </div>
+  );
 }
