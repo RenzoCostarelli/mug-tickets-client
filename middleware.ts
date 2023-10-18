@@ -9,7 +9,7 @@ export default withAuth(
 
         // Define a mapping of paths to expected roles
         const pathToRoleMapping: any = {
-            // '/admin': 'admin',
+            '/admin': 'admin',
             '/admin/eventos': 'admin',
             '/admin/validar': 'admin',
             '/admin/eventos/:path*': 'admin',
@@ -33,7 +33,7 @@ export default withAuth(
 
 export const config = { 
     matcher: [
-        // '/admin', 
+        '/admin', 
         '/admin/eventos', 
         '/admin/eventos/:path*',
         '/admin/validar', 
