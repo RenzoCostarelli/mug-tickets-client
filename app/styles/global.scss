@@ -156,3 +156,13 @@ svg.icon {
   }
 }
 
+.admin-container {
+  background-color: white;
+  color: black;
+  width: min(800px, 95vw);
+  margin-inline: auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+

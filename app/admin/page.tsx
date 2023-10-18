@@ -1,6 +1,10 @@
 import s from './page.module.scss';
 import AdminEventsList from '@/app/components/admin-event-list';
-import Link from 'next/link';
+
+export const metadata = {
+    title: 'Ticketera | Admin panel',
+    description: 'Plataforma de venta de tickets online del MUG',
+  }
 
 async function getData() {
   const res = await fetch(`${process.env.apiUrl}/events`, { cache: 'no-store' });  

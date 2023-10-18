@@ -21,10 +21,10 @@ export default function AdminEventCard({ showInfo }: any) {
       <div className={s.card_body}>
         <h1 className={s.title}>{showInfo.title}</h1>
         <div className={s.tool_bar}>
-            <Link href={`/admin/eventos/${showInfo.eventId}`}><img src='/images/icons/editar.svg' alt="Icono de editar" /></Link>
-            <button><img src='/images/icons/escanear.svg' alt="Icono de escanear" /></button>
-            <button><img src='/images/icons/estadisticas.svg' alt="Icono de estadisticas" /></button>
-            <button><img src='/images/icons/eliminar.svg' alt="Icono de eliminar" /></button>
+            <Link href={`/admin/eventos/${showInfo.eventId}`} data-title="Editar evento"><img src='/images/icons/editar.svg' alt="Icono de editar" /></Link>
+            <Link href={`/admin/validaciones/${showInfo.eventId}`} data-title="Validadores"><img src='/images/icons/escanear.svg' alt="Icono de escanear" /></Link>
+            <Link href={`/admin/estadisticas/${showInfo.eventId}`} data-title="Estadisticas"><img src='/images/icons/estadisticas.svg' alt="Icono de estadisticas" /></Link>
+            <button data-title="Eliminar" className={s.delete}><img src='/images/icons/eliminar.svg' alt="Icono de eliminar" /></button>
         </div>
       </div>
     </div>

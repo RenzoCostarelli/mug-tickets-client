@@ -30,10 +30,32 @@
             justify-content: center;
             padding: 0.5rem;
             border-radius: 0.5rem;
+            position: relative;
+            border: 2px solid black;
             img {
                 width: 20px;
                 height: 20px;
             }
+            &::before {
+                content: attr(data-title);
+                display: none; 
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.75);
+                color: white; 
+                padding: 0.5rem;
+                border-radius: 0.2rem;
+                z-index: 1; 
+                font-size: 12px; 
+                white-space: nowrap; 
+                bottom: 100%; 
+                left: 50%;
+                transform: translateX(-50%) translateY(-5px);
+            }
+            &:hover[data-title]::before {
+                display: block;                
+            }
         }
     }
 }
+
+
