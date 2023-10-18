@@ -25,7 +25,7 @@ export default function Navbar() {
             <div className={s.user_area}>
             <ul className={s.links}>
                     <li className={s.link}>
-                        <Link href={`/`}>Entradass</Link>
+                        <Link href={`/`}>Entradas</Link>
                     </li>
                 </ul>
             </div>

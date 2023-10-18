@@ -14,7 +14,7 @@
 
     .table_head {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         div {
             background-color: #f5f5f5; // Color de fondo para la cabecera
             font-weight: bold;
@@ -22,7 +22,7 @@
     }
     .table_row {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
     .sort_button {
         cursor: pointer;

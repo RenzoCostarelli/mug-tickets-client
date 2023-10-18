@@ -3,7 +3,6 @@ import Link from "next/link";
 import s from "./event-card.module.scss";
 
 export default function AdminEventCard({ showInfo }: any) {
-    console.log(showInfo)
   return (
     <div className={s.card}>
       <div className={s.image_wrapper}>
@@ -21,13 +20,8 @@ export default function AdminEventCard({ showInfo }: any) {
       </div>
       <div className={s.card_body}>
         <h1 className={s.title}>{showInfo.title}</h1>
-        { showInfo.ticketsTypeList.map((ticket:any) => (
-            <p>{ticket.date}</p>
-        ))
-
-        }
         <div className={s.tool_bar}>
-            <button><img src='/images/icons/editar.svg' alt="Icono de editar" /></button>
+            <Link href={`/admin/eventos/${showInfo.eventId}`}><img src='/images/icons/editar.svg' alt="Icono de editar" /></Link>
             <button><img src='/images/icons/escanear.svg' alt="Icono de escanear" /></button>
             <button><img src='/images/icons/estadisticas.svg' alt="Icono de estadisticas" /></button>
             <button><img src='/images/icons/eliminar.svg' alt="Icono de eliminar" /></button>

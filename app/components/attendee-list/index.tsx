@@ -57,7 +57,8 @@ export default function AttendeeList ({ ticketsList } : {ticketsList : any}) {
         <div className={s.table_head}>
             <div className={`${s.name} ${s.sort_button}`} onClick={() => sortAttendees('name')}>Nombre y apellido</div>
             <div className={`${s.dni} ${s.sort_button}`} onClick={() => sortAttendees('dni')}>DNI</div>
-            <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>Tipo de entrada</div>
+            <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>Nro de entrada</div>
+            <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>E-mail</div>
         </div>
 
         <div className={s.table_body}>
@@ -65,7 +66,8 @@ export default function AttendeeList ({ ticketsList } : {ticketsList : any}) {
             <div key={attendee.dni} className={s.table_row}>
                 <div className={s.name}>{attendee.purchaser.purchaserFirstName} {attendee.purchaser.purchaserLastName}</div>
                 <div className={s.dni}>{attendee.purchaser.purchaserDni}</div>
-                <div className={s.tipo}>{attendee.ticketId}</div>
+                <div className={s.tipo}>{attendee.ticketNumber}</div>
+                <div className={s.tipo}>{attendee.purchaser.purchaserEmail}</div>
             </div>
         ))}
         </div>
