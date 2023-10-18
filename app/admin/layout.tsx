@@ -14,7 +14,7 @@ export default function AdminLayout({
   const router = useRouter();
   return (
     <>
-        session && (
+        {/* session && (
           <ul style={{
             minWidth: '10rem',
           }}>
@@ -56,7 +56,7 @@ export default function AdminLayout({
                   href={`/admin/validar/`}>Qr Scan</Link>                    
             </li>
           </ul>
-                )
+                ) */}
                 { session && (
                   <div style={{
                     display: 'flex',
