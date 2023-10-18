@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import BackButton from '../components/back-button';
 
+
 export default function AdminLayout({
   children,
 }: {
@@ -14,7 +15,7 @@ export default function AdminLayout({
   const router = useRouter();
   return (
     <>
-        session && (
+        {/* session && (
           <ul style={{
             minWidth: '10rem',
           }}>
@@ -56,8 +57,8 @@ export default function AdminLayout({
                   href={`/admin/validar/`}>Qr Scan</Link>                    
             </li>
           </ul>
-                )
-                { session && (
+                ) */}
+                {/* { session && (
                   <div style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -67,7 +68,7 @@ export default function AdminLayout({
                   }}>
                     <BackButton />
                   </div>
-                )}
+                )} */}
         {children}
     </>
   )

@@ -17,14 +17,14 @@ export default function QrReader() {
     
         function succes(result: any) {
             console.log('qr', result)
-            scanner.clear()
+            // scanner.clear()
             setScanResult(result)
         }
         function error(err: any) {
             // console.warn(err)
         }   
       }
-    }, [])
+    }, [config])
     
     return <>
         <h1>Open camera</h1>
