@@ -13,7 +13,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
             const paymentId = r.data.id
             let payment = await mercadopago.payment.findById(Number(paymentId))
             let paymentStatus = payment.body.status
-            console.log('payment status', paymentStatus)
+            // console.log('payment status', paymentStatus)
             if (paymentStatus === "approved") {
                 let offerId = payment.body.external_reference
                 const response = await fetch(`${process.env.apiUrl}/orders/${offerId}`, {

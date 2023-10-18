@@ -134,7 +134,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
                 </option>
                 {event.ticketsTypeList.map((ticket: TicketType) => (
                   <option value={ticket.type} key={ticket._id} disabled={!ticket.isActive}>
-                    {ticket.type} | {formatDate(ticket.date)} - {formatTime(ticket.date)}hs - $ {ticket.price}
+                    {ticket.type} | {formatTime(ticket.date)}hs - $ {ticket.price}
                   </option>
                 ))}
               </select>
