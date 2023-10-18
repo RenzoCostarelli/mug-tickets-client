@@ -7,7 +7,7 @@ export default function EventsList({ events } : {events : Events[]}) {
         <div className={s.cardsContainer}>
           {
             events.map((event) => (
-              <EventCard showInfo={event}/>
+              <EventCard showInfo={event} key={event.eventId}/>
             ))
           }
         </div>
