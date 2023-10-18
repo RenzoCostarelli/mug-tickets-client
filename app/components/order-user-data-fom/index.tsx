@@ -40,7 +40,7 @@ export default function OrderDataForm({ order }: { order: any }) {
             phoneValue && 
             isValidEmail(emailValue)
         ) {
-            console.log('valid')
+            // console.log('valid')
             setBuyer({
                 purchaserFirstName: nameValue,
                 purchaserLastName: lastNameValue,
