@@ -5,10 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import BackButton from '../components/back-button';
 
-export const metadata = {
-  title: 'Ticketera | Admin panel',
-  description: 'Plataforma de venta de tickets online del MUG',
-}
 
 export default function AdminLayout({
   children,
