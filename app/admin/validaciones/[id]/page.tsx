@@ -40,7 +40,7 @@ export default async function Validaciones({params} : { params: ValidacionesProp
             <NewValidatorButton eventId={id}/>
             <div className={s.validators_list}>
                 {validadores.map((validador) => (
-                    <ValidatorCard props={validador}/>
+                    <ValidatorCard key={validador.id} props={validador}/>
                 ))
                 }
 
