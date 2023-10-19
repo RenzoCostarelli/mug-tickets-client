@@ -24,7 +24,7 @@ export default function QrReader() {
             // console.warn(err)
         }   
       }
-    }, [config])
+    }, [])
     
     return <>
         <h1>Open camera</h1>

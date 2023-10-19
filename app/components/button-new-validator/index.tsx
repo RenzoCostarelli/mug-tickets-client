@@ -7,7 +7,7 @@ interface ButtonProps {
     eventId: string;
 }
 
-export default function NewValidatorButton({eventId}: ButtonProps ) {
+export default function NewValidatorButton({eventId, onAddToken}: ButtonProps & { onAddToken: (token: string) => void }) {
 
     const [token, setToken] = useState<string | null>();
 
@@ -33,6 +33,7 @@ export default function NewValidatorButton({eventId}: ButtonProps ) {
         if (dialogRef.current) {
             console.log('token', token)
             console.log('eventId', eventId)
+            onAddToken(token!);
             setToken(null)
             dialogRef.current.close();
         }
@@ -41,7 +42,7 @@ export default function NewValidatorButton({eventId}: ButtonProps ) {
     return (
         <div className={s.button_container}>
             <button onClick={handleOpenModal}>+ token de validación</button>
-            <span>{eventId}</span>
+            {/* <span>{eventId}</span> */}
             <dialog className={s.token_modal} ref={dialogRef}>
                 {token && <p>Token: {token}</p>}
                 <button onClick={generateToken}>Actualizar token</button>

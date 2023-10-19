@@ -18,7 +18,10 @@ export default async function Eventos() {
           <section className={s.next_events}>
             <h1 className={'big-title'}>PROXIMOS EVENTOS</h1>
             <div className={s.event_cards_container}>
-              <EventsList events={events}/>
+              {events && (
+                <EventsList events={events}/>
+
+              )}
             </div>
           </section>
         </main>

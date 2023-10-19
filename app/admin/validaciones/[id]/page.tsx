@@ -2,6 +2,7 @@ import { Validador } from '@/app/types/validador';
 import s from './validaciones.module.scss'
 import ValidatorCard from '@/app/components/admin-validators-card';
 import NewValidatorButton from '@/app/components/button-new-validator';
+import ValidatorsList from '@/app/components/admin-validators-list';
 
 interface ValidacionesProps {
     id: string;
@@ -33,18 +34,11 @@ const validadores: Validador[] = [
 
 export default async function Validaciones({params} : { params: ValidacionesProps } ) {
   const id = params.id
-    return(
-        <div className={`admin-container`}>
-            <h1>Lista de validadores</h1>
-            <h2>{id}</h2>
-            <NewValidatorButton eventId={id}/>
-            <div className={s.validators_list}>
-                {validadores.map((validador) => (
-                    <ValidatorCard key={validador.id} props={validador}/>
-                ))
-                }
-
-            </div>
-        </div>
-    )
+    return (
+      <div className={`admin-container`}>
+        <h1>Lista de validadores</h1>
+        <h2>{id}</h2>
+        <ValidatorsList validatorsList={validadores} id={id} />
+      </div>
+    );
 }

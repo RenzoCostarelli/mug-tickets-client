@@ -22,6 +22,7 @@ export default async function AdminDashboard() {
         <main className={s.main}>
             <div className={s.title}>
                 <h2>MIS EVENTOS</h2>
+                <button>Agregar nuevo evento</button>
             </div>            
             <div className={s.container}>
                 <AdminEventsList da={ data }/>
