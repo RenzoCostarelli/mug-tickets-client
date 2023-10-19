@@ -21,7 +21,6 @@ export default function ValidatorDialog({ onTokenConfirm }: ValidatorContainerPr
   }
 
   const handleTokenChange = (v: string) => {
-      console.log('ve', v)
       setToken(v)
   };
 
