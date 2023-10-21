@@ -26,8 +26,6 @@ export default async function ValidationPage() {
     const {title, tickets} = ticketsList.event
     const ticketsPurchased = tickets.length
 
-
-
     return(   
         <main className={s.main}>
             {/* <QrReader /> */}

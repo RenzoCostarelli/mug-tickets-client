@@ -7,7 +7,7 @@ export const metadata = {
   }
 
 async function getData() {
-  const res = await fetch(`${process.env.apiUrl}/events`, { cache: 'no-store' });  
+  const res = await fetch(`${process.env.apiUrl}/events`);  
   if (!res.ok) {
     throw new Error('Failed to fetch home data');
   } 
