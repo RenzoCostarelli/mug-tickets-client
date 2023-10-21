@@ -18,17 +18,24 @@ export async function POST(req: NextRequest) {
   return NextResponse.json(data)
 }
 
-export async function GET(request: NextRequest, response: NextResponse) {
-  console.log('reeeq', request.json())
+export async function GET(req: NextRequest, res: NextResponse) {
+  const {searchParams} = new URL(req.url)
+  // console.log('rrrr', searchParams.get('token'))
+  const token = searchParams.get('token')
 
-    const res = await fetch(`${process.env.apiUrl}/token/query/?token=${123}`, {
-      method: "GET"
-    });
 
-  const data = await res.json();
-  console.log('data', data)
-  if (data) {
+  // console.log('reeeq', req.json().token)
+
+  const resp = await fetch(`${process.env.apiUrl}/token/query?token=${token}`, {
+    method: "GET"
+  });
+
+  const data = await resp.json();
+
     // mostrar la info y guardar el token en el localstorage
-  }
-  return NextResponse.json(data)
+    const eventInfo = await fetch(`${process.env.apiUrl}/events/query?_id=${data.tokens[0].eventId}`)
+    const eventsResponse = await eventInfo.json()
+    console.log('event response', eventsResponse)
+    return NextResponse.json(eventsResponse)
+
 }

@@ -11,31 +11,13 @@ async function getEventByToken() {
 }
 
 async function getTicketsList() {
-    const res = await fetch(`${process.env.apiUrl}/events/query/?_id=${process.env.MAIN_EVENT}`, {
+    const res = await fetch(`${process.env.apiUrl}/events/query?_id=${process.env.MAIN_EVENT}`, {
       cache: "no-store",
     });
     if (!res.ok) {
       throw new Error("Failed to fetch data from tickets");
     }
     return res.json();
-}
-
-async function loadValidatorByToken(token: string) {
-    console.log('totos', token)
-    try {
-      const callApi = async () => {
-        const res = await fetch(`/api/validator-token/token=${token}`);
-        return res;
-      };
-      const response = await callApi();
-      const data = await response.json();
-      console.log(data.tokens[0].eventId)
-      if (data) {
-        // mostrar la info y guardar el token en el localstorage
-      }
-    } catch (error) {
-      console.error('errr', error);
-    }
 }
 
 

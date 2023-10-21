@@ -6,7 +6,7 @@ interface EstadisticasProps {
 }
 
 async function getTicketsList(id: string) {
-    const res = await fetch(`${process.env.apiUrl}/tickets/query/?event=${id}`, {
+    const res = await fetch(`${process.env.apiUrl}/tickets/query?event=${id}`, {
       cache: "no-store",
     });
     if (!res.ok) {

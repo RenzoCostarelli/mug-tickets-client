@@ -11,14 +11,14 @@ export default function ValidatorContainer() {
     console.log('totos', token)
         try {
           const callApi = async () => {
-            const res = await fetch(`/api/validator-token/token=${token}`);
+            const res = await fetch(`/api/validator-token/?token=${token}`);
             return res;
           };
           const response = await callApi();
           const data = await response.json();
-          console.log(data.tokens[0].eventId)
+          console.log('deita', data)
           if (data) {
-            // mostrar la info y guardar el token en el localstorage
+            // dejamos entrar y mostramos la info
           }
         } catch (error) {
           console.error('errr', error);
