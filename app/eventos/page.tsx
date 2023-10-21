@@ -20,7 +20,6 @@ export default async function Eventos() {
             <div className={s.event_cards_container}>
               {events && (
                 <EventsList events={events}/>
-
               )}
             </div>
           </section>
