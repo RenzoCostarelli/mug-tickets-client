@@ -28,7 +28,6 @@ interface Attendee  {
 
 
 export default function AttendeeList ({ ticketsList } : {ticketsList : any}) {
-    const { purchaser, validated } = ticketsList.tickets
     const [attendees, setAttendees] = useState<Attendee[]>(initialAttendees);
     const [isAscending, setIsAscending] = useState<boolean>(true);
     const [sortCriteria, setSortCriteria] = useState<string>('name');
@@ -54,20 +53,19 @@ export default function AttendeeList ({ ticketsList } : {ticketsList : any}) {
 
     return <>
         <div className={s.info_grid}>
-        <div className={s.table_head}>
-            <div className={`${s.name} ${s.sort_button}`} onClick={() => sortAttendees('name')}>Nombre y apellido</div>
+        <div className={s.table_body}>
+        <div className={`${s.table_row} ${s.table_head}`}>
+        <div className={`${s.name} ${s.sort_button}`} onClick={() => sortAttendees('name')}>Nombre y apellido</div>
             <div className={`${s.dni} ${s.sort_button}`} onClick={() => sortAttendees('dni')}>DNI</div>
             <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>Nro de entrada</div>
             <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>E-mail</div>
         </div>
-
-        <div className={s.table_body}>
-        {ticketsList.tickets.map((attendee: any) => (
+        {ticketsList.map((attendee: any) => (
             <div key={attendee.dni} className={s.table_row}>
-                <div className={s.name}>{attendee.purchaser.purchaserFirstName} {attendee.purchaser.purchaserLastName}</div>
-                <div className={s.dni}>{attendee.purchaser.purchaserDni}</div>
+                <div className={s.name}>{attendee.name}</div>
+                <div className={s.dni}>{attendee.dni}</div>
                 <div className={s.tipo}>{attendee.ticketNumber}</div>
-                <div className={s.tipo}>{attendee.purchaser.purchaserEmail}</div>
+                <div className={s.tipo}>{attendee.email}</div>
             </div>
         ))}
         </div>

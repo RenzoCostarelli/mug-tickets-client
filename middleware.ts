@@ -13,6 +13,7 @@ export default withAuth(
             '/admin/eventos': 'admin',
             '/admin/validar': 'admin',
             '/admin/eventos/:path*': 'admin',
+            '/admin/validaciones/:path*': 'admin',
             '/users': 'user',
             '/users/dashboard': 'user',
             '/users/login': 'user',
