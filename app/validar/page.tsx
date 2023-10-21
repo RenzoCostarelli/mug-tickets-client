@@ -11,7 +11,7 @@ async function getEventByToken() {
 }
 
 async function getTicketsList() {
-    const res = await fetch(`${process.env.apiUrl}/events/query/?_id=651f0fb4feec3285525b3a8c`, {
+    const res = await fetch(`${process.env.apiUrl}/events/query/?_id=${process.env.MAIN_EVENT}`, {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -20,16 +20,35 @@ async function getTicketsList() {
     return res.json();
 }
 
+async function loadValidatorByToken(token: string) {
+    console.log('totos', token)
+    try {
+      const callApi = async () => {
+        const res = await fetch(`/api/validator-token/token=${token}`);
+        return res;
+      };
+      const response = await callApi();
+      const data = await response.json();
+      console.log(data.tokens[0].eventId)
+      if (data) {
+        // mostrar la info y guardar el token en el localstorage
+      }
+    } catch (error) {
+      console.error('errr', error);
+    }
+}
+
 
 export default async function ValidationPage() {
     const ticketsList = await getTicketsList();
     const {title, tickets} = ticketsList.event
     const ticketsPurchased = tickets.length
-
+    
     return(   
         <main className={s.main}>
+            <ValidatorContainer />
             {/* <QrReader /> */}
-            <div className={s.wrapper}>
+            {/* <div className={s.wrapper}>
                 <section className={s.event_info}>
                     <h1>{ title }</h1>
                     <ul>
@@ -46,9 +65,8 @@ export default async function ValidationPage() {
                 </section>
                 <section className={s.attendees_list}>
                     <AttendeeList ticketsList={tickets}/>
-                </section>
-                {/* <ValidatorContainer /> */}
-            </div>
+                </section> 
+            </div> */}
         </main>
     )
 }
