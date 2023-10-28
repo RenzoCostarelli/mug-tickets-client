@@ -9,4 +9,5 @@ export interface TicketType {
     isActive?: boolean;
     ticketsAvailableOnline?: number;
     ticketPurchaseDeadline?: string;
+    ticketsPurchased?: number;
 }
