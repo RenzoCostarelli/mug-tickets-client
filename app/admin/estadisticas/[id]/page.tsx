@@ -16,8 +16,8 @@ async function getTicketsList(id: string) {
 }
 
 export default async function Estadisticas({params} : { params: EstadisticasProps } ) {
-    const id = '651f0fb4feec3285525b3a8c'
-    // const id = params.id
+    // const id = '651f0fb4feec3285525b3a8c'
+    const id = params.id
     const ticketsList = await getTicketsList(id);
     const ticketsPurchased = ticketsList.tickets.length
     const { title } = ticketsList.tickets[0].event
