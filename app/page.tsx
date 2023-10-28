@@ -14,7 +14,7 @@ async function getEventById(id: string) {
 
 export const metadata = {
     title: 'MUG | Entradas online',
-    description: 'Plataforma de venta de tickets online del MUG',
+    description: 'Plataforma de venta de tickets online del MUG.',
 }
 
 export default async function Event() {
