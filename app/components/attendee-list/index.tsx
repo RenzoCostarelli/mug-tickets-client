@@ -61,7 +61,7 @@ export default function AttendeeList ({ ticketsList } : {ticketsList : any}) {
             <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>E-mail</div>
         </div>
         {ticketsList.map((attendee: any) => (
-            <div key={attendee.dni} className={s.table_row}>
+            <div key={attendee.ticketNumber} className={s.table_row}>
                 <div className={s.name}>{attendee.name}</div>
                 <div className={s.dni}>{attendee.dni}</div>
                 <div className={s.tipo}>{attendee.ticketNumber}</div>

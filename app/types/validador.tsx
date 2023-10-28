@@ -1,8 +1,8 @@
 export interface Validador {
-    id: number;
+    _id?: number;
     token: string;
     eventId: string;
     eventTitle: string;
-    createdDate: Date;
+    creationDate: Date;
 }
   

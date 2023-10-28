@@ -3,22 +3,4 @@
     color: black;
 }
 
-.wrapper {
-    width: min(1200px, 95vw);
-    margin-inline: auto;
-    padding-block: 2rem;
-}
 
-.event_info {
-    color: black;
-    ul {
-        padding-left: 0;
-        list-style: none;
-        li {
-            padding-block: 0.2rem;
-            span {
-                font-weight: bold;
-            }
-        }
-    }
-}

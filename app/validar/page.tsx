@@ -29,26 +29,7 @@ export default async function ValidationPage() {
     return(   
         <main className={s.main}>
             <ValidatorContainer />
-            {/* <QrReader /> */}
-            {/* <div className={s.wrapper}>
-                <section className={s.event_info}>
-                    <h1>{ title }</h1>
-                    <ul>
-                        <li><span>Entradas vendidas online:</span> { ticketsPurchased }</li>
-                        <li><span>Ingresaron:</span> 0</li>
-                        <li><span>No ingresaron:</span> 0</li>
-                    </ul>
-                </section>
-                <section className={s.tools}>
-                    <div className={s.tool_bar}>
-                        <button>Escanear QR</button>
-                        <button>Ingresar DNI</button>
-                    </div>
-                </section>
-                <section className={s.attendees_list}>
-                    <AttendeeList ticketsList={tickets}/>
-                </section> 
-            </div> */}
+            {/* <QrReader /> */}           
         </main>
     )
 }

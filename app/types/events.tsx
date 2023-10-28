@@ -8,7 +8,21 @@ export interface Events {
     ticketsAvailableOnline: number;
     hasLimitedPlaces: boolean;
     ticketsTypeList: TicketType[];
-    image: string
-    price: number
-    purchasedTicketsList: string[]
+    image: string;
+    price: number;
+    purchasedTicketsList: string[];
+    tickets?: TicketType[];
+}
+
+export interface EventInfo {
+    eventId: string;
+    title: string;
+    description: string;
+    address: string;
+    eventType: string;
+    ticketsAvailableOnline: number;
+    hasLimitedPlaces: boolean;
+    tickets: TicketType[];
+    purchasedTicketsList: string[];
+    event: Events;
 }
