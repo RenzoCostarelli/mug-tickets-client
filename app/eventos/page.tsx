@@ -2,7 +2,7 @@ import EventsList from '../components/events-list';
 import s from './eventos.module.scss'
 
 async function getData() {
-  const res = await fetch(`${process.env.apiUrl}/events`);
+  const res = await fetch(`${process.env.apiUrl}/events/`, {cache: 'no-store'});
   if (!res.ok) {
     throw new Error('Failed to fetch home data');
   }
