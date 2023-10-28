@@ -18,7 +18,7 @@ export default function ValidatorCard({props, onDelete}: {props: Validador, onDe
     return (
         <div className={s.card}>
             <div className={s.token} onClick={(e) =>copyToClipboard(props.token, e)}>{props.token} <img className={s.icon} src='/images/icons/share.svg' alt="Icono de copiar" /></div>
-            <div className={s.date}><span>Token creado: </span>{date}</div>
+            <div className={s.date}><span>Fecha de creación: </span>{date}</div>
             <div className={s.tool_bar}>
                 <button className={s.delete} onClick={() => onDelete(props._id!)}><img className={s.icon} src='/images/icons/eliminar.svg' alt="Icono de eliminar" /></button>
             </div>
