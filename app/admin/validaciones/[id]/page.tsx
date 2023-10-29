@@ -3,6 +3,7 @@ import s from "./validaciones.module.scss";
 import ValidatorCard from "@/app/components/admin-validators-card";
 import NewValidatorButton from "@/app/components/button-new-validator";
 import ValidatorsList from "@/app/components/admin-validators-list";
+import Link from "next/link";
 
 interface ValidacionesProps {
   id: string;
@@ -23,7 +24,8 @@ export default async function Validaciones({params} : {params: ValidacionesProps
   const {tokens} = await getAllValidators(id);
   return (
     <div className={`admin-container`}>
-      <h1>Lista de validadores</h1>
+      <Link href={'/admin'}>Volver</Link>
+      <h1>Tokens de validación</h1>
       <h2>{id}</h2>
       <ValidatorsList validatorsList={tokens} id={id} />
     </div>
