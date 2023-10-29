@@ -12,7 +12,7 @@ const copyToClipboard = async(text: string, event: React.MouseEvent<HTMLDivEleme
         console.error('Failed to copy to clipboard: ', error)
     }
 }
-export default function ValidatorCard({props, onDelete}: {props: Validador, onDelete: (validadorId: number) => void}){
+export default function ValidatorCard({props, onDelete}: {props: Validador, onDelete: (validadorId: string) => void}){
     const date = formatDate(new Date(props.creationDate))
     
     return (

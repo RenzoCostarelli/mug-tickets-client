@@ -2,8 +2,8 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
+  const account = await getToken({ req: req, secret: process.env.SECRET });
   const request = await req.json();
-  const account = await getToken({ req: request, secret: process.env.SECRET });
   console.log("req", request);
   const res = await fetch(`${process.env.apiUrl}/token`, {
     method: "POST",

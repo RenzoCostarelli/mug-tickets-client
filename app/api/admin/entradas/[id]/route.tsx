@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 
-export async function DELETE(request: NextRequest) { 
+export async function DELETE(request: NextRequest ) { 
     const account = await getToken({ req: request, secret: process.env.SECRET });
     const _id = await request.url.split('/').at(-1);
     
