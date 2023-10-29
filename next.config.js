@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        apiUrl: 'https://mug-tickets-server.vercel.app/api',
         apiKey: '33F85ADC279C7872D63B1B42A1B31',
         MP_PUBLIC_KEY: 'APP_USR-61588964-6b13-44ce-bdc2-50541f814921',
         MP_ACCESS_TOKEN: 'APP_USR-5729491792342125-092816-579911e43169ada6db3696d4c8b9eff7-1449054997',
