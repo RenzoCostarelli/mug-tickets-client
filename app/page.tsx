@@ -5,7 +5,7 @@ import EventCardMain from "@/app/components/event-card-main";
 import Notificator from "./components/notificator";
 
 async function getEventById(id: string) {
-  const res = await fetch(`${process.env.apiUrl}/events/${id}`);
+  const res = await fetch(`${process.env.apiUrl}/events/${id}`, { next: { revalidate: 300 }});
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -14,7 +14,7 @@ async function getEventById(id: string) {
 
 export const metadata = {
     title: 'MUG | Entradas online',
-    description: 'Plataforma de venta de tickets online del MUG',
+    description: 'Plataforma de venta de tickets online del MUG.',
 }
 
 export default async function Event() {

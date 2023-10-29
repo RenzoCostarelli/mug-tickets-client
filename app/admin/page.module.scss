@@ -1,7 +1,9 @@
 .main {
     text-align: center;
     padding: 2rem;
-
+    button {
+        color: black;
+    }
     .title{
             display: flex;
             flex-direction: column;

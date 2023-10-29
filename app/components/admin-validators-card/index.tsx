@@ -12,16 +12,15 @@ const copyToClipboard = async(text: string, event: React.MouseEvent<HTMLDivEleme
         console.error('Failed to copy to clipboard: ', error)
     }
 }
-export default function ValidatorCard({props}: {props: Validador}){
-    const date = formatDate(props.createdDate)
+export default function ValidatorCard({props, onDelete}: {props: Validador, onDelete: (validadorId: string) => void}){
+    const date = formatDate(new Date(props.creationDate))
     
     return (
         <div className={s.card}>
-            {/* <div className={s.title}>{props.eventTitle}</div> */}
             <div className={s.token} onClick={(e) =>copyToClipboard(props.token, e)}>{props.token} <img className={s.icon} src='/images/icons/share.svg' alt="Icono de copiar" /></div>
-            <div className={s.date}><span>Token creado: </span>{date}</div>
+            <div className={s.date}><span>Fecha de creación: </span>{date}</div>
             <div className={s.tool_bar}>
-                <button className={s.delete}><img className={s.icon} src='/images/icons/eliminar.svg' alt="Icono de eliminar" /></button>
+                <button className={s.delete} onClick={() => onDelete(props._id!)}><img className={s.icon} src='/images/icons/eliminar.svg' alt="Icono de eliminar" /></button>
             </div>
         </div>
     )
