@@ -20,10 +20,6 @@ export default function Navbar() {
                 height={50}/>                
             <nav className={s.main_navigation}>
                 <ul className={s.links}>
-                    {/* <li className={s.link}>
-                        <Link href={`/`}>Entradas</Link>
-                    </li> */}
-
                 </ul>
             </nav>
             <div className={s.user_area}>

@@ -14,11 +14,12 @@ async function getEventById(id: string) {
 
 export const metadata = {
     title: 'MUG | Entradas online',
-    description: 'Plataforma de venta de tickets online del MUG',
+    description: 'Plataforma de venta de tickets online del MUG.',
 }
 
 export default async function Event() {
-  const { event } = await getEventById('651c6ea6ff2b039a8f6d42ab');
+  const id = process.env.MAIN_EVENT
+  const { event } = await getEventById(id!);
   
   return (
     <main>
