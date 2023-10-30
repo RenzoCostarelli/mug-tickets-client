@@ -29,24 +29,35 @@ export default function NewValidatorButton({eventId, onAddToken}: ButtonProps & 
         }
     };
 
-    const handleCloseModal = () => {
+    const handleSaveToken = () => {
         if (dialogRef.current) {
-            console.log('token', token)
-            console.log('eventId', eventId)
             onAddToken(token!);
             setToken(null)
             dialogRef.current.close();
         }
     };
 
+    const handleCloseModal = () => {
+        dialogRef.current!.close()
+    }
+
     return (
         <div className={s.button_container}>
-            <button onClick={handleOpenModal}>+ token de validación</button>
+            <button className={s.new} onClick={handleOpenModal}>+ token de validación</button>
             {/* <span>{eventId}</span> */}
             <dialog className={s.token_modal} ref={dialogRef}>
-                {token && <p>Token: {token}</p>}
-                <button onClick={generateToken}>Actualizar token</button>
-                <button onClick={handleCloseModal}>Guardar</button>
+                <button onClick={handleCloseModal} className={s.close}>✖</button>
+                {token && 
+                <div>
+                    <h1>Nuevo Token</h1>
+                    <p>{token}</p>
+                </div>
+                }
+                <footer>
+                    <button className={s.update} onClick={generateToken}>Actualizar token</button>
+                    <button className={s.save} onClick={handleSaveToken}>Guardar</button>
+
+                </footer>
             </dialog>
         </div>
     )
