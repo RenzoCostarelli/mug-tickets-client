@@ -11,7 +11,6 @@ interface ValidatorContainerProps {
 export default function ValidatorContainer() {
   const [eventData, setEventData] = useState<EventInfo>()
   const loadValidatorByToken = async (token: string) => {
-    console.log("totos", token);
     try {
       const callApi = async () => {
         const res = await fetch(`/api/validator-token/?token=${token}`);
@@ -19,10 +18,8 @@ export default function ValidatorContainer() {
       };
       const response = await callApi();
       const data = await response.json();
-      console.log("deita", data);
       if (data) {
         setEventData(data)
-        // dejamos entrar y mostramos la info
       }
     } catch (error) {
       console.error("errr", error);

@@ -6,17 +6,17 @@ export const metadata = {
     description: 'Plataforma de venta de tickets online del MUG',
   }
 
-// async function getData() {
-//   const res = await fetch(`${process.env.apiUrl}/events`);  
-//   if (!res.ok) {
-//     throw new Error('Failed to fetch home data');
-//   } 
-//   return res.json();
-// }
+async function getData() {
+  const res = await fetch(`${process.env.apiUrl}/events`);  
+  if (!res.ok) {
+    throw new Error('Failed to fetch home data');
+  } 
+  return res.json();
+}
 
 export default async function AdminDashboard() {
    
-    // const data = await getData();    
+    const data = await getData();    
 
     return(
         <main className={s.main}>
@@ -24,9 +24,9 @@ export default async function AdminDashboard() {
                 <h2>MIS EVENTOS</h2>
                 <button>Agregar nuevo evento</button>
             </div>            
-            {/* <div className={s.container}>
+            <div className={s.container}>
                 <AdminEventsList da={ data }/>
-            </div> */}
+            </div>
         </main>           
     )
 }
