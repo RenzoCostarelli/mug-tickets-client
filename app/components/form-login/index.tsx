@@ -1,5 +1,5 @@
 'use client'
-import {  useState } from 'react';
+import {  FormEvent, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import s from './page.module.scss';
   
@@ -19,13 +19,16 @@ export default function FormLogin() {
       }));        
     };
     
-    const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const { email, password } = data;
+      const formData = new FormData(e.currentTarget)
+      // console.log('ee', formData.get('password'))
+      const currentEmail = formData.get('email')
+      const currentPassword = formData.get('password')
       await signIn("credentials", {
         redirect: true,
-        email,
-        password,
+        currentEmail,
+        currentPassword,
         callbackUrl: '/admin'
       });      
     };
