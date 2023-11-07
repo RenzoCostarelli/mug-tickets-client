@@ -1,0 +1,15 @@
+.table_container {
+    overflow: auto;
+    width: 100%;
+    position: relative;
+}
+
+.table {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    caption-side: bottom;
+    width: 100%;
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+}
