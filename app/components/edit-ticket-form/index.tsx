@@ -76,7 +76,7 @@ export default function EditTicketForm({ ticket, index }: EventProps) {
     
     const onClose = () => setDialog(false);
 
-    const onOk = () => handleDelete(data?._id);
+    const onOk = () => handleDelete(data?._id!);
 
     return (
         <>

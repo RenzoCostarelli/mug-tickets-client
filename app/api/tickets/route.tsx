@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     }
   }
   
-  const res = await fetch('https://mug-tickets-server.vercel.app/api/tickets/', {
+  const res = await fetch(`${process.env.apiUrl}/tickets/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

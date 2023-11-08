@@ -15,7 +15,7 @@ interface offersBody {
         date: string,
         type: string
     },
-    expirationDate: string
+    expirationDate?: string
 }
 
 const formatTime = (date: any): string => {
@@ -43,18 +43,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
   const isSubmitting = useStore((state) => state.isSubmitting);
   const setSubmitting = useStore((state) => state.setSubmitting);
   const { push } = useRouter();
-  let formatedDate = "";
-  let timeStr = "";
 
-  // if (event!.ticketsTypeList && event!.ticketsTypeList.length > 0) {
-  //   const date = new Date(event!.ticketsTypeList[0].date);
-    
-  //   formatedDate = new Intl.DateTimeFormat('es-AR', {
-  //     dateStyle: 'medium',
-  //     timeZone: 'America/Buenos_Aires'
-  //   }).format(date)//date.toLocaleDateString();
-  //   timeStr = formatTime(event!.ticketsTypeList[0].date);
-  // }
 
   const calculateTotal = (q: number) => {
     let newTotal = q * currentPrice;
@@ -73,7 +62,9 @@ export default function TicketsPicker({ event }: { event: Events }) {
     let ticket = event.ticketsTypeList.filter(
       (e: TicketType) => e.type === type
     );
-    setTicketTypeId(ticket[0]._id)
+    if (ticket[0] && ticket[0]._id) {
+      setTicketTypeId(ticket[0]._id);
+    }
     setCurrentPrice(ticket[0].price);
     setCurrentDate(ticket[0].date!)
   };
@@ -81,7 +72,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
   async function createNewOffer() {
     setSubmitting(true)
     setIsDisabled(true)
-    let data: offersBody = {
+    let bodyData: offersBody = {
       eventId: event.eventId,
       quantity: quantityValue,
       ticketType: {
@@ -90,22 +81,20 @@ export default function TicketsPicker({ event }: { event: Events }) {
         date: currentDate,
         type: currentTicketType,
       },
-      expirationDate: "2023-12-29T20:30:00.000Z",
+      expirationDate: "2023-12-29T20:30:00.000Z"
     };
-
     fetch("/api/offer", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(bodyData),
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log('data', data)
         push(`/eventos/ticket/${data.savedNewOrder._id}`);
         setTimeout(() => {
-          setSubmitting(false)
+          setSubmitting(false) 
           
         }, 1000);
       })

@@ -62,7 +62,7 @@ export function MpButton({ prod, offerId, isEnabled, buyer }: { prod: Product, o
       }
     }
     try {
-      const response = await fetch(`${process.env.apiUrl}/orders/${offerId}`, {
+      const response = await fetch(`${process.env.fe_api_url}/orders/${offerId}`, {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",

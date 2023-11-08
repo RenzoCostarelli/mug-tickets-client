@@ -45,7 +45,6 @@ export default function ValidatorsList({ validatorsList, id}: {validatorsList: V
     })
  
     const data = await response.json();
-    console.log('data', data)
     if(data.ok === false) {
       toast.error('Error al eliminar el Token')
       return

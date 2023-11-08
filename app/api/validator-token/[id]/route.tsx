@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function DELETE(request: NextRequest, { params }: { params: { id: string }}) { 
     const account = await getToken({ req: request, secret: process.env.SECRET });
     const req = await request;
-    console.log('req', params.id)
     const res = await fetch(`${process.env.apiUrl}/token/${params.id}`, {
       method: 'DELETE',
       headers: {
