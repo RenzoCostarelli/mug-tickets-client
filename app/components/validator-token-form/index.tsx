@@ -16,7 +16,6 @@ export default function ValidatorDialog({ onTokenConfirm }: ValidatorContainerPr
   };
 
   const handleConfirm = () => {
-    console.log(tokenValue)
     onTokenConfirm(tokenValue)
   }
 

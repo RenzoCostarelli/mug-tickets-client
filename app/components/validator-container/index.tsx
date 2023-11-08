@@ -20,6 +20,7 @@ export default function ValidatorContainer() {
       const data = await response.json();
       if (data) {
         setEventData(data)
+        localStorage.setItem('token', token);
       }
     } catch (error) {
       console.error("errr", error);
@@ -29,8 +30,7 @@ export default function ValidatorContainer() {
   
   if (!eventData) {
     return <>
-      <ValidatorDialog onTokenConfirm={loadValidatorByToken} />;
-      
+      <ValidatorDialog onTokenConfirm={loadValidatorByToken} />;      
     </>
   }
 

@@ -1,75 +1,129 @@
-'use client'
-import { useEffect, useState } from 'react';
-import s from './list.module.scss'
-import { Buyer } from '@/app/types/buyer';
+"use client";
+import { useEffect, useState } from "react";
+import s from "./list.module.scss";
+import { Buyer } from "@/app/types/buyer";
 
-// agregar GET de tickets aca
-const initialAttendees = [
-    { name: "Juan Pérez", dni: "12345678", ticketType: "General dia 1" },
-    { name: "María López", dni: "87654321", ticketType: "General dia 2" },
-    { name: "Luis Rodríguez", dni: "11223344", ticketType: "Abono día 1 + día 2" },
-    { name: "Carla Fernández", dni: "55667788", ticketType: "General dia 1" },
-    { name: "Fernando García", dni: "99887766", ticketType: "Abono día 1 + día 2" },
-    { name: "Paula Torres", dni: "66778899", ticketType: "General dia 2" },
-    { name: "Carlos Ramírez", dni: "22556644", ticketType: "General dia 1" },
-    { name: "Lucía Morales", dni: "88990011", ticketType: "Abono día 1 + día 2" },
-    { name: "Diego Ortiz", dni: "33221100", ticketType: "General dia 2" },
-    { name: "Isabel Gutiérrez", dni: "77665544", ticketType: "General dia 1" }
-];
+export interface Attendee {
+  _id: string;
+  name: string;
+  dni: string;
+  ticketType: string;
+  ticketNumber?: number;
+  email?: string;
+  orderData?: { type: string };
+  purchaser?: Buyer;
+  validated?: boolean;
+  tickets?: any;
+}
 
-interface Attendee  {
-    name: string;
-    dni: string;
-    ticketType: string;
-    purchaser?: Buyer;
-    validated?: boolean;
-    tickets?: any;
-};
+export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
+  // const tickets = ticketsList;
+  const [tickets, setTickets] = useState(ticketsList);
+  const [filterDNI, setFilterDNI] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 50;
 
+  const filteredTickets = tickets.filter((ticket: Attendee) =>
+    ticket.dni.includes(filterDNI)
+  );
 
-export default function AttendeeList ({ ticketsList } : {ticketsList : any}) {
-    const [attendees, setAttendees] = useState<Attendee[]>(initialAttendees);
-    const [isAscending, setIsAscending] = useState<boolean>(true);
-    const [sortCriteria, setSortCriteria] = useState<string>('name');
+  const totalItems = filteredTickets.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-    // cambiar por un useeffect
-    const sortAttendees = (criteria: string) => {
-        if (sortCriteria === criteria) {
-            setIsAscending(!isAscending);
-        } else {
-            setSortCriteria(criteria);
-            setIsAscending(true);
-        }
+  const paginatedTickets = filteredTickets.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
-        const sorted = [...attendees].sort((a, b) => {
-            const valueA = a[criteria as keyof Attendee];
-            const valueB = b[criteria as keyof Attendee];
-            return isAscending ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+  async function validateTicket(id: string) {
+    try {
+      const response = await fetch(`/api/validate/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: id }),
+      });
+      const res = await response.json();
+      if (res.ok === false) {
+        console.error("Error al validar");
+        return;
+      }
+      setTickets((prevTickets: any) => {
+        return prevTickets.map((ticket: Attendee) => {
+          if (ticket._id === id) {
+            return { ...ticket, validated: true };
+          }
+          return ticket;
         });
+      });
+    } catch (error) {}
+  }
 
-        setAttendees(sorted);
-    }
-    
+  return (
+    <>
+    <div className={s.table_wrapper}>
+      <div className={s.input_filter}>
+        <input
+          type="text"
+          placeholder="Filtrar por DNI"
+          value={filterDNI}
+          className={s.search_input}
+          onChange={(e) => setFilterDNI(e.target.value)}
+        />
+      </div>
+      <table className={s.table}>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Nro</th>
+            <th>Dni</th>
+          </tr>
+        </thead>
+        <tbody>
+          {paginatedTickets.map((ticket: Attendee, index: number) => (
+            <tr
+              key={index}
+              className={`${ticket.validated ? s.validated : s.not_validated}`}
+            >
+              <td>
+                <label className={s.switch}>
+                  <input
+                    type="checkbox"
+                    checked={ticket.validated}
+                    onChange={() => validateTicket(ticket._id)}
+                  />
+                  <span className={`${s.slider} ${s.round}`}></span>
+                </label>
+              </td>
+              <td className={s.name_td}>{ticket.name}</td>
+              <td>{ticket.ticketNumber}</td>
+              <td>{ticket.dni}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className={s.pagination_wrapper}>
+        {totalItems > itemsPerPage && (
+          <ul className={s.pagination}>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <li
+                key={index}
+                className={currentPage === index + 1 ? s.active : ""}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
-    return <>
-        <div className={s.info_grid}>
-        <div className={s.table_body}>
-        <div className={`${s.table_row} ${s.table_head}`}>
-        <div className={`${s.name} ${s.sort_button}`} onClick={() => sortAttendees('name')}>Nombre y apellido</div>
-            <div className={`${s.dni} ${s.sort_button}`} onClick={() => sortAttendees('dni')}>DNI</div>
-            <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>Nro de entrada</div>
-            <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>E-mail</div>
-        </div>
-        {ticketsList.map((attendee: any) => (
-            <div key={attendee.ticketNumber} className={s.table_row}>
-                <div className={s.name}>{attendee.name}</div>
-                <div className={s.dni}>{attendee.dni}</div>
-                <div className={s.tipo}>{attendee.ticketNumber}</div>
-                <div className={s.tipo}>{attendee.email}</div>
-            </div>
-        ))}
-        </div>
     </div>
-    
     </>
+  );
 }
