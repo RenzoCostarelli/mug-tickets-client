@@ -83,7 +83,6 @@ export default function TicketsPicker({ event }: { event: Events }) {
       },
       expirationDate: "2023-12-29T20:30:00.000Z"
     };
-    console.log('dat', bodyData)
     fetch("/api/offer", {
       method: "POST",
       headers: {
@@ -93,7 +92,6 @@ export default function TicketsPicker({ event }: { event: Events }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         push(`/eventos/ticket/${data.savedNewOrder._id}`);
         setTimeout(() => {
           setSubmitting(false) 

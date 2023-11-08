@@ -12,7 +12,7 @@ const copyToClipboard = async(text: string, event: React.MouseEvent<HTMLDivEleme
         toast.success('Token copiado', { autoClose: 1500 ,closeOnClick: true,
             pauseOnHover: false})     
     } catch (error) {
-        console.error('Failed to copy to clipboard: ', error)
+        console.error('Fallo al copiar: ', error)
     }
 }
 export default function ValidatorCard({props, onDelete}: {props: Validador, onDelete: (validadorId: string) => void}){
