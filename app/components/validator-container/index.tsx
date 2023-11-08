@@ -19,7 +19,9 @@ export default function ValidatorContainer() {
       const response = await callApi();
       const data = await response.json();
       if (data) {
+        console.log('data', data)
         setEventData(data)
+        localStorage.setItem('token', token);
       }
     } catch (error) {
       console.error("errr", error);
@@ -29,8 +31,7 @@ export default function ValidatorContainer() {
   
   if (!eventData) {
     return <>
-      <ValidatorDialog onTokenConfirm={loadValidatorByToken} />;
-      
+      <ValidatorDialog onTokenConfirm={loadValidatorByToken} />;      
     </>
   }
 

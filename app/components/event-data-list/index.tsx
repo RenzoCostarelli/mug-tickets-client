@@ -43,8 +43,7 @@ interface EventDataListProps {
   ]
 export default function EventDataList(props: EventDataListProps) {
   const e = props.eventData.event
-  const tickets = e.tickets
-  console.log('ee', tickets)
+  const { tickets, ticketsTypeList} = e
   return (
     <div className={s.wrapper}>
       <section className={s.event_info}>
@@ -53,6 +52,11 @@ export default function EventDataList(props: EventDataListProps) {
           <li>
             <span>Entradas vendidas online:</span> {tickets!.length}
           </li>
+          {ticketsTypeList.map((t, index) => (
+            <li key={index}>
+              <span>{t.type}:</span> {t.ticketsPurchased}
+            </li>
+          ))}
           <li>
             <span>Ingresaron:</span> 0
           </li>
@@ -68,8 +72,8 @@ export default function EventDataList(props: EventDataListProps) {
         </div>
       </section>
       <section className={s.attendees_list}>
-        {/* <AttendeeList ticketsList={tickets} /> */}
-        <DataTable columns={columns} data={data}/>
+        <AttendeeList ticketsList={tickets} />
+        {/* <DataTable columns={columns} data={data}/> */}
       </section>
     </div>
   );

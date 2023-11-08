@@ -59,13 +59,15 @@ export default function AttendeeList ({ ticketsList } : {ticketsList : any}) {
             <div className={`${s.dni} ${s.sort_button}`} onClick={() => sortAttendees('dni')}>DNI</div>
             <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>Nro de entrada</div>
             <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>E-mail</div>
+            <div className={`${s.tipo} ${s.sort_button}`} onClick={() => sortAttendees('ticketType')}>Tipo</div>
         </div>
         {ticketsList.map((attendee: any) => (
-            <div key={attendee.ticketNumber} className={s.table_row}>
+            <div key={attendee.ticketNumber} className={`${s.table_row} ${attendee.validated ? s.validated : s.not_validated}`}>
                 <div className={s.name}>{attendee.name}</div>
                 <div className={s.dni}>{attendee.dni}</div>
                 <div className={s.tipo}>{attendee.ticketNumber}</div>
                 <div className={s.tipo}>{attendee.email}</div>
+                <div className={s.tipo}>{attendee.orderData.type}</div>
             </div>
         ))}
         </div>
