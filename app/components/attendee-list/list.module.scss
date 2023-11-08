@@ -9,7 +9,7 @@
     .table_head,
     .table_row {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         div {
             padding: 8px; 
             border: 1px solid #e0e0e0;
@@ -19,18 +19,18 @@
     }
     .table_row {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
 
         &:nth-child(odd){
             div {
                 background-color: rgb(245, 245, 245);
             }
         }
-        &.validated {
-            div {
-                background-color: green;
-            }
-        }
+        // &.validated {
+        //     div {
+        //         background-color: green;
+        //     }
+        // }
     }
     .sort_button {
         cursor: pointer;
@@ -39,4 +39,9 @@
             background-color: lightblue;
         }
     }
+}
+
+.validated {
+        background-color: green;
+
 }
