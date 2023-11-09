@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import s from "./list.module.scss";
 import { Buyer } from "@/app/types/buyer";
 import QrReader from "../qr-reader";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export interface Attendee {
   _id: string;
@@ -15,6 +17,15 @@ export interface Attendee {
   purchaser?: Buyer;
   validated?: boolean;
   tickets?: any;
+}
+
+const Spinner = () => {
+  return (
+    <div className={s.loader_wrapper}>
+      <h4>Validando</h4>
+      <div className={s.lds_grid}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+  )
 }
 
 export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
@@ -52,10 +63,26 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
         body: JSON.stringify({ id: id }),
       });
       const res = await response.json();
-      console.log('res', res)
+      console.log("res", res);
       if (res.ok === false) {
-        console.error("Error al validar");
+        toast.error(res.error, {
+          autoClose: 500,
+          closeOnClick: true,
+          pauseOnHover: false,
+        });
+        console.error("Error al validar", res);
+        setIsValidating(false);
+        if (dialogRef.current!.open) {
+          handleCloseModal()
+        }
         return;
+      }
+      if (res.ok === true) {
+        toast.success("Ticket validado", {
+          autoClose: 500,
+          closeOnClick: true,
+          pauseOnHover: false,
+        });
       }
       setTickets((prevTickets: any) => {
         return prevTickets.map((ticket: Attendee) => {
@@ -65,6 +92,9 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
           return ticket;
         });
       });
+      if (dialogRef.current!.open) {
+        handleCloseModal()
+      }
       setIsValidating(false);
     } catch (error) {}
   }
@@ -149,15 +179,12 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
             </ul>
           )}
         </div>
-        <dialog className={s.token_modal} ref={dialogRef}>
-          <button onClick={handleCloseModal} className={s.close}>
-            ✖
-          </button>
-          {isCameraOpen && <QrReader onOk={validateTicket}/>}
-          <footer>
-          </footer>
+        <dialog className={s.scanner_dialog} ref={dialogRef}>
+          {isValidating && <Spinner />}
+          {isCameraOpen && <QrReader onOk={validateTicket} />}
         </dialog>
       </div>
+      <ToastContainer />
     </>
   );
 }
