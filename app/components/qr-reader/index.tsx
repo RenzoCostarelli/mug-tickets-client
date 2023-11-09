@@ -10,24 +10,23 @@ export default function QrReader() {
       };
       
     useEffect(() => {    
-      return () => {
         const scanner = new Html5QrcodeScanner('reader', config, false)
     
         scanner.render(succes, error)
     
         function succes(result: any) {
             console.log('qr', result)
-            // scanner.clear()
+            scanner.clear()
             setScanResult(result)
         }
         function error(err: any) {
-            // console.warn(err)
+            console.warn(err)
         }   
-      }
+      
     }, [])
     
     return <>
-        <h1>Open camera</h1>
+        {/* <h1>Open camera</h1> */}
         <div id='reader'></div>
     </>
 }
