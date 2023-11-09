@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import s from "./list.module.scss";
 import { Buyer } from "@/app/types/buyer";
+import QrReader from "../qr-reader";
 
 export interface Attendee {
   _id: string;
@@ -18,6 +19,7 @@ export interface Attendee {
 
 export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
   // const tickets = ticketsList;
+  const [isCameraOpen, setCameraOpen] = useState<boolean>(false)
   const [tickets, setTickets] = useState(ticketsList);
   const [filterDNI, setFilterDNI] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,6 +39,7 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
 
   async function validateTicket(id: string) {
     try {
@@ -66,14 +69,21 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
   return (
     <>
     <div className={s.table_wrapper}>
-      <div className={s.input_filter}>
-        <input
-          type="text"
-          placeholder="Filtrar por DNI"
-          value={filterDNI}
-          className={s.search_input}
-          onChange={(e) => setFilterDNI(e.target.value)}
-        />
+      {isCameraOpen && (
+        <QrReader />
+      )}
+      <div className={s.filters}>
+        <button className={s.camera_button} onClick={e => setCameraOpen(true)}>Abrir camara</button>
+        <div className={s.input_filter}>
+          <input
+            type="text"
+            placeholder="Filtrar por DNI"
+            value={filterDNI}
+            className={s.search_input}
+            onChange={(e) => setFilterDNI(e.target.value)}
+          />
+        </div>
+
       </div>
       <table className={s.table}>
         <thead>
