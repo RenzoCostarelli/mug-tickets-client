@@ -18,12 +18,13 @@ export interface Attendee {
 }
 
 export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
-  // const tickets = ticketsList;
+  const [isValidating, setIsValidating] = useState<boolean>(false)
   const [isCameraOpen, setCameraOpen] = useState<boolean>(false)
   const [tickets, setTickets] = useState(ticketsList);
   const [filterDNI, setFilterDNI] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 50;
+
 
   const filteredTickets = tickets.filter((ticket: Attendee) =>
     ticket.dni.includes(filterDNI)
@@ -42,6 +43,7 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
 
 
   async function validateTicket(id: string) {
+    setIsValidating(true)
     try {
       const response = await fetch(`/api/validate/${id}`, {
         method: "PUT",
@@ -63,6 +65,7 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
           return ticket;
         });
       });
+      setIsValidating(false)
     } catch (error) {}
   }
 
@@ -101,11 +104,13 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
               className={`${ticket.validated ? s.validated : s.not_validated}`}
             >
               <td>
-                <label className={s.switch}>
+                <label className={`${s.switch} ${isValidating ? s.disabled : ''}`}>
                   <input
                     type="checkbox"
                     checked={ticket.validated}
                     onChange={() => validateTicket(ticket._id)}
+                    className={isValidating ? s.disabled : ''}
+                    disabled={isValidating}
                   />
                   <span className={`${s.slider} ${s.round}`}></span>
                 </label>
