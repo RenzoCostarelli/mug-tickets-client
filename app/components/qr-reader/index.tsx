@@ -7,6 +7,7 @@ export default function QrReader() {
         fps: 10,
         qrbox: {width: 300, height: 300},
         rememberLastUsedCamera: true,
+        facingMode: "environment" 
       };
       
     useEffect(() => {    
