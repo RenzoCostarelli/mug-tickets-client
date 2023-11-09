@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import s from "./list.module.scss";
 import { Buyer } from "@/app/types/buyer";
 import QrReader from "../qr-reader";
@@ -18,6 +18,7 @@ export interface Attendee {
 }
 
 export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
   const [isValidating, setIsValidating] = useState<boolean>(false)
   const [isCameraOpen, setCameraOpen] = useState<boolean>(false)
   const [tickets, setTickets] = useState(ticketsList);
@@ -69,14 +70,21 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
     } catch (error) {}
   }
 
+  const handleCloseModal = () => {
+    dialogRef.current!.close()
+}
+const handleOpenModal = () => {
+  if (dialogRef.current) {
+      dialogRef.current.showModal();
+      setCameraOpen(true)
+  }
+};
   return (
     <>
     <div className={s.table_wrapper}>
-      {isCameraOpen && (
-        <QrReader />
-      )}
+
       <div className={s.filters}>
-        <button className={s.camera_button} onClick={e => setCameraOpen(true)}>Abrir camara</button>
+        <button className={s.camera_button} onClick={handleOpenModal}>Abrir camara</button>
         <div className={s.input_filter}>
           <input
             type="text"
@@ -137,6 +145,17 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
           </ul>
         )}
       </div>
+      <dialog className={s.token_modal} ref={dialogRef}>
+                <button onClick={handleCloseModal} className={s.close}>✖</button>
+                {isCameraOpen && (
+                    <QrReader />
+                  )}
+                <footer>
+                    <button className={s.update}>Actualizar token</button>
+                    <button className={s.save}>Guardar</button>
+
+                </footer>
+      </dialog>
 
     </div>
     </>
