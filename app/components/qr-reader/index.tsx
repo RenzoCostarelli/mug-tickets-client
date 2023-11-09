@@ -1,5 +1,6 @@
 "use client";
 import { Html5QrcodeScanner, Html5QrcodeSupportedFormats } from "html5-qrcode";
+import { Html5Qrcode } from "html5-qrcode";
 import { useEffect, useState } from "react";
 
 interface QrReaderProps {
@@ -12,12 +13,15 @@ export default function QrReader({onOk}: QrReaderProps) {
     fps: 10,
     qrbox: { width: 300, height: 300 },
     rememberLastUsedCamera: true,
-    facingMode: "environment",
+    videoConstraints: {
+      facingMode: { exact: "environment" },
+    },
     formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE],
   };
 
   useEffect(() => {
     setIsValidating(true)
+
     const scanner = new Html5QrcodeScanner("reader", config, false);
 
     scanner.render(succes, error);
