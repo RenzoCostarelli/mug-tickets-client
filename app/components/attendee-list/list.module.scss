@@ -20,14 +20,16 @@
                 background-color: rgb(186, 221, 186);
             }
             &:nth-child(even) {
-                background-color: rgb(237, 237, 237);
+                background-color: rgb(249, 249, 249);
                 &.validated {
                     background-color: rgb(211, 250, 211);
                 }
             }
+            &:hover {
+                background-color: rgb(243, 243, 243);
+            }
         }
-        td {
-            
+        td {            
             text-overflow: ellipsis;
             margin-inline: 0.5rem;
             overflow: hidden;
@@ -78,15 +80,20 @@
     text-align: center;
     .pagination {
         display: flex;
-        gap: 1rem;
         padding-left: 0;
         list-style: none;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
         li {
-            padding: 0.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            aspect-ratio: 1 / 1;
+            width: 30px;
+            &:hover,
             &.active {
                 font-weight: bold;
+                background-color: rgb(245, 245, 245);
             }
         }
     }
@@ -98,6 +105,10 @@
     display: inline-block;
     width: 32px;
     height: 20px;
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
   }
   
   /* Hide default HTML checkbox */
