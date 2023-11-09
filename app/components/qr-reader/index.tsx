@@ -28,6 +28,6 @@ export default function QrReader() {
     
     return <>
         {/* <h1>Open camera</h1> */}
-        <div id='reader'></div>
+          <div id='reader'></div>
     </>
 }
