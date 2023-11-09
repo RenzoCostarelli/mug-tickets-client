@@ -21,21 +21,29 @@ export default function QrReader({onOk}: QrReaderProps) {
 
   useEffect(() => {
     setIsValidating(true)
+    const newScanner = new Html5Qrcode('reader')
+    const qrCodeSuccessCallback = () => {
+      return
+    };
+    const qrCodeErrorCallback = () => {
+      return
+    };
+    newScanner.start({ facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback, qrCodeErrorCallback)
 
-    const scanner = new Html5QrcodeScanner("reader", config, false);
+    // const scanner = new Html5QrcodeScanner("reader", config, false);
 
-    scanner.render(succes, error);
+    // scanner.render(succes, error);
 
-    function succes(result: any) {
-      console.log("qr", result);
+    // function succes(result: any) {
+    //   console.log("qr", result);
 
-      onOk(result)
-      scanner.clear();
-      setIsValidating(false)
-    }
-    function error(err: any) {
-      // console.warn(err)
-    }
+    //   onOk(result)
+    //   scanner.clear();
+    //   setIsValidating(false)
+    // }
+    // function error(err: any) {
+    //   // console.warn(err)
+    // }
   }, []);
 
   return (
