@@ -1,0 +1,18 @@
+.inner_wrapper {
+    display: grid;
+    gap: 1rem;
+    place-items: center;
+    section {
+        input {
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+    }
+    button {
+        -webkit-appearance: none;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: lightblue;
+        padding: 1rem 2rem;
+    }
+}

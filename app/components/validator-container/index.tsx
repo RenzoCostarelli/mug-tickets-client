@@ -30,7 +30,7 @@ export default function ValidatorContainer() {
   
   if (!eventData) {
     return <>
-      <ValidatorDialog onTokenConfirm={loadValidatorByToken} />;      
+      <ValidatorDialog onTokenConfirm={loadValidatorByToken} />
     </>
   }
 
