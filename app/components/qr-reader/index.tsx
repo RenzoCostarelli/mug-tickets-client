@@ -83,7 +83,7 @@ export default function QrReader({ onOk, onClose }: QrReaderProps) {
         <button onClick={handleClose} className={s.close}>
           ✖
         </button>
-        {devices && (
+        {/* {devices && (
           <>
     {devices.map((device, index) => (
       <div key={index}>
@@ -92,7 +92,7 @@ export default function QrReader({ onOk, onClose }: QrReaderProps) {
       </div>
     ))}
           </>
-        )}
+        )} */}
         <div id="reader"></div>
       </div>
     </>
