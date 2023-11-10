@@ -114,7 +114,7 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
       <div className={s.table_wrapper}>
         <div className={s.filters}>
           <button className={s.camera_button} onClick={handleOpenModal}>
-            Abrir camara
+            Abrir camara <img src='/images/icons/escanear2.svg' alt="Icono de escanear" />
           </button>
           <div className={s.input_filter}>
             <input

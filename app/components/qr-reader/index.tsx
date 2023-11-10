@@ -46,7 +46,7 @@ export default function QrReader({ onOk, onClose }: QrReaderProps) {
           const qrCodeSuccessCallback = (result: any) => {
             console.log("QR Code detected:", result);
             onOk(result);
-            newScanner.clear()
+            setActiveCamera(false);
           };
 
           const qrCodeErrorCallback = () => {
