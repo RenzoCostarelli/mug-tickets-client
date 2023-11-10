@@ -51,8 +51,22 @@
         flex-direction: column;
     }
     .camera_button {
-        padding: 1rem 3rem;
-        -webkit-appearance: none;
+      padding: 1rem 3rem;
+      -webkit-appearance: none;
+      border: none;
+      box-shadow: 0px 2px 4px 0px #33333342;
+      border-radius: 1rem;
+      background-color: #67bfdc;
+      font-weight: 900;
+      font-size: 1rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+      img {
+        width: 50px;
+      }
     }
     .input_filter {
         display: flex;
