@@ -180,8 +180,9 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
           )}
         </div>
         <dialog className={s.scanner_dialog} ref={dialogRef}>
+          {/* <button onClick={handleCloseModal} className={s.close}>✖</button> */}
           {isValidating && <Spinner />}
-          {isCameraOpen && <QrReader onOk={validateTicket} />}
+          {isCameraOpen && <QrReader onOk={validateTicket} onClose={handleCloseModal}/>}
         </dialog>
       </div>
       <ToastContainer />
