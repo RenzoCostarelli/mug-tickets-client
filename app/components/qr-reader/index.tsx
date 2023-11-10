@@ -40,7 +40,6 @@ export default function QrReader({ onOk, onClose }: QrReaderProps) {
           console.log('Devices:', devices);
           setDevices(devices);
 
-          // Inicializar la variable newScanner
           newScanner = new Html5Qrcode('reader');
 
           const qrCodeSuccessCallback = (result: any) => {

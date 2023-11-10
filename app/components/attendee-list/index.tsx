@@ -4,7 +4,7 @@ import s from "./list.module.scss";
 import { Buyer } from "@/app/types/buyer";
 import QrReader from "../qr-reader";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export interface Attendee {
   _id: string;
@@ -23,10 +23,20 @@ const Spinner = () => {
   return (
     <div className={s.loader_wrapper}>
       <h4>Validando</h4>
-      <div className={s.lds_grid}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div className={s.lds_grid}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -35,7 +45,17 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
   const [tickets, setTickets] = useState(ticketsList);
   const [filterDNI, setFilterDNI] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [validatedCount, setValidatedCount] = useState<number>(0);
   const itemsPerPage = 50;
+
+  useEffect(() => {
+    const initialValidatedCount = ticketsList.reduce(
+      (count: number, ticket: Attendee) =>
+        ticket.validated ? count + 1 : count,
+      0
+    );
+    setValidatedCount(initialValidatedCount);
+  }, [ticketsList]);
 
   const filteredTickets = tickets.filter((ticket: Attendee) =>
     ticket.dni.includes(filterDNI)
@@ -73,7 +93,7 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
         console.error("Error al validar", res);
         setIsValidating(false);
         if (dialogRef.current!.open) {
-          handleCloseModal()
+          handleCloseModal();
         }
         return;
       }
@@ -92,8 +112,9 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
           return ticket;
         });
       });
+      setValidatedCount((prevCount) => prevCount + 1);
       if (dialogRef.current!.open) {
-        handleCloseModal()
+        handleCloseModal();
       }
       setIsValidating(false);
     } catch (error) {}
@@ -114,7 +135,8 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
       <div className={s.table_wrapper}>
         <div className={s.filters}>
           <button className={s.camera_button} onClick={handleOpenModal}>
-            Abrir camara <img src='/images/icons/escanear2.svg' alt="Icono de escanear" />
+            Abrir camara{" "}
+            <img src="/images/icons/escanear2.svg" alt="Icono de escanear" />
           </button>
           <div className={s.input_filter}>
             <input
@@ -125,6 +147,9 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
               onChange={(e) => setFilterDNI(e.target.value)}
             />
           </div>
+        </div>
+        <div className={s.data_wrapper}>
+          <p><span>Ingresaron:</span> {validatedCount}</p>
         </div>
         <table className={s.table}>
           <thead>
@@ -182,7 +207,9 @@ export default function AttendeeList({ ticketsList }: { ticketsList: any }) {
         <dialog className={s.scanner_dialog} ref={dialogRef}>
           {/* <button onClick={handleCloseModal} className={s.close}>✖</button> */}
           {isValidating && <Spinner />}
-          {isCameraOpen && <QrReader onOk={validateTicket} onClose={handleCloseModal}/>}
+          {isCameraOpen && (
+            <QrReader onOk={validateTicket} onClose={handleCloseModal} />
+          )}
         </dialog>
       </div>
       <ToastContainer />

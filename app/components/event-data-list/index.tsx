@@ -23,12 +23,12 @@ export default function EventDataList(props: EventDataListProps) {
             <li>
               <span>Entradas vendidas online:</span> {tickets!.length}
             </li>
-            <li>
+            {/* <li>
               <span>Ingresaron:</span> 0
             </li>
             <li>
               <span>No ingresaron:</span> 0
-            </li>
+            </li> */}
           </ul>
           <div className={s.toggle_detail} onClick={e => setDetailOpen(!isDetailOpen)}>
             {!isDetailOpen ? 'Ver detalles' : 'Ocultar detalles'}
