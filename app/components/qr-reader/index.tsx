@@ -45,6 +45,7 @@ export default function QrReader({ onOk, onClose }: QrReaderProps) {
 
           const qrCodeSuccessCallback = (result: any) => {
             console.log("QR Code detected:", result);
+            newScanner.clear()
             onOk(result);
           };
 
@@ -80,20 +81,20 @@ export default function QrReader({ onOk, onClose }: QrReaderProps) {
   return (
     <>
       <div className={s.inner_wrapper}>
-        <button onClick={handleClose} className={s.close}>
-          ✖
-        </button>
         {/* {devices && (
           <>
-    {devices.map((device, index) => (
-      <div key={index}>
-        <div>ID: {device.id}</div>
-        <div>Label: {device.label}</div>
-      </div>
-    ))}
-          </>
-        )} */}
+          {devices.map((device, index) => (
+            <div key={index}>
+            <div>ID: {device.id}</div>
+            <div>Label: {device.label}</div>
+            </div>
+            ))}
+            </>
+          )} */}
         <div id="reader"></div>
+          <button onClick={handleClose} className={s.close}>
+            Cerrar
+          </button>
       </div>
     </>
   );
