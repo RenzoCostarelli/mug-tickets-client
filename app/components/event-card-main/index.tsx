@@ -41,7 +41,7 @@ export default function EventCardMain({event}: any) {
                       </g>
                     </svg>
                   </span>
-                  10 y 11 de Nov 2023
+                  12 de Jul 2024
                 </div>
                 <div className={s.time}>
                   <span>
