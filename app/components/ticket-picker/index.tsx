@@ -94,8 +94,7 @@ export default function TicketsPicker({ event }: { event: Events }) {
       .then((data) => {
         push(`/eventos/ticket/${data.savedNewOrder._id}`);
         setTimeout(() => {
-          setSubmitting(false) 
-          
+          setSubmitting(false)           
         }, 1000);
       })
       .catch((error) => {
